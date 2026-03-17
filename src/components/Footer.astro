@@ -1,0 +1,83 @@
+---
+const year = new Date().getFullYear()
+---
+<footer style="background: #0D1B3E; border-top: 1px solid rgba(29,184,232,0.15); margin-top: 4rem;">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+
+      <!-- Brand -->
+      <div>
+        <a href="/blog" style="text-decoration: none; display: flex; align-items: baseline; gap: 4px; line-height: 1; margin-bottom: 12px;">
+          <span style="font-family: 'Sora', system-ui, sans-serif; font-weight: 900; font-size: 1.4rem; color: #1DB8E8; letter-spacing: -0.02em;">ZEN</span>
+          <span style="font-family: 'DM Sans', system-ui, sans-serif; font-style: italic; font-weight: 600; color: #ffffff; font-size: 1rem;">caps</span>
+          <span style="color: #6B7A9A; font-size: 0.65rem; margin-left: 8px; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'DM Sans', system-ui, sans-serif; align-self: center;">Blog</span>
+        </a>
+        <p style="font-size: 0.875rem; color: #6B7A9A; line-height: 1.7; font-family: 'DM Sans', system-ui, sans-serif;">
+          Conteúdo baseado em ciência sobre sono, ansiedade e bem-estar natural.
+        </p>
+        <!-- Glow line -->
+        <div style="height: 2px; background: linear-gradient(90deg, #1DB8E8 0%, transparent 100%); border-radius: 4px; margin-top: 16px; width: 60px; opacity: 0.6;"></div>
+      </div>
+
+      <!-- Categories -->
+      <div>
+        <h3 style="font-family: 'Sora', system-ui, sans-serif; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 14px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;">
+          Categorias
+        </h3>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;">
+          <li>
+            <a href="/blog/categoria/sono" style="font-size: 0.875rem; color: #6B7A9A; text-decoration: none; font-family: 'DM Sans', system-ui, sans-serif; transition: color 0.15s;" onmouseover="this.style.color='#1DB8E8'" onmouseout="this.style.color='#6B7A9A'">
+              Sono &amp; Insônia
+            </a>
+          </li>
+          <li>
+            <a href="/blog/categoria/ansiedade" style="font-size: 0.875rem; color: #6B7A9A; text-decoration: none; font-family: 'DM Sans', system-ui, sans-serif; transition: color 0.15s;" onmouseover="this.style.color='#1DB8E8'" onmouseout="this.style.color='#6B7A9A'">
+              Ansiedade &amp; Estresse
+            </a>
+          </li>
+          <li>
+            <a href="/blog/categoria/ingredientes" style="font-size: 0.875rem; color: #6B7A9A; text-decoration: none; font-family: 'DM Sans', system-ui, sans-serif; transition: color 0.15s;" onmouseover="this.style.color='#1DB8E8'" onmouseout="this.style.color='#6B7A9A'">
+              Ingredientes &amp; Ciência
+            </a>
+          </li>
+          <li>
+            <a href="/blog/categoria/habitos" style="font-size: 0.875rem; color: #6B7A9A; text-decoration: none; font-family: 'DM Sans', system-ui, sans-serif; transition: color 0.15s;" onmouseover="this.style.color='#1DB8E8'" onmouseout="this.style.color='#6B7A9A'">
+              Hábitos Saudáveis
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CTA -->
+      <div>
+        <h3 style="font-family: 'Sora', system-ui, sans-serif; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 14px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;">
+          O Produto
+        </h3>
+        <p style="font-size: 0.875rem; color: #6B7A9A; margin-bottom: 20px; line-height: 1.7; font-family: 'DM Sans', system-ui, sans-serif;">
+          Zen Caps é o suplemento natural com melatonina, triptofano e magnésio para você dormir melhor e controlar a ansiedade.
+        </p>
+        <a
+          href="https://zencaps.com.br"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="zen-btn-gold"
+          style="font-size: 0.85rem;"
+        >
+          Conhecer o Zen Caps &rarr;
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div style="border-top: 1px solid rgba(29,184,232,0.1); padding-top: 24px; display: flex; flex-direction: column; gap: 8px; align-items: center; text-align: center;">
+      <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+        <a href="https://zencaps.com.br/politica-de-privacidade" style="font-size: 0.75rem; color: #6B7A9A; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#1DB8E8'" onmouseout="this.style.color='#6B7A9A'">Política de Privacidade</a>
+        <a href="https://zencaps.com.br/termos-de-uso" style="font-size: 0.75rem; color: #6B7A9A; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#1DB8E8'" onmouseout="this.style.color='#6B7A9A'">Termos de Uso</a>
+        <a href="https://zencaps.com.br" style="font-size: 0.75rem; color: #6B7A9A; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#1DB8E8'" onmouseout="this.style.color='#6B7A9A'">Site Oficial</a>
+      </div>
+      <p style="font-size: 0.72rem; color: rgba(107,122,154,0.6); font-family: 'DM Sans', system-ui, sans-serif;">
+        &copy; {year} Zen Caps. Todos os direitos reservados.
+      </p>
+    </div>
+  </div>
+</footer>

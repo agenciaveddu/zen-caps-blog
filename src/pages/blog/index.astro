@@ -1,0 +1,205 @@
+---
+import { getCollection } from 'astro:content'
+import BlogLayout from '../../layouts/BlogLayout.astro'
+import ArticleCard from '../../components/ArticleCard.astro'
+import CTABanner from '../../components/CTABanner.astro'
+
+const allPosts = await getCollection('blog')
+const now = new Date()
+const posts = allPosts
+  .filter(post => post.data.publishedAt <= now)
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+
+const featuredPost = null
+const remainingPosts = posts
+
+const categories = [
+  { value: 'sono',         label: 'Sono & Insônia',         color: '#1DB8E8' },
+  { value: 'ansiedade',    label: 'Ansiedade & Estresse',   color: '#5B6FDE' },
+  { value: 'ingredientes', label: 'Ingredientes & Ciência', color: '#1DB8E8' },
+  { value: 'habitos',      label: 'Hábitos Saudáveis',      color: '#C9A84C' },
+]
+---
+
+<BlogLayout
+  title="Blog Zen Caps — Sono, Ansiedade e Bem-estar Natural"
+  description="Dicas baseadas em ciência para dormir melhor e controlar a ansiedade. Artigos sobre melatonina, triptofano, magnésio e suplementação natural."
+>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero-section" style="min-height: 460px; display: flex; align-items: center; justify-content: center;">
+    <!-- Particles layer -->
+    <div class="hero-particles"></div>
+    <!-- Glow layer -->
+    <div class="hero-glow"></div>
+
+    <!-- Content -->
+    <div style="position: relative; z-index: 1; text-align: center; padding: 5rem 1.5rem; max-width: 700px; margin: 0 auto;">
+      <!-- Eyebrow -->
+      <p style="
+        font-family: 'DM Sans', system-ui, sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #1DB8E8;
+        margin-bottom: 16px;
+      ">
+        Ciência do Sono &amp; Bem-estar
+      </p>
+
+      <!-- Main headline -->
+      <h1 style="
+        font-family: 'Sora', system-ui, sans-serif;
+        font-size: clamp(2.2rem, 6vw, 3.6rem);
+        font-weight: 900;
+        color: #ffffff;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+      ">
+        Durma Melhor.<br />
+        <span style="color: #1DB8E8;">Viva Mais.</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p style="
+        font-family: 'DM Sans', system-ui, sans-serif;
+        font-size: 1.1rem;
+        color: rgba(255,255,255,0.65);
+        line-height: 1.7;
+        margin-bottom: 36px;
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+      ">
+        Conteúdo baseado em ciência sobre sono, ansiedade e suplementação natural.
+        Tudo que você precisa para viver com mais equilíbrio.
+      </p>
+
+      <!-- CTAs -->
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a
+          href="https://zencaps.com.br"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="zen-btn-gold"
+          style="font-size: 0.95rem; padding: 0.85rem 2.2rem;"
+        >
+          Conhecer o Zen Caps &rarr;
+        </a>
+        <a
+          href="#artigos"
+          class="zen-btn-blue"
+          style="font-size: 0.95rem; padding: 0.85rem 2.2rem;"
+        >
+          Ler artigos
+        </a>
+      </div>
+
+      <!-- Stats row -->
+      <div style="display: flex; gap: 32px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
+        <div style="text-align: center;">
+          <p style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.4rem; font-weight: 800; color: #1DB8E8; margin: 0;">73M</p>
+          <p style="font-size: 0.72rem; color: rgba(255,255,255,0.45); margin: 0; font-family: 'DM Sans', system-ui, sans-serif;">Brasileiros c/ distúrbio do sono</p>
+        </div>
+        <div style="width: 1px; background: rgba(255,255,255,0.1);"></div>
+        <div style="text-align: center;">
+          <p style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.4rem; font-weight: 800; color: #C9A84C; margin: 0;">100%</p>
+          <p style="font-size: 0.72rem; color: rgba(255,255,255,0.45); margin: 0; font-family: 'DM Sans', system-ui, sans-serif;">Natural e aprovado ANVISA</p>
+        </div>
+        <div style="width: 1px; background: rgba(255,255,255,0.1);"></div>
+        <div style="text-align: center;">
+          <p style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.4rem; font-weight: 800; color: #1DB8E8; margin: 0;">30d</p>
+          <p style="font-size: 0.72rem; color: rgba(255,255,255,0.45); margin: 0; font-family: 'DM Sans', system-ui, sans-serif;">Garantia incondicional</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORY PILLS ===== -->
+  <section style="background: #FFFFFF; border-bottom: 1px solid #e8eef6; padding: 16px 1.5rem;">
+    <div class="max-w-6xl mx-auto" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center;">
+      <a
+        href="/blog"
+        style="
+          padding: 6px 18px;
+          border-radius: 999px;
+          font-size: 0.82rem;
+          font-weight: 700;
+          text-decoration: none;
+          background: #0D1B3E;
+          color: #ffffff;
+          font-family: 'DM Sans', system-ui, sans-serif;
+          transition: background 0.15s;
+        "
+        onmouseover="this.style.background='#172851'"
+        onmouseout="this.style.background='#0D1B3E'"
+      >
+        Todos
+      </a>
+      {categories.map(cat => (
+        <a
+          href={`/blog/categoria/${cat.value}`}
+          style={`
+            padding: 6px 18px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid ${cat.color}40;
+            color: ${cat.color};
+            background: ${cat.color}10;
+            font-family: 'DM Sans', system-ui, sans-serif;
+            transition: background 0.15s, border-color 0.15s;
+          `}
+          onmouseover={`this.style.background='${cat.color}20'; this.style.borderColor='${cat.color}'`}
+          onmouseout={`this.style.background='${cat.color}10'; this.style.borderColor='${cat.color}40'`}
+        >
+          {cat.label}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ===== ARTICLES SECTION ===== -->
+  <section id="artigos" class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+
+    {posts.length === 0 ? (
+      <div style="text-align: center; padding: 5rem 0; color: #6B7A9A;">
+        <p style="font-size: 3rem; margin-bottom: 16px;">📝</p>
+        <p style="font-size: 1.1rem; font-family: 'Sora', system-ui, sans-serif;">Em breve, novos artigos aqui.</p>
+      </div>
+    ) : (
+      <div>
+        <!-- Section heading -->
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 32px;">
+          <div style="height: 3px; width: 40px; background: linear-gradient(90deg, #1DB8E8, #5DD4F4); border-radius: 4px;"></div>
+          <h2 style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.3rem; font-weight: 800; color: #0D1B3E; margin: 0;">
+            Artigos Recentes
+          </h2>
+        </div>
+
+        <!-- Grid uniforme de todos os posts -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;">
+          {remainingPosts.map(post => (
+            <ArticleCard
+              title={post.data.title}
+              slug={post.id}
+              excerpt={post.data.excerpt}
+              category={post.data.category}
+              publishedAt={post.data.publishedAt}
+              coverImage={post.data.coverImage}
+            />
+          ))}
+        </div>
+      </div>
+    )}
+  </section>
+
+  <!-- ===== FULL CTA BANNER ===== -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
+    <CTABanner variant="full" />
+  </div>
+
+</BlogLayout>

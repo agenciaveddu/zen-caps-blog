@@ -1,0 +1,132 @@
+---
+interface Props {
+  variant?: 'inline' | 'full' | 'end'
+  context?: string
+}
+
+const { variant = 'inline', context = '' } = Astro.props
+---
+
+{variant === 'inline' && (
+  <div style="
+    my-8;
+    margin: 2rem 0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    border-left: 4px solid #1DB8E8;
+    background: rgba(29,184,232,0.05);
+    border: 1px solid rgba(29,184,232,0.2);
+    border-left: 4px solid #1DB8E8;
+  ">
+    <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+      <div style="flex: 1;">
+        <p style="font-family: 'Sora', system-ui, sans-serif; font-weight: 700; color: #0D1B3E; margin-bottom: 6px; font-size: 1rem;">
+          Conheça o Zen Caps
+        </p>
+        <p style="font-size: 0.9rem; color: #6B7A9A; line-height: 1.6; font-family: 'DM Sans', system-ui, sans-serif; margin: 0;">
+          {context
+            ? `O suplemento natural para quem sofre com ${context}. Com melatonina, triptofano e magnésio — aprovado pela ANVISA.`
+            : 'Suplemento natural com melatonina, triptofano e magnésio. Aprovado pela ANVISA e com garantia de 30 dias.'
+          }
+        </p>
+      </div>
+      <a
+        href="https://zencaps.com.br"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="zen-btn-gold"
+        style="white-space: nowrap; padding: 0.6rem 1.5rem; font-size: 0.85rem;"
+      >
+        Ver mais &rarr;
+      </a>
+    </div>
+  </div>
+)}
+
+{variant === 'full' && (
+  <div style="
+    margin: 2.5rem 0;
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    background: linear-gradient(160deg, #0D1B3E 0%, #172851 60%, #0a1428 100%);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(13,27,62,0.4);
+  ">
+    <!-- Glow -->
+    <div style="
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(29,184,232,0.15) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    "></div>
+
+    <div style="position: relative; z-index: 1;">
+      <p style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #1DB8E8; margin-bottom: 10px; font-family: 'Sora', system-ui, sans-serif;">
+        Solução Natural
+      </p>
+      <h3 style="font-family: 'Sora', system-ui, sans-serif; font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; color: #ffffff; margin-bottom: 12px; line-height: 1.2;">
+        Durma melhor. Controle a ansiedade.<br />Sem tarja preta.
+      </h3>
+      <p style="font-size: 0.92rem; color: rgba(255,255,255,0.65); margin-bottom: 28px; max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.7; font-family: 'DM Sans', system-ui, sans-serif;">
+        Zen Caps combina melatonina, triptofano, magnésio, ácido fólico e vitamina B6 em uma fórmula natural, aprovada pela ANVISA.
+      </p>
+      <a
+        href="https://zencaps.com.br"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="zen-btn-gold"
+        style="font-size: 0.95rem; padding: 0.85rem 2.5rem;"
+      >
+        Experimente com garantia de 30 dias &rarr;
+      </a>
+      <p style="margin-top: 16px; font-size: 0.75rem; color: rgba(255,255,255,0.4); font-family: 'DM Sans', system-ui, sans-serif;">
+        &#10003; Aprovado ANVISA &nbsp;&nbsp; &#10003; Sem dependência &nbsp;&nbsp; &#10003; Frete grátis
+      </p>
+    </div>
+  </div>
+)}
+
+{variant === 'end' && (
+  <div style="
+    margin-top: 3rem;
+    border-radius: 16px;
+    border: 2px solid #0D1B3E;
+    padding: 2rem 2rem 2rem;
+    background: linear-gradient(135deg, #F4F8FC 0%, #eaf2fb 100%);
+  ">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center;">
+      <div style="
+        width: 64px; height: 64px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0D1B3E 0%, #172851 100%);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.8rem;
+        flex-shrink: 0;
+      ">
+        🌙
+      </div>
+      <div>
+        <h3 style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.2rem; font-weight: 800; color: #0D1B3E; margin-bottom: 8px;">
+          Pronto para transformar sua noite de sono?
+        </h3>
+        <p style="font-size: 0.9rem; color: #6B7A9A; line-height: 1.65; font-family: 'DM Sans', system-ui, sans-serif; margin: 0 auto; max-width: 500px;">
+          Zen Caps já ajudou milhares de brasileiros a dormir melhor e controlar a ansiedade de forma natural. Com garantia incondicional de 30 dias.
+        </p>
+      </div>
+      <a
+        href="https://zencaps.com.br"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="zen-btn-gold"
+        style="font-size: 0.92rem; padding: 0.8rem 2.2rem;"
+      >
+        Quero Dormir Melhor &rarr;
+      </a>
+    </div>
+  </div>
+)}

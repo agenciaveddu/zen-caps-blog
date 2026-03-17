@@ -1,0 +1,104 @@
+---
+interface Props {
+  title: string
+  slug: string
+  excerpt: string
+  category: string
+  publishedAt: Date
+  coverImage?: string
+  featured?: boolean
+}
+
+const { title, slug, excerpt, category, publishedAt, coverImage, featured = false } = Astro.props
+
+const categoryMeta: Record<string, { label: string; badgeClass: string; borderClass: string; icon: string }> = {
+  sono:        { label: 'Sono & Insônia',         badgeClass: '',                  borderClass: 'border-sono',        icon: '🌙' },
+  ansiedade:   { label: 'Ansiedade & Estresse',   badgeClass: 'badge-ansiedade',   borderClass: 'border-ansiedade',   icon: '🧘' },
+  ingredientes:{ label: 'Ingredientes & Ciência', badgeClass: '',                  borderClass: 'border-ingredientes', icon: '🔬' },
+  habitos:     { label: 'Hábitos Saudáveis',      badgeClass: 'badge-habitos',     borderClass: 'border-habitos',     icon: '✨' },
+}
+
+const meta = categoryMeta[category] ?? { label: category, badgeClass: '', borderClass: '', icon: '📄' }
+
+const formattedDate = publishedAt.toLocaleDateString('pt-BR', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+})
+---
+
+<article class={`article-card ${meta.borderClass} ${featured ? 'featured-card' : ''}`}>
+  <!-- Cover image -->
+  <a href={`/blog/${slug}`} class="card-image-wrap block" style="display: block;">
+    {coverImage ? (
+      <img
+        src={coverImage}
+        alt={title}
+        loading="lazy"
+        style={featured ? 'height: 280px; width: 100%; object-fit: cover;' : 'height: 200px; width: 100%; object-fit: cover;'}
+      />
+    ) : (
+      <div
+        style={`
+          width: 100%;
+          height: ${featured ? '280px' : '200px'};
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: ${featured ? '4.5rem' : '3.5rem'};
+          background: linear-gradient(135deg, #0D1B3E 0%, #172851 100%);
+        `}
+      >
+        {meta.icon}
+      </div>
+    )}
+  </a>
+
+  <!-- Content -->
+  <div style="padding: 20px 22px 22px;">
+    <!-- Category badge -->
+    <span class={`category-badge ${meta.badgeClass}`} style="margin-bottom: 12px; display: inline-block;">
+      {meta.label}
+    </span>
+
+    <!-- Title -->
+    <h2 style={`
+      font-family: 'Sora', system-ui, sans-serif;
+      font-weight: 700;
+      color: #0D1B3E;
+      line-height: 1.3;
+      margin-bottom: 10px;
+      font-size: ${featured ? '1.3rem' : '1.05rem'};
+      transition: color 0.2s;
+    `}>
+      <a
+        href={`/blog/${slug}`}
+        style="text-decoration: none; color: inherit; transition: color 0.15s;"
+        onmouseover="this.style.color='#1DB8E8'"
+        onmouseout="this.style.color='inherit'"
+      >
+        {title}
+      </a>
+    </h2>
+
+    <!-- Excerpt -->
+    <p style="font-size: 0.88rem; color: #6B7A9A; line-height: 1.65; margin-bottom: 18px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; font-family: 'DM Sans', system-ui, sans-serif;">
+      {excerpt}
+    </p>
+
+    <!-- Footer -->
+    <div style="display: flex; align-items: center; justify-content: space-between;">
+      <time style="font-size: 0.75rem; color: #a0aec0; font-family: 'DM Sans', system-ui, sans-serif;" datetime={publishedAt.toISOString()}>
+        {formattedDate}
+      </time>
+      <a
+        href={`/blog/${slug}`}
+        style="font-size: 0.85rem; font-weight: 700; color: #1DB8E8; text-decoration: none; transition: color 0.15s; font-family: 'DM Sans', system-ui, sans-serif; display: flex; align-items: center; gap: 4px;"
+        onmouseover="this.style.color='#0D1B3E'"
+        onmouseout="this.style.color='#1DB8E8'"
+      >
+        Ler artigo <span style="transition: transform 0.15s;" class="arrow-icon">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</article>

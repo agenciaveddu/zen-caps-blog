@@ -1,0 +1,89 @@
+---
+const navLinks = [
+  { label: 'Sono & Insônia', href: '/blog/categoria/sono' },
+  { label: 'Ansiedade', href: '/blog/categoria/ansiedade' },
+  { label: 'Ingredientes', href: '/blog/categoria/ingredientes' },
+  { label: 'Hábitos', href: '/blog/categoria/habitos' },
+]
+---
+<header style="background: #0D1B3E; border-bottom: 1px solid rgba(29,184,232,0.15); position: sticky; top: 0; z-index: 40; box-shadow: 0 2px 20px rgba(0,0,0,0.3);">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between" style="height: 64px;">
+
+      <!-- Logo -->
+      <a href="/" style="text-decoration: none; display: flex; align-items: baseline; gap: 4px; line-height: 1;">
+        <span style="font-family: 'Sora', system-ui, sans-serif; font-weight: 900; font-size: 1.4rem; color: #1DB8E8; letter-spacing: -0.02em;">ZEN</span>
+        <span style="font-family: 'DM Sans', system-ui, sans-serif; font-style: italic; font-weight: 600; color: #ffffff; font-size: 1rem;">caps</span>
+        <span style="color: #6B7A9A; font-size: 0.65rem; margin-left: 8px; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'DM Sans', system-ui, sans-serif; align-self: center;">Blog</span>
+      </a>
+
+      <!-- Nav desktop -->
+      <nav class="hidden md:flex items-center gap-6">
+        {navLinks.map(link => (
+          <a
+            href={link.href}
+            style="font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.75); text-decoration: none; transition: color 0.15s; font-family: 'DM Sans', system-ui, sans-serif;"
+            onmouseover="this.style.color='#1DB8E8'"
+            onmouseout="this.style.color='rgba(255,255,255,0.75)'"
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <!-- CTA + Mobile toggle -->
+      <div class="flex items-center gap-3">
+        <a
+          href="https://zencaps.com.br"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden sm:inline-flex zen-btn-gold"
+          style="padding: 0.45rem 1.25rem; font-size: 0.82rem;"
+        >
+          Comprar Zen Caps
+        </a>
+
+        <!-- Mobile menu button -->
+        <button
+          id="menu-toggle"
+          style="padding: 8px; border-radius: 8px; background: transparent; border: none; cursor: pointer; color: rgba(255,255,255,0.7);"
+          class="md:hidden"
+          aria-label="Abrir menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4" style="border-top: 1px solid rgba(29,184,232,0.15); padding-top: 12px;">
+      {navLinks.map(link => (
+        <a
+          href={link.href}
+          style="display: block; padding: 10px 0; font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.8); text-decoration: none; font-family: 'DM Sans', system-ui, sans-serif; transition: color 0.15s;"
+          onmouseover="this.style.color='#1DB8E8'"
+          onmouseout="this.style.color='rgba(255,255,255,0.8)'"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="https://zencaps.com.br"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="zen-btn-gold"
+        style="margin-top: 12px; display: block; text-align: center; padding: 0.6rem 1.5rem;"
+      >
+        Comprar Zen Caps
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle')
+  const menu = document.getElementById('mobile-menu')
+  toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'))
+</script>

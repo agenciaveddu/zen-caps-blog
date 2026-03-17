@@ -1,0 +1,100 @@
+---
+import { getCollection } from 'astro:content'
+import BlogLayout from '../../../layouts/BlogLayout.astro'
+import ArticleCard from '../../../components/ArticleCard.astro'
+import CTABanner from '../../../components/CTABanner.astro'
+
+export async function getStaticPaths() {
+  const categories = ['sono', 'ansiedade', 'ingredientes', 'habitos']
+  return categories.map(cat => ({ params: { cat } }))
+}
+
+const { cat } = Astro.params
+
+const categoryInfo: Record<string, { label: string; description: string; emoji: string }> = {
+  sono: {
+    label: 'Sono & Insônia',
+    description: 'Artigos sobre como dormir melhor, tratar insônia e melhorar a qualidade do sono de forma natural.',
+    emoji: '🌙',
+  },
+  ansiedade: {
+    label: 'Ansiedade & Estresse',
+    description: 'Como controlar a ansiedade, reduzir o estresse e recuperar o equilíbrio emocional sem remédios controlados.',
+    emoji: '🧘',
+  },
+  ingredientes: {
+    label: 'Ingredientes & Ciência',
+    description: 'Tudo sobre melatonina, triptofano, magnésio, vitamina B6 e ácido fólico — o que a ciência realmente diz.',
+    emoji: '🔬',
+  },
+  habitos: {
+    label: 'Hábitos Saudáveis',
+    description: 'Rotinas, alimentação e hábitos que transformam sua qualidade de sono e bem-estar geral.',
+    emoji: '💚',
+  },
+}
+
+const info = categoryInfo[cat as string] ?? {
+  label: cat,
+  description: '',
+  emoji: '🌿',
+}
+
+const now = new Date()
+const allPosts = await getCollection('blog')
+const posts = allPosts
+  .filter(p => p.data.category === cat && p.data.publishedAt <= now)
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+---
+
+<BlogLayout
+  title={`${info.label} — Blog Zen Caps`}
+  description={info.description}
+>
+  <!-- Category hero -->
+  <section class="py-12 px-4 text-center" style="background: linear-gradient(135deg, #f0faf5 0%, #e8f5f0 100%);">
+    <div class="max-w-2xl mx-auto">
+      <span class="text-5xl mb-4 block">{info.emoji}</span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3">{info.label}</h1>
+      <p class="text-slate-500 leading-relaxed">{info.description}</p>
+    </div>
+  </section>
+
+  <!-- Breadcrumb -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4">
+    <nav class="flex items-center gap-2 text-xs text-slate-400">
+      <a href="/blog" class="hover:text-green-700">Blog</a>
+      <span>›</span>
+      <span class="text-slate-600">{info.label}</span>
+    </nav>
+  </div>
+
+  <!-- Articles -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
+    {posts.length === 0 ? (
+      <div class="text-center py-20 text-slate-400">
+        <p class="text-5xl mb-4">📝</p>
+        <p>Em breve, novos artigos nesta categoria.</p>
+        <a href="/blog" class="mt-4 inline-block font-semibold" style="color: #1A6B5A;">← Ver todos os artigos</a>
+      </div>
+    ) : (
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.map(post => (
+          <ArticleCard
+            title={post.data.title}
+            slug={post.id}
+            excerpt={post.data.excerpt}
+            category={post.data.category}
+            publishedAt={post.data.publishedAt}
+            coverImage={post.data.coverImage}
+          />
+        ))}
+      </div>
+    )}
+  </section>
+
+  <!-- CTA -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
+    <CTABanner variant="full" />
+  </div>
+</BlogLayout>
