@@ -6,11 +6,13 @@ import Footer from '../components/Footer.astro'
 interface Props {
   title?: string
   description?: string
+  canonical?: string
 }
 
 const {
   title = 'Blog Zen Caps — Sono, Ansiedade e Bem-estar Natural',
-  description = 'Dicas, ciência e soluções naturais para dormir melhor e controlar a ansiedade. Conteúdo baseado em evidências sobre melatonina, triptofano e magnésio.'
+  description = 'Dicas, ciência e soluções naturais para dormir melhor e controlar a ansiedade. Conteúdo baseado em evidências sobre melatonina, triptofano e magnésio.',
+  canonical = 'https://zencaps.com.br/blog',
 } = Astro.props
 ---
 <!doctype html>
@@ -20,9 +22,11 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="Zen Caps Blog" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />

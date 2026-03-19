@@ -44,7 +44,7 @@ const displayReadingTime = readingTime ?? null
 
 const metaTitle = (seoTitle || title) + ' | Zen Caps Blog'
 const metaDescription = seoDescription || excerpt
-const canonicalUrl = `https://blog.zencaps.com.br/blog/${slug}`
+const canonicalUrl = `https://zencaps.com.br/blog/${slug}`
 const ogImage = coverImage || 'https://zencaps.com.br/og-image.jpg'
 const authorName = author || 'Equipe Zen Caps'
 
@@ -104,13 +104,13 @@ const breadcrumbSchema = JSON.stringify({
       '@type': 'ListItem',
       position: 1,
       name: 'Home',
-      item: 'https://blog.zencaps.com.br',
+      item: 'https://zencaps.com.br/blog',
     },
     {
       '@type': 'ListItem',
       position: 2,
       name: categoryLabels[category] ?? category,
-      item: `https://blog.zencaps.com.br/blog/categoria/${category}`,
+      item: `https://zencaps.com.br/blog/categoria/${category}`,
     },
     {
       '@type': 'ListItem',
@@ -127,14 +127,14 @@ const organizationSchema = JSON.stringify({
   name: 'Zen Caps',
   url: 'https://zencaps.com.br',
   logo: 'https://zencaps.com.br/logo.png',
-  sameAs: ['https://blog.zencaps.com.br'],
+  sameAs: ['https://zencaps.com.br/blog'],
 })
 
 const websiteSchema = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'Zen Caps Blog',
-  url: 'https://blog.zencaps.com.br',
+  url: 'https://zencaps.com.br/blog',
 })
 
 const faqSchema = faq && faq.length > 0

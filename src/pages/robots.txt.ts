@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro'
 
 export const GET: APIRoute = () => {
   const content = `User-agent: *
-Allow: /blog/
+Allow: /
 Disallow: /keystatic/
 
 Sitemap: https://zencaps.com.br/sitemap-index.xml
