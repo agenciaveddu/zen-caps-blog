@@ -84,3 +84,12 @@ O [Zen Caps →](https://zencaps.com.br) combina os três em uma fórmula desenv
 2. Haghayegh, S. et al. (2019). Before-bedtime passive body heating. *Sleep Medicine Reviews*, 46, 124–135.
 3. Abbasi, B. et al. (2012). Magnesium supplementation on primary insomnia. *J Res Med Sci*, 17(12), 1161–1169.
 4. Harvey, A.G. (2002). A cognitive model of insomnia. *Behaviour Research and Therapy*, 40(8), 869–893.
+
+---
+
+## Veja Também
+
+- [Como Controlar a Ansiedade Naturalmente: Guia Completo](/blog/como-controlar-ansiedade-naturalmente) — artigo principal sobre ansiedade
+- [Crise de Ansiedade Agora: Protocolo de 5 Minutos](/blog/crise-de-ansiedade-agora-protocolo-5-minutos)
+- [Respiração Para Ansiedade: 5 Técnicas Científicas](/blog/respiracao-para-ansiedade-tecnicas)
+- [Suplementos Naturais Para Ansiedade](/blog/suplementos-naturais-para-ansiedade)

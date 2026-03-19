@@ -166,3 +166,15 @@ A terapia cognitivo-comportamental (TCC) tem o maior nível de evidência para t
 2. Goyal, M. et al. (2014). "Meditation Programs for Psychological Stress and Well-being: A Systematic Review and Meta-analysis." *JAMA Internal Medicine*, 174(3), 357-368.
 3. Stubbs, B. et al. (2017). "An examination of the anxiolytic effects of exercise for people with anxiety and stress-related disorders: A meta-analysis." *Psychiatry Research*, 249, 102-108.
 4. Firth, J. et al. (2020). "Food and mood: how do diet and nutrition affect mental wellbeing?" *BMJ*, 369, m2382.
+
+---
+
+## Aprofunde o Tema
+
+Este artigo é o guia central sobre ansiedade. Para tópicos específicos, veja também:
+
+- [Ansiedade Noturna: Por Que Piora à Noite e Como Tratar](/blog/ansiedade-noturna-como-tratar)
+- [Respiração Para Ansiedade: 5 Técnicas Com Evidência Científica](/blog/respiracao-para-ansiedade-tecnicas)
+- [Ansiedade Generalizada: Tratamento Natural Passo a Passo](/blog/ansiedade-generalizada-tratamento-natural)
+- [Crise de Ansiedade Agora: Protocolo de 5 Minutos](/blog/crise-de-ansiedade-agora-protocolo-5-minutos)
+- [Suplementos Naturais Para Ansiedade: O Que a Ciência Diz](/blog/suplementos-naturais-para-ansiedade)

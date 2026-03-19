@@ -80,3 +80,11 @@ Respiração 4-7-8 ao deitar + [Zen Caps →](https://zencaps.com.br) 30 minutos
 2. Lehrer, P.M., & Gevirtz, R. (2014). HRV biofeedback. *Frontiers in Psychology*, 5, 756.
 3. Pramanik, T. et al. (2013). Effect of bhastrika pranayama. *Journal of Alternative Medicine*, 19(5), 462–466.
 4. Brown, R.P., & Gerbarg, P.L. (2005). Sudarshan Kriya yogic breathing. *J Alt Comp Medicine*, 11(4), 711–717.
+
+---
+
+## Veja Também
+
+- [Como Controlar a Ansiedade Naturalmente: Guia Completo](/blog/como-controlar-ansiedade-naturalmente) — artigo principal sobre ansiedade
+- [Crise de Ansiedade Agora: Protocolo de 5 Minutos](/blog/crise-de-ansiedade-agora-protocolo-5-minutos)
+- [Ansiedade Noturna: Por Que Piora à Noite](/blog/ansiedade-noturna-como-tratar)

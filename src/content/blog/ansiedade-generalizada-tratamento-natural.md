@@ -223,3 +223,12 @@ O Brasil lidera a prevalência de ansiedade no mundo, mas não precisa liderar o
 5. Boyle, N. B., Lawton, C., & Dye, L. (2017). The Effects of Magnesium Supplementation on Subjective Anxiety and Stress — A Systematic Review. *Nutrients*, 9(5), 429.
 6. Cramer, H., Lauche, R., Langhorst, J., & Dobos, G. (2013). Yoga for depression: A systematic review and meta-analysis. *Depression and Anxiety*, 30(11), 1068–1083.
 7. Stubbs, B., Vancampfort, D., Rosenbaum, S., et al. (2017). An examination of the anxiolytic effects of exercise for people with anxiety and stress-related disorders. *Psychiatry Research*, 249, 102–108.
+
+---
+
+## Veja Também
+
+- [Como Controlar a Ansiedade Naturalmente: Guia Completo](/blog/como-controlar-ansiedade-naturalmente) — artigo principal sobre ansiedade
+- [Crise de Ansiedade Agora: Protocolo de 5 Minutos](/blog/crise-de-ansiedade-agora-protocolo-5-minutos)
+- [Ansiedade Noturna: Por Que Piora à Noite](/blog/ansiedade-noturna-como-tratar)
+- [Respiração Para Ansiedade: 5 Técnicas Científicas](/blog/respiracao-para-ansiedade-tecnicas)
