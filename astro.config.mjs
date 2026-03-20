@@ -8,7 +8,12 @@ export default defineConfig({
   site: 'https://zencaps.com.br',
   output: 'static',
   integrations: [
-    sitemap(),
+    sitemap({
+      // Exclude root redirect page and keystatic admin from sitemap
+      filter: (page) =>
+        !page.endsWith('https://zencaps.com.br/') &&
+        !page.includes('/keystatic'),
+    }),
   ],
   vite: {
     plugins: [tailwindcss()]
