@@ -5,7 +5,7 @@ export const GET: APIRoute = () => {
 Allow: /
 Disallow: /keystatic/
 
-Sitemap: https://zencaps.com.br/sitemap-index.xml
+Sitemap: https://zencaps.com.br/blog/sitemap.xml
 `
   return new Response(content, {
     headers: { 'Content-Type': 'text/plain' },
