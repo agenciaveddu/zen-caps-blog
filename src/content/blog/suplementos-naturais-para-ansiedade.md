@@ -110,6 +110,109 @@ Suplementos naturais atuam nos mesmos sistemas neurológicos — GABA, serotonin
 
 **Para ansiedade crônica e estresse**: Ashwagandha (300mg) + Magnésio (300mg) — aborda tanto o cortisol quanto a excitabilidade neural.
 
+## Protocolos de Dosagem: Como Tomar Cada Suplemento
+
+A eficácia dos suplementos depende muito de dose, forma e horário. Veja o protocolo otimizado para cada um:
+
+| Suplemento | Dose Eficaz | Forma Ideal | Horário | Onset |
+|---|---|---|---|---|
+| Magnésio glicinato | 200–400mg | Glicina (não óxido) | 1h antes de dormir | 1–2 sem |
+| L-Triptofano | 500–1000mg | Em jejum ou com CHO | 1h antes de dormir | 2–4 sem |
+| Ashwagandha | 300–600mg | KSM-66 ou Sensoril® | Manhã ou noite | 4–8 sem |
+| L-Teanina | 100–200mg | Isolado ou com cafeína | Manhã ou conforme necessidade | 30–60 min |
+| Valeriana | 300–600mg | Extrato padronizado | 30–60 min antes de dormir | 2–4 sem |
+| Passiflora | 250–500mg | Extrato fluido ou seco | À noite | 1–2 sem |
+| Vitamina B6 (P-5-P) | 25–50mg | Piridoxal-5-fosfato | Manhã com alimentos | 2–6 sem |
+
+**Observação sobre L-Teanina:** é o único suplemento desta lista com efeito agudo mensurável (30–60 min). Pode ser usada antes de situações de estresse pontual (apresentação, prova, reunião difícil).
+
+## Stacking: Combinações Que Potencializam os Efeitos
+
+Alguns suplementos funcionam melhor em combinação do que isolados:
+
+**Stack para sono + ansiedade noturna:**
+- Magnésio glicinato (200–300mg) + L-Triptofano (500mg) + Melatonina (0,5–1mg)
+- Horário: 45–60 min antes de dormir
+- Sinergia: magnésio ativa GABA, triptofano fornece substrato para melatonina, melatonina sincroniza o ritmo
+
+**Stack para ansiedade diurna + foco:**
+- L-Teanina (100–200mg) + Vitamina B6 (25mg) + Magnésio (100–200mg)
+- Horário: manhã com café ou chá verde
+- Sinergia: teanina modula glutamato/GABA, B6 apoia serotonina, magnésio suporta sistema nervoso
+
+**Stack para ansiedade crônica + adaptação ao estresse:**
+- Ashwagandha KSM-66 (300mg) + Magnésio (200mg) + B6 (25mg)
+- Horário: noite com refeição
+- Sinergia: ashwagandha regula cortisol, magnésio e B6 são cofatores para neurotransmissores
+
+![Combinações de suplementos para ansiedade — diagrama 3D](/images/blog/inline-suplementos-ansiedade-stack-3d.webp)
+
+## Interações Importantes: O Que Evitar
+
+**Triptofano / 5-HTP + ISRS ou IMAO:**
+Risco de síndrome serotoninérgica — potencialmente grave. Nunca combine sem orientação médica. Espere pelo menos 2 semanas após suspender ISRS antes de iniciar triptofano.
+
+**Valeriana + benzodiazepínicos ou álcool:**
+Efeito sedativo aditivo — pode causar sedação excessiva. Evite combinação.
+
+**Ashwagandha + medicamentos tireoidianos:**
+Ashwagandha pode elevar T3 e T4. Em pessoas com hipotireoidismo medicado, monitorar função tireoidiana.
+
+**L-Teanina + ansiolíticos prescritos:**
+Potencializa o efeito — ajuste de dose pode ser necessário.
+
+**Regra geral:** informe seu médico sobre qualquer suplemento que estiver tomando antes de iniciar tratamento farmacológico.
+
+## Como Avaliar Qualidade: O Que Olhar no Rótulo
+
+O mercado de suplementos no Brasil tem produtos com eficácia muito variável. Checklist de qualidade:
+
+**Magnésio:**
+- ✅ Magnésio glicinato, malato ou L-treonato
+- ❌ Magnésio óxido (biodisponibilidade de 4%)
+- Verificar: mg de magnésio ELEMENTAR (não do sal)
+
+**Ashwagandha:**
+- ✅ Extrato padronizado KSM-66® ou Sensoril® (marcas registradas com estudos próprios)
+- ❌ "Pó de raiz" sem padronização de witanolídeos
+- Verificar: % de witanolídeos (mínimo 5%)
+
+**Triptofano:**
+- ✅ L-Triptofano de fermentação (fonte vegetal)
+- Verificar: cápsulas sem excipientes desnecessários
+
+**Certificações confiáveis:**
+- NSF International
+- USP Verified
+- Certificado de análise de lote (COA) disponível
+
+## Por Que Suplementos São Complementares, Não Substitutos
+
+Suplementos naturais têm eficácia documentada, mas atuam melhor quando combinados com:
+
+1. **Higiene do sono**: horários consistentes, quarto escuro e frio, sem telas 1h antes
+2. **Exercício físico**: 30 min de aeróbico reduz cortisol basal em 15–20%
+3. **Gestão cognitiva**: TCC, mindfulness ou journaling para processar pensamentos ansiosos
+4. **Redução de estimulantes**: cafeína após 14h e álcool fragmentam o sono mesmo com suplementação
+
+A suplementação "tapa o buraco" bioquímico — mas sem mudanças comportamentais, o buraco se abre novamente.
+
+## Comparativo Final: Os 7 Suplementos em Perspectiva
+
+| Suplemento | Evidência | Velocidade | Segurança | Melhor Para |
+|---|---|---|---|---|
+| Magnésio | Alta | Média | Muito alta | Sono + ansiedade geral |
+| Triptofano | Moderada-alta | Lenta | Alta* | Sono + humor |
+| Ashwagandha | Moderada | Lenta | Alta | Estresse crônico + cortisol |
+| L-Teanina | Moderada | Rápida | Muito alta | Ansiedade pontual + foco |
+| Valeriana | Baixa-moderada | Média | Alta | Insônia leve |
+| Passiflora | Baixa-moderada | Média | Alta | Ansiedade noturna |
+| Vitamina B6 | Moderada | Lenta | Alta | Suporte neurológico |
+
+*Atenção em usuários de ISRS/IMAO
+
+O [Zen Caps →](https://zencaps.com.br) combina os três suplementos com maior evidência para sono e ansiedade — magnésio, triptofano e melatonina — em formulação sinérgica calibrada para uso noturno.
+
 ## Artigos Relacionados
 
 - [Magnésio para sono e ansiedade: tipos e doses](/blog/magnesio-para-sono-e-ansiedade)

@@ -134,6 +134,69 @@ Especialmente útil para insônia relacionada a preocupações, ruminações neg
 
 Meditação + [Zen Caps →](https://zencaps.com.br) formam uma combinação poderosa: a meditação trata o componente cognitivo e de ansiedade da insônia, enquanto o magnésio, triptofano e melatonina abordam os aspectos nutricionais e hormonais do ciclo sono.
 
+## Script Guiado: Body Scan de 15 Minutos
+
+Para quem está começando, ter um roteiro mental ajuda a não "perder o fio". Siga este script mentalmente ou em voz baixa:
+
+**0–2 min — Ancoragem**
+Deite-se de costas, braços ao longo do corpo, pernas levemente abertas. Feche os olhos. Respire naturalmente 3 vezes, observando o ar entrar pelo nariz e sair pela boca. Não force nada.
+
+**2–5 min — Pés e pernas**
+Leve a atenção para os dedos do pé esquerdo. Sem mover, apenas observe — há formigamento? Temperatura? Pressão? Não avalie: apenas note. Suba lentamente pelo peito do pé, tornozelo, panturrilha, joelho, coxa. Repita no lado direito.
+
+**5–8 min — Pelve, abdômen e peito**
+Observe o quadril apoiado na cama. Sinta o peso. Mova a atenção para o abdômen — perceba-o subindo e descendo a cada respiração. Passe pelo peito, observando a expansão ao inspirar.
+
+**8–11 min — Mãos, braços e ombros**
+Atenção para os dedos das mãos — há tensão? Solte conscientemente. Suba pelo antebraço, cotovelo, ombros. Muitas pessoas guardam estresse no trapézio; ao notar tensão, expire e imagine-a dissolvendo.
+
+**11–14 min — Pescoço, rosto e couro cabeludo**
+Observe a garganta, mandíbula (está fechada com força?), bochechas, sobrancelhas, testa, couro cabeludo. Solte o maxilar conscientemente.
+
+**14–15 min — Corpo inteiro**
+Expanda a consciência para o corpo inteiro como uma unidade. Perceba o peso total apoiado. Deixe os pensamentos passarem como nuvens — sem segurá-los.
+
+Se adormecer no meio do processo, perfeito — foi bem-sucedido.
+
+![Meditação body scan antes de dormir — ilustração 3D serena](/images/blog/inline-meditacao-body-scan-3d.webp)
+
+## Erros Comuns (e Como Evitar)
+
+**"Minha mente não para"** — Isso é normal e não significa falha. A meditação não é esvaziar a mente; é notar que a mente divagou e gentilmente retornar ao corpo. Cada retorno é um "rep" de atenção plena.
+
+**"Fico com mais ansiedade tentando meditar"** — Acontece com cerca de 15% das pessoas. Solução: comece com técnicas de atenção focada (contar respirações, 4-7-8) antes do body scan. O sistema nervoso precisa se habituar progressivamente.
+
+**"Preciso de silêncio absoluto"** — Não. Ruído branco, chuva ou sons da natureza são compatíveis. Sons que variam muito (música com letra, TV) competem com a atenção.
+
+**"Pratico há 3 dias e não melhorei"** — Estudos mostram efeitos consistentes após **8 semanas de prática regular** (20 min/dia). Benefícios pontuais aparecem mais cedo, mas a reestruturação neural leva tempo.
+
+## Quanto Tempo e Com Que Frequência
+
+| Objetivo | Duração Mínima | Frequência | Tempo Para Resultados |
+|---|---|---|---|
+| Adormecer mais rápido | 10–15 min/sessão | Noturno, diário | 2–4 semanas |
+| Reduzir despertares noturnos | 20 min/sessão | Diário | 6–8 semanas |
+| Melhora estrutural do sono | 30–45 min/sessão | Diário | 8–12 semanas |
+| Manutenção | 10–20 min/sessão | 5x/semana | Contínuo |
+
+A consistência supera a duração. 10 minutos toda noite supera 1 hora ocasionalmente.
+
+## Meditação + Suplementação: Protocolo Combinado
+
+A meditação e a suplementação atuam em vias complementares:
+
+- **Meditação** → reduz cortisol, ativa parassimpático, treina o sistema nervoso
+- **Magnésio** → ativa receptores GABA fisicamente, favorece ondas delta
+- **Triptofano** → fornece substrato para serotonina e melatonina
+- **Melatonina** → sinaliza ao relógio biológico que é hora de dormir
+
+**Protocolo sugerido:**
+1. 21h30: tomar magnésio + triptofano (ou [Zen Caps →](https://zencaps.com.br))
+2. 22h: iniciar body scan ou NSDR por 15–20 min
+3. 22h20: luzes apagadas, quarto em escuridão total
+
+O [Zen Caps →](https://zencaps.com.br) combina os três ativos em dose calibrada para este protocolo.
+
 ## Artigos Relacionados
 
 - [Insônia crônica: causas e tratamentos](/blog/insonia-cronica-causas-e-tratamentos)

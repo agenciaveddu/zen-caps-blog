@@ -163,6 +163,62 @@ Procure um especialista em sono se:
 
 ---
 
+## TCC-I em Detalhe: As 5 Técnicas Que Funcionam
+
+A **Terapia Cognitivo-Comportamental para Insônia (TCC-I)** é recomendada como tratamento de primeira linha pela Academia Americana de Medicina do Sono (AASM) — acima de medicamentos. Ela age em 5 frentes:
+
+### 1. Restrição do Sono
+A técnica mais eficaz e contraintuitiva: comprimir temporariamente a janela de sono para consolidá-lo. Se você passa 9h na cama e dorme 5h efetivas, a TCC-I reduz o tempo na cama para 5h30 — criando pressão homeostática que aprofunda o sono. Gradualmente a janela é expandida conforme a eficiência melhora.
+
+**Resultado típico:** em 4–6 semanas, eficiência do sono sobe de 55% para 85–90%.
+
+### 2. Controle do Estímulo
+Recondiciona o cérebro a associar a cama com sono — não com vigília ansiosa:
+- Usar a cama apenas para dormir e sexo
+- Se não adormecer em 20 min, levantar e ir para outro ambiente
+- Retornar quando sentir sonolência real
+- Acordar sempre no mesmo horário, mesmo após noite ruim
+
+### 3. Higiene do Sono Avançada
+Além das regras básicas, inclui:
+- Exposição à luz solar entre 6h–8h (calibra o relógio circadiano)
+- Temperatura do quarto 18–20°C
+- Eliminar relógio visível do quarto (verificar horas piora a ansiedade)
+- Protocolo de "descompressão" 60 min antes de dormir
+
+### 4. Reestruturação Cognitiva
+Identifica e desafia crenças disfuncionais sobre o sono:
+- *"Se não dormir 8h, amanhã será um desastre"* → evidências mostram que 1 noite ruim tem impacto mínimo no desempenho
+- *"Nunca vou conseguir dormir normalmente"* → insônia crônica responde bem ao tratamento em 70–80% dos casos
+- *"Acordar à noite é anormal"* → todos acordam 5–15x por noite; o problema é a ativação cognitiva ao acordar
+
+### 5. Técnicas de Relaxamento
+Integra práticas como relaxamento muscular progressivo, respiração diafragmática e NSDR — especialmente úteis para o hiperarousal fisiológico.
+
+## Autodiagnóstico: Você Tem Insônia Crônica?
+
+O critério diagnóstico oficial (DSM-5) é:
+
+| Critério | Detalhe |
+|---|---|
+| Frequência | ≥ 3 noites/semana |
+| Duração | ≥ 3 meses |
+| Impacto diurno | Fadiga, humor, desempenho comprometidos |
+| Contexto adequado | Mesmo com tempo e ambiente para dormir |
+| Não explicada | Por outro transtorno ou substância |
+
+Se você marca todos esses critérios, está diante de insônia crônica clinicamente definida — e merece tratamento estruturado, não apenas "dicas de sono".
+
+## O Paradoxo do Esforço: Por Que Tentar Dormir Piora
+
+Dormir é um processo involuntário. Quanto mais você tenta forçá-lo, mais o sistema nervoso ativa. Isso cria um ciclo cruel:
+
+**Preocupação com o sono → ativação cortical → dificuldade para adormecer → mais preocupação**
+
+A solução contraintuitiva da TCC-I é a **intenção paradoxal**: em vez de tentar dormir, foque em ficar acordado com os olhos fechados. Remove a pressão de performance, reduz a ativação ansiosa e, paradoxalmente, facilita o adormecimento.
+
+O [Zen Caps →](https://zencaps.com.br) com melatonina, triptofano e magnésio suporta o protocolo de TCC-I ao criar as condições bioquímicas para o sono — sem criar dependência.
+
 ## Artigos Relacionados
 
 - [Guia completo para dormir melhor](/blog/como-dormir-melhor-guia-completo)
