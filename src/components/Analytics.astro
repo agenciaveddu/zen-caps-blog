@@ -1,11 +1,17 @@
 ---
-// Analytics.astro — Sistema de rastreamento GA4 completo
+// Analytics.astro — Rastreamento GA4 do BLOG
 // Propriedade: Zen Caps | ID: G-1KQL3SBYNB
 // ─────────────────────────────────────────────────────
+// FUNIL DO BLOG (etapas rastreadas aqui):
+//   page_view → scroll_50 → scroll_90 → click_cta → click_pagina_venda
+//
 // EVENTOS DISPARADOS:
 //   Engajamento → scroll_50 | scroll_90 | time_on_page_30s | time_on_page_60s
-//   Conversão   → click_cta | click_checkout | click_whatsapp
-//   Saída       → outbound_click (destination_type: checkout | whatsapp | affiliate | external)
+//   Intenção    → click_cta | click_pagina_venda | click_whatsapp
+//   Saída       → outbound_click (destination_type: pagina_venda | whatsapp | affiliate | external)
+//
+// ATENÇÃO: click_checkout (compra real por plano) é rastreado na PÁGINA DE VENDA,
+//          não aqui. O blog só sabe que o usuário saiu para visitar a página de venda.
 //
 // Inclua SOMENTE nos layouts base (ArticleLayout + BlogLayout). Sem duplicação.
 ---
@@ -39,20 +45,20 @@
   // ── Helper: classificação de destino de links ──────────────────────────────
   function classifyLink(href) {
     if (!href) return null;
+    // WhatsApp
     if (href.includes('wa.me') || href.includes('whatsapp.com')) return 'whatsapp';
-    if (
-      (href.includes('zencaps.com.br') && !href.includes('/blog')) ||
-      href.includes('buygoods.com') ||
-      href.includes('cartpanda.com') ||
-      href.includes('/checkout') ||
-      href.includes('pay.')
-    ) return 'checkout';
+    // Página de venda Zen Caps (qualquer URL do domínio que não seja o blog)
+    if (href.includes('zencaps.com.br') && !href.includes('/blog')) return 'pagina_venda';
+    // Afiliados / plataformas de pagamento externas
     if (
       href.includes('hotmart.com') ||
       href.includes('kiwify.com') ||
       href.includes('eduzz.com') ||
-      href.includes('monetizze.com')
+      href.includes('monetizze.com') ||
+      href.includes('buygoods.com') ||
+      href.includes('cartpanda.com')
     ) return 'affiliate';
+    // Qualquer outro domínio externo
     if (href.startsWith('http') && !href.includes('zencaps.com.br')) return 'external';
     return null; // link interno — ignorar
   }
@@ -163,18 +169,20 @@
         return;
       }
 
-      // ─── CHECKOUT / SITE DE VENDAS ─────────────────────────────────────────
-      if (dest === 'checkout') {
-        // Evento de conversão principal
-        gtag('event', 'click_checkout', Object.assign({}, ctx, {
-          event_category:   'Conversão',
-          event_label:      href,
+      // ─── PÁGINA DE VENDA (zencaps.com.br sem /blog) ───────────────────────
+      // Aqui o usuário saiu do blog para visitar a página de venda.
+      // O click_checkout REAL (por plano) é rastreado na página de venda.
+      if (dest === 'pagina_venda') {
+        // Evento principal: saída do blog para a página de venda
+        gtag('event', 'click_pagina_venda', Object.assign({}, ctx, {
+          event_category:   'Intenção de Compra',
+          event_label:      btnText || href,
           cta_text:         btnText,
           cta_location:     loc,
           outbound:         true,
-          destination_type: 'checkout',
+          destination_type: 'pagina_venda',
         }));
-        // Evento de CTA (para análise de qual botão performou melhor)
+        // Evento de CTA: qual botão exatamente foi clicado
         if (isCta) {
           gtag('event', 'click_cta', Object.assign({}, ctx, {
             event_category: 'CTA',
@@ -187,12 +195,12 @@
           event_category:   'Saída',
           event_label:      href,
           link_url:         href,
-          destination_type: 'checkout',
+          destination_type: 'pagina_venda',
         }));
         return;
       }
 
-      // ─── LINKS DE AFILIADO ─────────────────────────────────────────────────
+      // ─── LINKS DE AFILIADO / PLATAFORMAS EXTERNAS ────────────────────────────
       if (dest === 'affiliate') {
         gtag('event', 'outbound_click', Object.assign({}, ctx, {
           event_category:   'Saída',
