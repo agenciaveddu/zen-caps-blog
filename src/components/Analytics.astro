@@ -1,0 +1,102 @@
+---
+// Analytics.astro — Google Analytics 4
+// ID: G-1KQL3SBYNB | Domínio: zencaps.com.br/blog
+// Inclua este componente UMA VEZ dentro do <head> de cada layout base.
+// Rastreia: pageviews, scroll 50%/90%, links externos, cliques em CTAs.
+---
+
+<!-- GA4: script de medição (async — não bloqueia renderização) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1KQL3SBYNB"></script>
+
+<!-- GA4: inicialização + eventos customizados -->
+<script is:inline>
+  // ── Inicialização básica do GA4 ────────────────────────────────────
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-1KQL3SBYNB', {
+    page_path: window.location.pathname,
+  });
+
+  // Aguarda o DOM estar pronto para registrar os event listeners
+  document.addEventListener('DOMContentLoaded', function () {
+
+    // ── Scroll depth: 50% e 90% ──────────────────────────────────────
+    var scrollFired = { '50': false, '90': false };
+
+    window.addEventListener('scroll', function () {
+      var scrolled  = window.scrollY + window.innerHeight;
+      var total     = document.documentElement.scrollHeight;
+      var pct       = Math.round((scrolled / total) * 100);
+
+      if (!scrollFired['50'] && pct >= 50) {
+        scrollFired['50'] = true;
+        gtag('event', 'scroll_depth', {
+          event_category: 'Engajamento',
+          event_label: '50%',
+          value: 50,
+        });
+      }
+      if (!scrollFired['90'] && pct >= 90) {
+        scrollFired['90'] = true;
+        gtag('event', 'scroll_depth', {
+          event_category: 'Engajamento',
+          event_label: '90%',
+          value: 90,
+        });
+      }
+    }, { passive: true });
+
+    // ── Cliques em links externos ─────────────────────────────────────
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href]');
+      if (!link) return;
+
+      var href = link.getAttribute('href') || '';
+      var isExternal = href.startsWith('http') && !href.includes('zencaps.com.br');
+
+      if (isExternal) {
+        gtag('event', 'click', {
+          event_category: 'Link Externo',
+          event_label: href,
+          link_url: href,
+          link_text: (link.innerText || '').trim().substring(0, 100),
+        });
+      }
+    });
+
+    // ── Cliques em CTAs de conversão ──────────────────────────────────
+    // Detecta botões com classe .zen-btn-gold ou links para zencaps.com.br
+    // (excluindo links internos do blog)
+    document.addEventListener('click', function (e) {
+      var cta = e.target.closest(
+        '.zen-btn-gold, [data-cta], a[href^="https://zencaps.com.br"]:not([href*="/blog"])'
+      );
+      if (!cta) return;
+
+      var ctaText     = (cta.innerText || '').trim().substring(0, 100);
+      var ctaLocation = cta.dataset.cta || cta.closest('[data-section]')?.dataset.section || 'desconhecido';
+
+      gtag('event', 'click_cta', {
+        event_category: 'CTA',
+        event_label: ctaText,
+        cta_text: ctaText,
+        cta_location: ctaLocation,
+        page_path: window.location.pathname,
+      });
+    });
+
+    // ── Clique no botão WhatsApp ──────────────────────────────────────
+    var waBtn = document.querySelector('a[href*="wa.me"]');
+    if (waBtn) {
+      waBtn.addEventListener('click', function () {
+        gtag('event', 'click_whatsapp', {
+          event_category: 'CTA',
+          event_label: 'WhatsApp Flutuante',
+          page_path: window.location.pathname,
+        });
+      });
+    }
+
+  }); // fim DOMContentLoaded
+</script>
