@@ -25,8 +25,6 @@ faq:
   - question: "Estresse crônico tem cura?"
     answer: "Sim. TCC é o tratamento mais eficaz para reestruturar padrões cognitivos. Combinada com exercício, meditação, sono e suplementação, a maioria consegue reverter o estado de estresse crônico."
 ---
-![Eixo HPA e ciclo do cortisol — visualização 3D](/images/blog/inline-estresse-cortisol-hpa-3d.webp)
-
 ## Estresse Agudo vs. Estresse Crônico: A Linha Que Muda Tudo
 
 O estresse agudo salvou vidas durante milênios. Quando um predador aparecia, o **eixo HPA** (hipotálamo-pituitária-adrenal) disparava: cortisol e adrenalina inundavam a corrente sanguínea em segundos, redirecionando energia para músculos e cérebro, suprimindo funções não-essenciais (digestão, imunidade, reprodução) e preparando o corpo para lutar ou fugir.
@@ -42,6 +40,8 @@ O problema moderno: esse sistema não foi projetado para e-mails urgentes, dívi
 | Imunidade recupera | Imunossupressão persistente |
 | Sono restaurador | Insônia, sono fragmentado |
 | Motivação e foco | Burnout e névoa mental |
+
+![Eixo HPA e ciclo do cortisol — visualização 3D](/images/blog/inline-estresse-cortisol-hpa-3d.webp)
 
 ## O Eixo HPA e o Ciclo Vicioso
 

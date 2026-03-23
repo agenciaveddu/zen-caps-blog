@@ -25,8 +25,6 @@ faq:
   - question: "Quando o triptofano funciona melhor?"
     answer: "Tomado 30-60 minutos antes de dormir, com pequena quantidade de carboidrato de baixo IG — que remove aminoácidos competidores do sangue, facilitando a entrada do triptofano no cérebro."
 ---
-![Molécula de triptofano e via de conversão para serotonina — ilustração 3D](/images/blog/inline-triptofano-molecular-3d.webp)
-
 ## O Que É o Triptofano e Por Que É Essencial
 
 O L-triptofano é um **aminoácido essencial** — o corpo não consegue produzi-lo, dependendo inteiramente da alimentação. É o menos abundante dos aminoácidos essenciais no plasma sanguíneo humano, o que o torna um fator limitante crítico na produção de serotonina e melatonina.
@@ -36,6 +34,8 @@ A cadeia é direta:
 **Triptofano → 5-HTP → Serotonina → N-acetilserotonina → Melatonina**
 
 Cada etapa requer cofatores enzimáticos específicos: **vitamina B6**, **zinco**, **magnésio** e **ferro**. A deficiência de qualquer um deles cria gargalos na cadeia — mesmo com triptofano abundante na dieta.
+
+![Molécula de triptofano e via de conversão para serotonina — ilustração 3D](/images/blog/inline-triptofano-molecular-3d.webp)
 
 ## A Barreira Hematoencefálica: Por Que o Momento Importa
 

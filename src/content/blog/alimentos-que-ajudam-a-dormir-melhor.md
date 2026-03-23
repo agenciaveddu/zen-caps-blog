@@ -25,8 +25,6 @@ faq:
   - question: "Chá de camomila funciona para dormir?"
     answer: "A camomila contém apigenina, que se liga a receptores benzodiazepínicos no cérebro. Estudos mostram melhora modesta mas significativa na qualidade do sono."
 ---
-![Prato com alimentos pró-sono — ilustração 3D isométrica](/images/blog/inline-alimentos-sono-prato-3d.webp)
-
 ## Por Que a Alimentação Afeta o Sono
 
 O intestino e o cérebro se comunicam constantemente pelo **nervo vago** e pela **microbiota intestinal** — uma conversa bidirecional que influencia hormônios do sono, humor e resposta ao estresse. Cerca de **95% da serotonina do corpo é produzida no intestino**, onde passa pela cadeia triptofano → serotonina antes de parte converter-se em melatonina.
@@ -38,6 +36,8 @@ Três nutrientes-chave regulam essa cadeia:
 1. **Triptofano** — aminoácido precursor de serotonina e melatonina
 2. **Magnésio** — ativa receptores GABA que induzem relaxamento e sono profundo
 3. **Melatonina alimentar** — presente em cerejas, nozes e alguns grãos
+
+![Prato com alimentos pró-sono — ilustração 3D isométrica](/images/blog/inline-alimentos-sono-prato-3d.webp)
 
 ## Os 10 Melhores Alimentos Para o Sono
 

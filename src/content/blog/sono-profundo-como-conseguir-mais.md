@@ -25,8 +25,6 @@ faq:
   - question: "Exercício físico aumenta o sono profundo?"
     answer: "Sim — é uma das estratégias mais eficazes. Exercício aeróbico moderado aumenta a adenosina (pressão de sono) e eleva a temperatura corporal, que ao cair facilita a entrada no sono profundo."
 ---
-![Ondas cerebrais durante o sono profundo — visualização 3D](/images/blog/inline-sono-profundo-ondas-3d.webp)
-
 ## O Que Acontece no Sono Profundo
 
 O sono profundo — também chamado de **sono de ondas lentas (SWS)** ou **estágio N3** — é a fase de maior restauração do organismo. Ocorre principalmente nas primeiras 3–4 horas da noite e é caracterizado por ondas cerebrais delta (0,5–4 Hz) de alta amplitude.
@@ -37,6 +35,8 @@ Durante essa fase, o corpo está em modo de manutenção máxima:
 - **Hormônio do crescimento (GH)**: 70–80% da secreção diária de GH ocorre nos primeiros 90 minutos de sono profundo — fundamental para reparação muscular, queima de gordura e regeneração celular
 - **Consolidação de memórias declarativas**: transferência do hipocampo para o córtex (memória de longo prazo)
 - **Sistema imunológico**: produção de citocinas anti-inflamatórias e ativação de células T regulatórias
+
+![Ondas cerebrais durante o sono profundo — visualização 3D](/images/blog/inline-sono-profundo-ondas-3d.webp)
 
 ## Os Estágios do Sono: Onde o Profundo se Encaixa
 

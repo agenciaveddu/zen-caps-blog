@@ -25,8 +25,6 @@ faq:
   - question: "Produzimos menos melatonina com a idade?"
     answer: "Sim. A produção começa a declinar a partir dos 40–50 anos e pode cair mais de 70% em idosos — explicando a prevalência de insônia em pessoas mais velhas."
 ---
-![Glândula pineal produzindo melatonina — ilustração 3D](/images/blog/inline-melatonina-pineal-3d.webp)
-
 ## O Que É a Melatonina e Por Que o Corpo a Produz
 
 A melatonina é muito mais do que um "hormônio do sono". É uma molécula evolutivamente antiga — presente em algas, fungos e plantas — que nos humanos atua como o principal **relógio biológico** do organismo. Produzida principalmente pela **glândula pineal**, uma estrutura de 8mm no centro do cérebro, ela sinaliza ao corpo que a noite chegou e que é hora de entrar em modo de recuperação.
@@ -34,6 +32,8 @@ A melatonina é muito mais do que um "hormônio do sono". É uma molécula evolu
 O processo começa na retina: fotorreceptores especializados chamados **células ganglionares intrínsecamente fotossensíveis (ipRGCs)** detectam a luminosidade ambiental e enviam sinais ao **núcleo supraquiasmático (NSQ)** — o marcador-mestre do ritmo circadiano. Quando a luz diminui, o NSQ libera a inibição sobre a glândula pineal, que começa a converter serotonina em melatonina.
 
 Esse mecanismo é tão preciso que pequenas variações de luz podem atrasar ou antecipar a produção em horas.
+
+![Glândula pineal produzindo melatonina — ilustração 3D](/images/blog/inline-melatonina-pineal-3d.webp)
 
 ## O Ritmo Circadiano e a Janela de Produção
 
