@@ -185,6 +185,13 @@ A regra de ouro: **nenhuma cafeína após as 13h** para a maioria das pessoas, e
 
 ---
 
+## Artigos Relacionados
+
+- [Guia completo para dormir melhor](/blog/como-dormir-melhor-guia-completo)
+- [Rotina noturna para dormir bem](/blog/rotina-noturna-para-dormir-melhor)
+- [Insônia crônica: causas e tratamentos](/blog/insonia-cronica-causas-e-tratamentos)
+- [Alimentos que ajudam a dormir](/blog/alimentos-que-ajudam-a-dormir-melhor)
+
 ## Referências Científicas
 
 1. Drake, C., Roehrs, T., Shambroom, J., & Roth, T. (2013). Caffeine effects on sleep taken 0, 3, or 6 hours before going to bed. *Journal of Clinical Sleep Medicine*, 9(11), 1195–1200.

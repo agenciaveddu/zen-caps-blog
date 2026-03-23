@@ -228,6 +228,13 @@ A maioria das pessoas tem os dois problemas. Começar por um e adicionar o outro
 
 ---
 
+## Artigos Relacionados
+
+- [Como a melatonina funciona no corpo](/blog/melatonina-como-funciona-no-corpo)
+- [Magnésio para sono e ansiedade: tipos e doses](/blog/magnesio-para-sono-e-ansiedade)
+- [Melatonina, triptofano e magnésio juntos](/blog/melatonina-triptofano-magnesio-sono)
+- [Insônia crônica: quando suplementar](/blog/insonia-cronica-causas-e-tratamentos)
+
 ## Referências Científicas
 
 - Ferracioli-Oda E et al. (2013). Meta-analysis: melatonin for the treatment of primary sleep disorders. *PLOS ONE*.

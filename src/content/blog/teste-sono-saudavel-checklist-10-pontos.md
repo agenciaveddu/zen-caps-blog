@@ -212,6 +212,13 @@ Não é só a quantidade — é a arquitetura do sono que determina se você vai
 
 ---
 
+## Artigos Relacionados
+
+- [Insônia crônica: diagnóstico e tratamento](/blog/insonia-cronica-causas-e-tratamentos)
+- [Quanto tempo preciso dormir por noite](/blog/quanto-tempo-preciso-dormir-por-noite)
+- [Guia completo para dormir melhor](/blog/como-dormir-melhor-guia-completo)
+- [Sintomas físicos da privação de sono](/blog/sintomas-de-falta-de-sono-no-corpo)
+
 ## Referências Científicas
 
 - Hirshkowitz M et al. (2015). National Sleep Foundation's sleep time duration recommendations. *Sleep Health*.

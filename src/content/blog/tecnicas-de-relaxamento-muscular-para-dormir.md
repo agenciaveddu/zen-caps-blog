@@ -212,6 +212,13 @@ Em um mundo que muitas vezes trata o corpo como um instrumento de produção, o 
 
 ---
 
+## Artigos Relacionados
+
+- [Guia completo para dormir melhor](/blog/como-dormir-melhor-guia-completo)
+- [Técnicas de respiração para ansiedade](/blog/respiracao-para-ansiedade-tecnicas)
+- [Rotina noturna: 7 hábitos essenciais](/blog/rotina-noturna-para-dormir-melhor)
+- [Meditação para insônia: como praticar](/blog/meditacao-para-insonia-como-praticar)
+
 ## Referências Científicas
 
 1. Jacobson, E. (1929). *Progressive Relaxation*. University of Chicago Press.

@@ -154,6 +154,13 @@ Mudanças bruscas de horário causam insônia — o ritmo circadiano não muda d
 
 **Suplementação de apoio**: Melatonina de baixa dose (0,5–1mg) tomada no novo horário desejado de dormir ajuda a sinalizar ao cérebro a mudança de ritmo. O [Zen Caps →](https://zencaps.com.br) com melatonina, triptofano e magnésio pode apoiar essa transição naturalmente.
 
+## Artigos Relacionados
+
+- [Guia completo para dormir melhor](/blog/como-dormir-melhor-guia-completo)
+- [Quanto tempo preciso dormir por noite](/blog/quanto-tempo-preciso-dormir-por-noite)
+- [Rotina noturna para dormir bem](/blog/rotina-noturna-para-dormir-melhor)
+- [Sono profundo: a fase mais restauradora](/blog/sono-profundo-como-conseguir-mais)
+
 ## Referências Científicas
 
 1. Nikbakhtian, S. et al. (2021). Accelerometer-derived sleep onset timing and cardiovascular disease incidence. *European Heart Journal — Digital Health*, 2(4), 658–666.

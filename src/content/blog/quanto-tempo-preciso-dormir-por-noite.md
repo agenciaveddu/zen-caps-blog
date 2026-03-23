@@ -127,6 +127,13 @@ Pessoas com privação crônica de sono frequentemente não se sentem com sono �
 
 Para quem tem dificuldade em atingir sono de qualidade — chegando ao sono profundo e REM suficientes — o [Zen Caps →](https://zencaps.com.br) com magnésio, triptofano e melatonina oferece suporte natural para recuperar ciclos reparadores, especialmente útil durante o processo de quitar a dívida de sono.
 
+## Artigos Relacionados
+
+- [Sono profundo: a fase mais restauradora](/blog/sono-profundo-como-conseguir-mais)
+- [Guia completo para dormir melhor](/blog/como-dormir-melhor-guia-completo)
+- [Sintomas de falta de sono no corpo](/blog/sintomas-de-falta-de-sono-no-corpo)
+- [Insônia crônica e seus tratamentos](/blog/insonia-cronica-causas-e-tratamentos)
+
 ## Referências Científicas
 
 1. Hirshkowitz, M. et al. (2015). National Sleep Foundation's sleep time duration recommendations. *Sleep Health*, 1(1), 40–43.

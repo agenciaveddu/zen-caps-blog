@@ -163,6 +163,13 @@ Procure um especialista em sono se:
 
 ---
 
+## Artigos Relacionados
+
+- [Guia completo para dormir melhor](/blog/como-dormir-melhor-guia-completo)
+- [O que fazer quando não consigo dormir](/blog/nao-consigo-dormir-o-que-fazer)
+- [Melatonina: como funciona e quando suplementar](/blog/melatonina-como-funciona-no-corpo)
+- [Magnésio para sono: doses e tipos](/blog/magnesio-para-sono-e-ansiedade)
+
 ## Referências Científicas
 
 1. Qaseem, A. et al. (2016). Management of Chronic Insomnia Disorder in Adults. *Annals of Internal Medicine*, 165(2), 125–133.

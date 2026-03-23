@@ -154,6 +154,13 @@ Para pessoas que já acumularam dívida de sono por anos de uso intenso de telas
 
 Suplementar melatonina de baixa dose (0,5–1mg) 30–60 minutos antes do novo horário de dormir ajuda a "resetar" o ritmo circadiano mais rapidamente. O [Zen Caps →](https://zencaps.com.br) combina melatonina com triptofano e magnésio para apoiar esse processo de ressincronização.
 
+## Artigos Relacionados
+
+- [Guia completo para dormir melhor](/blog/como-dormir-melhor-guia-completo)
+- [Rotina noturna: 7 hábitos para dormir bem](/blog/rotina-noturna-para-dormir-melhor)
+- [Como a melatonina é suprimida pela luz azul](/blog/melatonina-como-funciona-no-corpo)
+- [Sono profundo: como recuperar](/blog/sono-profundo-como-conseguir-mais)
+
 ## Referências Científicas
 
 1. Chang, A.M. et al. (2015). Evening use of light-emitting eReaders negatively affects sleep. *PNAS*, 112(4), 1232–1237.

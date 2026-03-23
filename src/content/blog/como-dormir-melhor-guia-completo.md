@@ -153,6 +153,13 @@ Para insônia crônica, a **terapia cognitivo-comportamental para insônia (TCC-
 
 ---
 
+## Artigos Relacionados
+
+- [Sono profundo: o que é e como conseguir mais](/blog/sono-profundo-como-conseguir-mais)
+- [Melatonina: como funciona no corpo](/blog/melatonina-como-funciona-no-corpo)
+- [Rotina noturna: 7 hábitos essenciais](/blog/rotina-noturna-para-dormir-melhor)
+- [Insônia crônica: causas e tratamentos](/blog/insonia-cronica-causas-e-tratamentos)
+
 ## Referências Científicas
 
 1. Ferracioli-Oda, E., Qawasmi, A., & Bloch, M.H. (2013). "Meta-Analysis: Melatonin for the Treatment of Primary Sleep Disorders." *PLOS ONE*, 8(5), e63773.

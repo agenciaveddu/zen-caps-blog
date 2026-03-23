@@ -78,6 +78,13 @@ O [Zen Caps →](https://zencaps.com.br) combina os três em uma fórmula desenv
 | 23h00 | Relaxamento muscular (10 min) |
 | 23h15 | Dormir |
 
+## Artigos Relacionados
+
+- [Como controlar a ansiedade naturalmente](/blog/como-controlar-ansiedade-naturalmente)
+- [Técnicas de respiração com evidência científica](/blog/respiracao-para-ansiedade-tecnicas)
+- [Crise de ansiedade: protocolo de 5 minutos](/blog/crise-de-ansiedade-agora-protocolo-5-minutos)
+- [Suplementos naturais para ansiedade](/blog/suplementos-naturais-para-ansiedade)
+
 ## Referências Científicas
 
 1. Kalmbach, D.A. et al. (2018). The impact of stress on sleep. *Sleep Medicine Reviews*, 37, 12–20.

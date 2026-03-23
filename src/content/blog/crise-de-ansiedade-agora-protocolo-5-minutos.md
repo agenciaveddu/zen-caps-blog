@@ -185,6 +185,13 @@ Crises frequentes indicam um sistema nervoso cronicamente sobrecarregado. O que 
 
 ---
 
+## Artigos Relacionados
+
+- [Como controlar a ansiedade naturalmente](/blog/como-controlar-ansiedade-naturalmente)
+- [Técnicas de respiração com evidência científica](/blog/respiracao-para-ansiedade-tecnicas)
+- [Transtorno de ansiedade generalizada: sintomas e tratamento](/blog/ansiedade-generalizada-tratamento-natural)
+- [Ansiedade noturna: como tratar](/blog/ansiedade-noturna-como-tratar)
+
 ## Referências Científicas
 
 - Craske MG & Barlow DH (2007). Mastery of Your Anxiety and Panic (MAP-4). Oxford University Press.

@@ -171,6 +171,13 @@ A explicação: a B6 melhora a absorção intestinal do magnésio e potencializa
 
 O [Zen Caps →](https://zencaps.com.br) inclui vitamina B6 em sua formulação junto com magnésio e triptofano — garantindo que toda a cadeia de síntese de serotonina e melatonina tenha os cofatores necessários. Para pessoas que usam medicamentos depletores de B6, essa combinação é especialmente relevante para manter o equilíbrio dos neurotransmissores do sono.
 
+## Artigos Relacionados
+
+- [Como a melatonina funciona no corpo](/blog/melatonina-como-funciona-no-corpo)
+- [O papel do triptofano no sono e humor](/blog/triptofano-para-que-serve-beneficios)
+- [Melatonina, triptofano e magnésio juntos](/blog/melatonina-triptofano-magnesio-sono)
+- [Suplementos naturais para ansiedade](/blog/suplementos-naturais-para-ansiedade)
+
 ## Referências Científicas
 
 1. Field, D.T. et al. (2022). High-dose Vitamin B6 supplementation reduces anxiety. *Human Psychopharmacology*, 37(6), e2852.

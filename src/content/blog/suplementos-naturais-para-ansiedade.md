@@ -110,6 +110,13 @@ Suplementos naturais atuam nos mesmos sistemas neurológicos — GABA, serotonin
 
 **Para ansiedade crônica e estresse**: Ashwagandha (300mg) + Magnésio (300mg) — aborda tanto o cortisol quanto a excitabilidade neural.
 
+## Artigos Relacionados
+
+- [Magnésio para sono e ansiedade: tipos e doses](/blog/magnesio-para-sono-e-ansiedade)
+- [Vitamina B6 e serotonina: a conexão](/blog/vitamina-b6-serotonina-e-sono)
+- [Como controlar a ansiedade naturalmente](/blog/como-controlar-ansiedade-naturalmente)
+- [Melatonina, triptofano e magnésio juntos](/blog/melatonina-triptofano-magnesio-sono)
+
 ## Referências Científicas
 
 1. Boyle, N.B. et al. (2017). Effects of magnesium supplementation on subjective anxiety. *Nutrients*, 9(5), 429.

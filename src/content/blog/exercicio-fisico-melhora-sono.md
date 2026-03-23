@@ -184,6 +184,13 @@ Não existe um exercício "certo" — o melhor exercício é o que você fará d
 
 ---
 
+## Artigos Relacionados
+
+- [Guia completo para dormir melhor](/blog/como-dormir-melhor-guia-completo)
+- [Sono profundo: como conseguir mais](/blog/sono-profundo-como-conseguir-mais)
+- [Rotina noturna para dormir bem](/blog/rotina-noturna-para-dormir-melhor)
+- [Quanto tempo preciso dormir por noite](/blog/quanto-tempo-preciso-dormir-por-noite)
+
 ## Referências Científicas
 
 1. Xie, Y., Liu, S., Chen, X. J., et al. (2021). Effects of Exercise on Sleep Quality and Insomnia in Adults: A Systematic Review and Meta-Analysis of Randomized Controlled Trials. *Frontiers in Psychiatry*, 12, 664499.

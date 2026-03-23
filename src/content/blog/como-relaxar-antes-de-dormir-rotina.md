@@ -91,6 +91,13 @@ Ao deitar, a única atividade permitida é dormir (e intimidade). Essa é uma re
 
 Não é preciso fazer todos os passos todas as noites. O que importa é a **consistência do padrão**. Após 2–3 semanas, o simples ato de pegar o livro ou tomar o chá começa a induzir sonolência — porque o cérebro aprendeu que esses são os sinais de que o sono está chegando.
 
+## Artigos Relacionados
+
+- [Rotina noturna completa para dormir melhor](/blog/rotina-noturna-para-dormir-melhor)
+- [Técnicas de respiração para ansiedade](/blog/respiracao-para-ansiedade-tecnicas)
+- [Sono profundo: como conseguir mais](/blog/sono-profundo-como-conseguir-mais)
+- [Meditação para insônia: como praticar](/blog/meditacao-para-insonia-como-praticar)
+
 ## Referências Científicas
 
 1. Haghayegh, S. et al. (2019). Before-bedtime passive body heating. *Sleep Medicine Reviews*, 46, 124–135.

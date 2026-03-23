@@ -134,6 +134,13 @@ Especialmente útil para insônia relacionada a preocupações, ruminações neg
 
 Meditação + [Zen Caps →](https://zencaps.com.br) formam uma combinação poderosa: a meditação trata o componente cognitivo e de ansiedade da insônia, enquanto o magnésio, triptofano e melatonina abordam os aspectos nutricionais e hormonais do ciclo sono.
 
+## Artigos Relacionados
+
+- [Insônia crônica: causas e tratamentos](/blog/insonia-cronica-causas-e-tratamentos)
+- [Técnicas de respiração com evidência científica](/blog/respiracao-para-ansiedade-tecnicas)
+- [Guia completo para dormir melhor](/blog/como-dormir-melhor-guia-completo)
+- [Relaxamento muscular progressivo para dormir](/blog/tecnicas-de-relaxamento-muscular-para-dormir)
+
 ## Referências Científicas
 
 1. Ong, J.C. et al. (2014). A randomized controlled trial of mindfulness meditation for chronic insomnia. *Sleep*, 37(9), 1553–1563.

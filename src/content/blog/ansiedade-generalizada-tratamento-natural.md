@@ -214,6 +214,13 @@ O Brasil lidera a prevalência de ansiedade no mundo, mas não precisa liderar o
 
 ---
 
+## Artigos Relacionados
+
+- [Como controlar a ansiedade naturalmente](/blog/como-controlar-ansiedade-naturalmente)
+- [Técnicas de respiração com evidência científica](/blog/respiracao-para-ansiedade-tecnicas)
+- [Suplementos naturais para ansiedade](/blog/suplementos-naturais-para-ansiedade)
+- [Ansiedade noturna: por que piora à noite](/blog/ansiedade-noturna-como-tratar)
+
 ## Referências Científicas
 
 1. American Psychiatric Association. (2013). *Diagnostic and Statistical Manual of Mental Disorders* (5ª ed.). APA.

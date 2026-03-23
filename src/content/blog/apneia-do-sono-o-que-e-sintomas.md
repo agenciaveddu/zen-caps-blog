@@ -230,6 +230,13 @@ Use o teste STOP-BANG como ponto de partida e, se necessário, solicite uma aval
 
 ---
 
+## Artigos Relacionados
+
+- [Insônia crônica: diagnóstico e tratamento](/blog/insonia-cronica-causas-e-tratamentos)
+- [Sono profundo: como recuperar](/blog/sono-profundo-como-conseguir-mais)
+- [Sintomas físicos da privação de sono](/blog/sintomas-de-falta-de-sono-no-corpo)
+- [Guia completo para dormir melhor](/blog/como-dormir-melhor-guia-completo)
+
 ## Referências Científicas
 
 1. Tufik, S., Santos-Silva, R., Taddei, J. A., & Bittencourt, L. R. A. (2010). Obstructive sleep apnea syndrome in the Sao Paulo Epidemiologic Sleep Study. *Sleep Medicine*, 11(5), 441–446.

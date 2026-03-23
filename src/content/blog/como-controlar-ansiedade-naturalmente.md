@@ -160,6 +160,13 @@ A terapia cognitivo-comportamental (TCC) tem o maior nível de evidência para t
 
 ---
 
+## Artigos Relacionados
+
+- [Técnicas de respiração para ansiedade](/blog/respiracao-para-ansiedade-tecnicas)
+- [Ansiedade noturna: por que piora à noite](/blog/ansiedade-noturna-como-tratar)
+- [Suplementos naturais para ansiedade](/blog/suplementos-naturais-para-ansiedade)
+- [Transtorno de ansiedade generalizada](/blog/ansiedade-generalizada-tratamento-natural)
+
 ## Referências Científicas
 
 1. Boyle, N.B., Lawton, C., & Dye, L. (2017). "The Effects of Magnesium Supplementation on Subjective Anxiety and Stress — A Systematic Review." *Nutrients*, 9(5), 429.

@@ -91,6 +91,13 @@ Múltiplos estudos epidemiológicos mostram que dormir consistentemente menos de
 
 O [Zen Caps →](https://zencaps.com.br) foi desenvolvido para quem precisa de apoio natural para recuperar o sono de qualidade sem dependência química.
 
+## Artigos Relacionados
+
+- [Insônia crônica: causas, sintomas e tratamento](/blog/insonia-cronica-causas-e-tratamentos)
+- [Quanto tempo preciso dormir por noite](/blog/quanto-tempo-preciso-dormir-por-noite)
+- [Guia completo para dormir melhor](/blog/como-dormir-melhor-guia-completo)
+- [O que fazer quando não consigo dormir](/blog/nao-consigo-dormir-o-que-fazer)
+
 ## Referências Científicas
 
 1. Prather, A.A. et al. (2015). Behaviorally assessed sleep and susceptibility to the common cold. *Sleep*, 38(9), 1353–1359.

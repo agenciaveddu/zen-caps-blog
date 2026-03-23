@@ -209,6 +209,13 @@ Comece com duas ou três estratégias desta lista e observe o impacto em uma sem
 
 ---
 
+## Artigos Relacionados
+
+- [Sono profundo: a fase mais restauradora](/blog/sono-profundo-como-conseguir-mais)
+- [Quanto tempo preciso dormir por noite](/blog/quanto-tempo-preciso-dormir-por-noite)
+- [Rotina noturna para dormir bem](/blog/rotina-noturna-para-dormir-melhor)
+- [Melatonina: como funciona no corpo](/blog/melatonina-como-funciona-no-corpo)
+
 ## Referências Científicas
 
 1. Hilditch, C. J., & McHill, A. W. (2019). Sleep inertia: current insights. *Nature and Science of Sleep*, 11, 155–165.

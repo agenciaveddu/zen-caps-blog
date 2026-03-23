@@ -155,6 +155,13 @@ Se você sofre de insônia, depressão ou ansiedade sem causa aparente, verifica
 
 ---
 
+## Artigos Relacionados
+
+- [Vitamina B6 e serotonina: a conexão](/blog/vitamina-b6-serotonina-e-sono)
+- [Melatonina, triptofano e magnésio: o que a ciência diz](/blog/melatonina-triptofano-magnesio-sono)
+- [Sono profundo e restauração cerebral](/blog/sono-profundo-como-conseguir-mais)
+- [Suplementos naturais para ansiedade e sono](/blog/suplementos-naturais-para-ansiedade)
+
 ## Referências Científicas
 
 1. Stover, P. J. (2010). Folate biochemistry and metabolism — with special reference to one-carbon transfer reactions. *Journal of Nutritional Biochemistry*, 9(4), 228–235.

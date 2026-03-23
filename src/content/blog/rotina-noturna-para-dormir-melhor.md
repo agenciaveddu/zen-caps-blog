@@ -163,6 +163,13 @@ Na semana 2, adicione suporte nutricional se ainda não usou. Na semana 3, faça
 
 ---
 
+## Artigos Relacionados
+
+- [Guia completo para dormir melhor](/blog/como-dormir-melhor-guia-completo)
+- [Sono profundo: como conseguir mais](/blog/sono-profundo-como-conseguir-mais)
+- [Melatonina: como funciona no corpo](/blog/melatonina-como-funciona-no-corpo)
+- [Técnicas de relaxamento muscular para dormir](/blog/tecnicas-de-relaxamento-muscular-para-dormir)
+
 ## Referências Científicas
 
 1. Haghayegh, S. et al. (2019). "Before-Bedtime Passive Body Heating by Warm Shower or Bath to Improve Sleep: A Systematic Review and Meta-Analysis." *Sleep Medicine Reviews*, 46, 124-135.

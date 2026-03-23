@@ -99,6 +99,13 @@ O magnésio funciona ainda melhor combinado com:
 
 O [Zen Caps →](https://zencaps.com.br) foi formulado com essa combinação sinérgica — magnésio, triptofano e melatonina — para abordar o ciclo sono-ansiedade de forma completa.
 
+## Artigos Relacionados
+
+- [Melatonina, triptofano e magnésio: o que a ciência diz](/blog/melatonina-triptofano-magnesio-sono)
+- [Sono profundo e o papel do magnésio](/blog/sono-profundo-como-conseguir-mais)
+- [Vitamina B6 e a produção de serotonina](/blog/vitamina-b6-serotonina-e-sono)
+- [Insônia crônica: causas e tratamentos](/blog/insonia-cronica-causas-e-tratamentos)
+
 ## Referências Científicas
 
 1. Abbasi, B. et al. (2012). The effect of magnesium supplementation on primary insomnia. *J Res Med Sci*, 17(12), 1161–1169.

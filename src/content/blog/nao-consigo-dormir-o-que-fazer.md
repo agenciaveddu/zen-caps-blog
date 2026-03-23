@@ -157,6 +157,13 @@ A automedicação com benzodiazepínicos ou indutores do sono sem orientação m
 
 ---
 
+## Artigos Relacionados
+
+- [Insônia crônica: causas e tratamentos](/blog/insonia-cronica-causas-e-tratamentos)
+- [Guia completo para dormir melhor](/blog/como-dormir-melhor-guia-completo)
+- [Melatonina: como funciona e quando suplementar](/blog/melatonina-como-funciona-no-corpo)
+- [Magnésio para sono e ansiedade](/blog/magnesio-para-sono-e-ansiedade)
+
 ## Referências Científicas
 
 1. Riemann, D. et al. (2023). "Behavioural and psychological treatments for chronic insomnia disorder in adults: a systematic review and meta-analysis." *Journal of Sleep Research*, 32(4), e13787.

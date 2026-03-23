@@ -162,6 +162,13 @@ O resultado é um sistema que funciona de dentro para fora — fortalecendo a ca
 
 ---
 
+## Artigos Relacionados
+
+- [Como a melatonina funciona no corpo](/blog/melatonina-como-funciona-no-corpo)
+- [O papel do triptofano no sono](/blog/triptofano-para-que-serve-beneficios)
+- [Magnésio para sono e ansiedade: tipos e doses](/blog/magnesio-para-sono-e-ansiedade)
+- [Vitamina B6: cofator na produção de serotonina](/blog/vitamina-b6-serotonina-e-sono)
+
 ## Referências Científicas
 
 1. Ferracioli-Oda, E., Qawasmi, A., & Bloch, M.H. (2013). "Meta-Analysis: Melatonin for the Treatment of Primary Sleep Disorders." *PLOS ONE*, 8(5), e63773.

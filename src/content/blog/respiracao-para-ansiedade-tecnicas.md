@@ -225,6 +225,13 @@ A prática alternada equilibra os dois hemisférios — reduzindo o excesso de r
 
 Respiração 4-7-8 ao deitar + [Zen Caps →](https://zencaps.com.br) 30 minutos antes. A respiração ativa o parassimpático enquanto o magnésio e triptofano suportam a síntese natural de melatonina. A combinação de intervenção comportamental e suporte nutricional produz resultados mais rápidos do que qualquer uma das abordagens isoladas.
 
+## Artigos Relacionados
+
+- [Como controlar a ansiedade naturalmente](/blog/como-controlar-ansiedade-naturalmente)
+- [Crise de ansiedade: protocolo de 5 minutos](/blog/crise-de-ansiedade-agora-protocolo-5-minutos)
+- [Ansiedade noturna: por que piora à noite](/blog/ansiedade-noturna-como-tratar)
+- [Meditação para insônia: como praticar](/blog/meditacao-para-insonia-como-praticar)
+
 ## Referências Científicas
 
 1. Zaccaro, A. et al. (2018). How breath-control can change your life. *Frontiers in Human Neuroscience*, 12, 353.
