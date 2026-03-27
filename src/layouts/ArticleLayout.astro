@@ -14,6 +14,7 @@ interface Props {
   title: string
   excerpt: string
   publishedAt: Date
+  updatedAt?: Date
   category: string
   coverImage?: string
   seoTitle?: string
@@ -29,6 +30,7 @@ const {
   title,
   excerpt,
   publishedAt,
+  updatedAt,
   category,
   coverImage,
   seoTitle,
@@ -40,96 +42,169 @@ const {
   author,
 } = Astro.props
 
-// Reading time estimation (passed via prop or calculated)
 const displayReadingTime = readingTime ?? null
-
-const metaTitle = (seoTitle || title) + ' | Zen Caps Blog'
+const metaTitle       = (seoTitle || title) + ' | Zen Caps Blog'
 const metaDescription = seoDescription || excerpt
-const canonicalUrl = `https://zencaps.com.br/blog/${slug}`
-const ogImage = coverImage
+const canonicalUrl    = `https://zencaps.com.br/blog/${slug}`
+const ogImage         = coverImage
   ? (coverImage.startsWith('http') ? coverImage : `https://zencaps.com.br${coverImage}`)
   : 'https://zencaps.com.br/og-image.jpg'
-const authorName = author || 'Equipe Zen Caps'
+const authorName  = author || 'Equipe Editorial Zen Caps'
+const dateModified = (updatedAt ?? publishedAt).toISOString()
 
+// ── Labels & cores ────────────────────────────────────────────────────────────
 const categoryLabels: Record<string, string> = {
-  sono: 'Sono & Insônia',
-  ansiedade: 'Ansiedade & Estresse',
-  ingredientes: 'Ingredientes & Ciência',
-  habitos: 'Hábitos Saudáveis',
+  sono:        'Sono & Insônia',
+  ansiedade:   'Ansiedade & Estresse',
+  ingredientes:'Ingredientes & Ciência',
+  habitos:     'Hábitos Saudáveis',
+}
+const categoryColors: Record<string, string> = {
+  sono:        '#1DB8E8',
+  ansiedade:   '#5B6FDE',
+  ingredientes:'#1DB8E8',
+  habitos:     '#C9A84C',
 }
 
-const categoryColors: Record<string, string> = {
-  sono: '#1DB8E8',
-  ansiedade: '#5B6FDE',
-  ingredientes: '#1DB8E8',
-  habitos: '#C9A84C',
+// ── Revisores por categoria (E-E-A-T) ────────────────────────────────────────
+const reviewers: Record<string, { name: string; title: string; id: string; bio: string; emoji: string }> = {
+  sono: {
+    name:  'Ana Beatriz Martins',
+    title: 'Especialista em Ciência do Sono e Nutrição Funcional',
+    id:    'ana-martins',
+    bio:   'Graduada em Ciências da Saúde com pós-graduação em Neurofisiologia do Sono. Pesquisadora de higiene do sono e intervenções nutricionais para distúrbios do sono.',
+    emoji: '🌙',
+  },
+  ansiedade: {
+    name:  'Rafael Costa',
+    title: 'Especialista em Saúde Mental e Neurociências',
+    id:    'rafael-costa',
+    bio:   'Graduado em Psicologia com especialização em Neurociências e Manejo do Estresse. Atua na pesquisa de intervenções não-farmacológicas para ansiedade e burnout.',
+    emoji: '🧘',
+  },
+  ingredientes: {
+    name:  'Juliana Ferreira',
+    title: 'Farmacêutica e Pesquisadora em Suplementação Natural',
+    id:    'juliana-ferreira',
+    bio:   'Farmacêutica com mestrado em Fitoterapia e Farmacologia de Suplementos. Especializada em biodisponibilidade de nutrientes e segurança de suplementação natural.',
+    emoji: '🔬',
+  },
+  habitos: {
+    name:  'Marcos Oliveira',
+    title: 'Especialista em Medicina do Estilo de Vida',
+    id:    'marcos-oliveira',
+    bio:   'Especialista em Medicina do Estilo de Vida com foco em ritmo circadiano, higiene do sono e hábitos saudáveis baseados em evidências científicas.',
+    emoji: '✨',
+  },
+}
+const reviewer = reviewers[category] ?? reviewers['sono']
+
+const categoryKnowsAbout: Record<string, string[]> = {
+  sono:        ['sono', 'insônia', 'melatonina', 'ritmo circadiano', 'higiene do sono'],
+  ansiedade:   ['ansiedade', 'estresse', 'cortisol', 'técnicas de relaxamento', 'saúde mental'],
+  ingredientes:['melatonina', 'triptofano', 'magnésio', 'vitamina B6', 'suplementação natural'],
+  habitos:     ['hábitos saudáveis', 'ritmo circadiano', 'sono', 'bem-estar', 'rotina noturna'],
 }
 
 const formattedDate = publishedAt.toLocaleDateString('pt-BR', {
-  day: '2-digit',
-  month: 'long',
-  year: 'numeric',
+  day: '2-digit', month: 'long', year: 'numeric',
+})
+const formattedUpdatedDate = (updatedAt ?? publishedAt).toLocaleDateString('pt-BR', {
+  day: '2-digit', month: 'long', year: 'numeric',
 })
 
+// ── Schema.org: Article ────────────────────────────────────────────────────────
 const schemaOrg = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: title,
-  description: metaDescription,
-  image: ogImage,
+  headline:      title,
+  description:   metaDescription,
+  image:         ogImage,
   datePublished: publishedAt.toISOString(),
-  dateModified: publishedAt.toISOString(),
+  dateModified:  dateModified,
+  inLanguage:    'pt-BR',
   author: {
-    '@type': 'Organization',
-    name: 'Zen Caps',
-    url: 'https://zencaps.com.br',
+    '@type':      'Person',
+    name:         authorName,
+    url:          'https://zencaps.com.br/blog/sobre',
+    worksFor: {
+      '@type': 'Organization',
+      name:    'Zen Caps',
+      url:     'https://zencaps.com.br',
+    },
+    knowsAbout: categoryKnowsAbout[category] ?? categoryKnowsAbout['sono'],
+  },
+  reviewedBy: {
+    '@type':    'Person',
+    name:       reviewer.name,
+    jobTitle:   reviewer.title,
+    url:        `https://zencaps.com.br/blog/sobre#${reviewer.id}`,
   },
   publisher: {
     '@type': 'Organization',
-    name: 'Zen Caps',
-    url: 'https://zencaps.com.br',
+    name:    'Zen Caps',
+    url:     'https://zencaps.com.br',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://zencaps.com.br/logo.png',
+      url:     'https://zencaps.com.br/logo.png',
     },
   },
   mainEntityOfPage: {
     '@type': 'WebPage',
-    '@id': canonicalUrl,
+    '@id':   canonicalUrl,
   },
 })
 
+// ── Schema.org: MedicalWebPage ─────────────────────────────────────────────────
+const medicalWebPageSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type':    'MedicalWebPage',
+  name:        title,
+  url:         canonicalUrl,
+  description: metaDescription,
+  lastReviewed: dateModified.split('T')[0],
+  reviewedBy: {
+    '@type':   'Person',
+    name:      reviewer.name,
+    jobTitle:  reviewer.title,
+    url:       `https://zencaps.com.br/blog/sobre#${reviewer.id}`,
+  },
+  audience: {
+    '@type':       'PeopleAudience',
+    audienceType:  'Adultos interessados em sono saudável e bem-estar natural',
+  },
+  about: {
+    '@type': 'Thing',
+    name:    categoryLabels[category] ?? category,
+  },
+  inLanguage: 'pt-BR',
+  isPartOf: {
+    '@type': 'WebSite',
+    name:    'Zen Caps Blog',
+    url:     'https://zencaps.com.br/blog',
+  },
+  disclaimer: 'Este conteúdo tem finalidade informativa e educacional. Não substitui o diagnóstico, tratamento ou aconselhamento de profissional de saúde habilitado. Consulte sempre um médico ou especialista.',
+})
+
+// ── Schema.org: BreadcrumbList ─────────────────────────────────────────────────
 const breadcrumbSchema = JSON.stringify({
   '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
+  '@type':    'BreadcrumbList',
   itemListElement: [
-    {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Home',
-      item: 'https://zencaps.com.br/blog',
-    },
-    {
-      '@type': 'ListItem',
-      position: 2,
-      name: categoryLabels[category] ?? category,
-      item: `https://zencaps.com.br/blog/categoria/${category}`,
-    },
-    {
-      '@type': 'ListItem',
-      position: 3,
-      name: title,
-      item: canonicalUrl,
-    },
+    { '@type': 'ListItem', position: 1, name: 'Blog', item: 'https://zencaps.com.br/blog' },
+    { '@type': 'ListItem', position: 2, name: categoryLabels[category] ?? category, item: `https://zencaps.com.br/blog/categoria/${category}` },
+    { '@type': 'ListItem', position: 3, name: title, item: canonicalUrl },
   ],
 })
 
+// ── Schema.org: Organization (HealthAndBeautyBusiness) ────────────────────────
 const organizationSchema = JSON.stringify({
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Zen Caps',
-  url: 'https://zencaps.com.br',
-  logo: 'https://zencaps.com.br/logo.png',
+  '@type':    ['Organization', 'HealthAndBeautyBusiness'],
+  name:        'Zen Caps',
+  url:         'https://zencaps.com.br',
+  logo:        'https://zencaps.com.br/logo.png',
+  description: 'Suplemento natural para sono e ansiedade com melatonina, triptofano, magnésio e vitamina B6. Aprovado pela ANVISA. Sem tarja preta, sem dependência.',
   sameAs: [
     'https://zencaps.com.br/blog',
     'https://www.instagram.com/zencapsoficial/',
@@ -137,24 +212,30 @@ const organizationSchema = JSON.stringify({
   ],
 })
 
+// ── Schema.org: WebSite ────────────────────────────────────────────────────────
 const websiteSchema = JSON.stringify({
   '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  name: 'Zen Caps Blog',
-  url: 'https://zencaps.com.br/blog',
+  '@type':    'WebSite',
+  name:        'Zen Caps Blog',
+  url:         'https://zencaps.com.br/blog',
+  description: 'Artigos baseados em ciência sobre sono, ansiedade, melatonina, magnésio, triptofano e bem-estar natural.',
+  inLanguage:  'pt-BR',
+  publisher: {
+    '@type': 'Organization',
+    name:    'Zen Caps',
+    url:     'https://zencaps.com.br',
+  },
 })
 
+// ── Schema.org: FAQPage (condicional) ─────────────────────────────────────────
 const faqSchema = faq && faq.length > 0
   ? JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'FAQPage',
+      '@type':    'FAQPage',
       mainEntity: faq.map((item) => ({
         '@type': 'Question',
-        name: item.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: item.answer,
-        },
+        name:    item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
       })),
     })
   : null
@@ -167,35 +248,33 @@ const faqSchema = faq && faq.length > 0
     <title>{metaTitle}</title>
     <meta name="description" content={metaDescription} />
     <link rel="canonical" href={canonicalUrl} />
+    <meta name="author" content={authorName} />
 
     <!-- Open Graph -->
-    <meta property="og:title" content={metaTitle} />
-    <meta property="og:description" content={metaDescription} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:type" content="article" />
-    <meta property="og:site_name" content="Zen Caps Blog" />
+    <meta property="og:title"            content={metaTitle} />
+    <meta property="og:description"      content={metaDescription} />
+    <meta property="og:image"            content={ogImage} />
+    <meta property="og:url"              content={canonicalUrl} />
+    <meta property="og:type"             content="article" />
+    <meta property="og:site_name"        content="Zen Caps Blog" />
+    <meta property="og:locale"           content="pt_BR" />
     <meta property="article:published_time" content={publishedAt.toISOString()} />
+    <meta property="article:modified_time"  content={dateModified} />
+    <meta property="article:author"      content={authorName} />
+    <meta property="article:section"     content={categoryLabels[category] ?? category} />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={metaTitle} />
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={metaTitle} />
     <meta name="twitter:description" content={metaDescription} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image"       content={ogImage} />
 
-    <!-- Schema.org: Article -->
+    <!-- Schema.org JSON-LD -->
     <script type="application/ld+json" set:html={schemaOrg} />
-
-    <!-- Schema.org: BreadcrumbList -->
+    <script type="application/ld+json" set:html={medicalWebPageSchema} />
     <script type="application/ld+json" set:html={breadcrumbSchema} />
-
-    <!-- Schema.org: Organization -->
     <script type="application/ld+json" set:html={organizationSchema} />
-
-    <!-- Schema.org: WebSite -->
     <script type="application/ld+json" set:html={websiteSchema} />
-
-    <!-- Schema.org: FAQPage (conditional) -->
     {faqSchema && <script type="application/ld+json" set:html={faqSchema} />}
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -237,9 +316,9 @@ const faqSchema = faq && faq.length > 0
       <div style="background: #FFFFFF; border-bottom: 1px solid #e8eef6;">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 py-3">
           <nav class="flex items-center gap-2 text-xs" style="color: #6B7A9A;">
-            <a href="/blog" style="color: #1DB8E8; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#0D1B3E'" onmouseout="this.style.color='#1DB8E8'">Blog</a>
+            <a href="/blog" style="color: #1DB8E8; text-decoration: none;" onmouseover="this.style.color='#0D1B3E'" onmouseout="this.style.color='#1DB8E8'">Blog</a>
             <span style="color: #c0cce0;">&#8250;</span>
-            <a href={`/blog/categoria/${category}`} style="color: #1DB8E8; text-decoration: none; transition: color 0.15s;" onmouseover="this.style.color='#0D1B3E'" onmouseout="this.style.color='#1DB8E8'">{categoryLabels[category] ?? category}</a>
+            <a href={`/blog/categoria/${category}`} style="color: #1DB8E8; text-decoration: none;" onmouseover="this.style.color='#0D1B3E'" onmouseout="this.style.color='#1DB8E8'">{categoryLabels[category] ?? category}</a>
             <span style="color: #c0cce0;">&#8250;</span>
             <span style="color: #0D1B3E; font-weight: 500;" class="truncate max-w-48">{title}</span>
           </nav>
@@ -253,12 +332,7 @@ const faqSchema = faq && faq.length > 0
         <header class="mb-8">
           <a
             href={`/blog/categoria/${category}`}
-            class="category-badge"
-            class:list={[
-              'category-badge',
-              category === 'ansiedade' ? 'badge-ansiedade' : '',
-              category === 'habitos' ? 'badge-habitos' : '',
-            ]}
+            class:list={['category-badge', category === 'ansiedade' ? 'badge-ansiedade' : '', category === 'habitos' ? 'badge-habitos' : '']}
             style="text-decoration: none; margin-bottom: 1rem; display: inline-block;"
           >
             {categoryLabels[category] ?? category}
@@ -268,14 +342,23 @@ const faqSchema = faq && faq.length > 0
             {title}
           </h1>
 
-          <p style="font-size: 1.1rem; color: #6B7A9A; line-height: 1.7; margin-bottom: 1.25rem; font-family: 'DM Sans', system-ui, sans-serif;">
+          <p style="font-size: 1.1rem; color: #6B7A9A; line-height: 1.7; margin-bottom: 1.25rem;">
             {excerpt}
           </p>
 
-          <div class="flex items-center gap-3" style="font-size: 0.82rem; color: #6B7A9A;">
-            <span style="font-weight: 600; color: #1DB8E8;">{authorName}</span>
+          <!-- Autor + Data + Leitura -->
+          <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem 1rem; font-size: 0.82rem; color: #6B7A9A; margin-bottom: 0.75rem;">
+            <span>
+              ✍️ <a href="/blog/sobre" style="font-weight: 600; color: #1DB8E8; text-decoration: none;" onmouseover="this.style.color='#0D1B3E'" onmouseout="this.style.color='#1DB8E8'">{authorName}</a>
+            </span>
             <span style="color: #c0cce0;">·</span>
             <time datetime={publishedAt.toISOString()}>{formattedDate}</time>
+            {updatedAt && (
+              <>
+                <span style="color: #c0cce0;">·</span>
+                <span>Atualizado em {formattedUpdatedDate}</span>
+              </>
+            )}
             {displayReadingTime && (
               <>
                 <span style="color: #c0cce0;">·</span>
@@ -283,9 +366,23 @@ const faqSchema = faq && faq.length > 0
               </>
             )}
           </div>
+
+          <!-- Revisão editorial -->
+          <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: #6B7A9A; padding: 0.5rem 0.75rem; background: rgba(29,184,232,0.06); border-radius: 8px; width: fit-content;">
+            <span>{reviewer.emoji}</span>
+            <span>Revisado por <a href={`/blog/sobre#${reviewer.id}`} style="font-weight: 600; color: #1DB8E8; text-decoration: none;" onmouseover="this.style.color='#0D1B3E'" onmouseout="this.style.color='#1DB8E8'">{reviewer.name}</a> — {reviewer.title}</span>
+          </div>
         </header>
 
-        <!-- Quick Answer box (AEO/featured snippet) -->
+        <!-- Disclaimer médico -->
+        <div style="background: #FFF8E7; border: 1px solid #F5D170; border-radius: 10px; padding: 0.75rem 1rem; margin-bottom: 1.75rem; display: flex; align-items: flex-start; gap: 0.6rem;">
+          <span style="font-size: 1rem; flex-shrink: 0; margin-top: 1px;">⚠️</span>
+          <p style="font-size: 0.8rem; color: #7A5900; line-height: 1.5; margin: 0;">
+            <strong>Aviso:</strong> Este conteúdo é informativo e não substitui diagnóstico ou tratamento médico. Consulte sempre um profissional de saúde antes de iniciar qualquer suplementação.
+          </p>
+        </div>
+
+        <!-- Quick Answer box (AEO / featured snippet) -->
         {quickAnswer && (
           <div style="background: rgba(29,184,232,0.07); border-left: 4px solid #1DB8E8; border-radius: 0 12px 12px 0; padding: 1.25rem 1.5rem; margin-bottom: 2rem;">
             <p style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #1DB8E8; margin: 0 0 0.5rem;">
@@ -316,7 +413,22 @@ const faqSchema = faq && faq.length > 0
           <slot />
         </div>
 
-        <!-- FAQ Section (visible, expand/collapse) -->
+        <!-- Caixa do Revisor (ao final do conteúdo, antes do FAQ) -->
+        <div style="margin-top: 2.5rem; padding: 1.25rem 1.5rem; background: #FFFFFF; border: 1px solid #e8eef6; border-radius: 14px; display: flex; align-items: flex-start; gap: 1rem;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, {categoryColors[category] ?? '#1DB8E8'} 0%, #0D1B3E 100%); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+            {reviewer.emoji}
+          </div>
+          <div>
+            <p style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1DB8E8; margin: 0 0 0.2rem;">Revisado por</p>
+            <p style="font-weight: 700; color: #0D1B3E; margin: 0 0 0.15rem; font-size: 0.95rem;">
+              <a href={`/blog/sobre#${reviewer.id}`} style="color: #0D1B3E; text-decoration: none;" onmouseover="this.style.color='#1DB8E8'" onmouseout="this.style.color='#0D1B3E'">{reviewer.name}</a>
+            </p>
+            <p style="font-size: 0.78rem; color: #6B7A9A; margin: 0 0 0.4rem;">{reviewer.title}</p>
+            <p style="font-size: 0.82rem; color: #3A4A6B; line-height: 1.55; margin: 0;">{reviewer.bio}</p>
+          </div>
+        </div>
+
+        <!-- FAQ Section -->
         {faq && faq.length > 0 && (
           <section style="margin-top: 3rem; margin-bottom: 2rem;">
             <h2 style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.5rem; font-weight: 800; color: #0D1B3E; margin-bottom: 1.25rem;">
@@ -325,7 +437,7 @@ const faqSchema = faq && faq.length > 0
             <div style="display: flex; flex-direction: column; gap: 0.75rem;">
               {faq.map((item) => (
                 <details style="background: #FFFFFF; border: 1px solid #e8eef6; border-radius: 12px; overflow: hidden;">
-                  <summary style="padding: 1rem 1.25rem; font-weight: 600; color: #0D1B3E; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: 'DM Sans', system-ui, sans-serif;">
+                  <summary style="padding: 1rem 1.25rem; font-weight: 600; color: #0D1B3E; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
                     {item.question}
                     <span style="color: #1DB8E8; font-size: 1.25rem; flex-shrink: 0; margin-left: 1rem;">&#43;</span>
                   </summary>
@@ -341,14 +453,14 @@ const faqSchema = faq && faq.length > 0
         <!-- End CTA -->
         <CTABanner variant="end" />
 
-        <!-- Related articles link -->
+        <!-- Link para categoria -->
         <div class="mt-8 pt-8 text-center" style="border-top: 1px solid #e8eef6;">
           <p style="color: #6B7A9A; font-size: 0.9rem; margin-bottom: 0.75rem;">
             Gostou? Explore mais artigos sobre {categoryLabels[category] ?? category}:
           </p>
           <a
             href={`/blog/categoria/${category}`}
-            style="font-weight: 700; color: #1DB8E8; text-decoration: none; transition: color 0.15s;"
+            style="font-weight: 700; color: #1DB8E8; text-decoration: none;"
             onmouseover="this.style.color='#0D1B3E'"
             onmouseout="this.style.color='#1DB8E8'"
           >
@@ -378,19 +490,15 @@ const faqSchema = faq && faq.length > 0
     <script>
       const bar = document.getElementById('progress-bar')
       window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight
-        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
+        const scrollTop  = window.scrollY
+        const docHeight  = document.documentElement.scrollHeight - window.innerHeight
+        const pct        = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
         if (bar) bar.style.width = pct + '%'
       })
-
-      // Toggle FAQ + icon
       document.querySelectorAll('details').forEach((el) => {
         el.addEventListener('toggle', () => {
           const icon = el.querySelector('summary span')
-          if (icon) {
-            icon.textContent = el.open ? '−' : '+'
-          }
+          if (icon) icon.textContent = el.open ? '−' : '+'
         })
       })
     </script>

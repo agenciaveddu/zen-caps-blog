@@ -38,6 +38,7 @@ const categoryContext: Record<string, string> = {
   readingTime={post.data.readingTime}
   faq={post.data.faq}
   author={post.data.author}
+  updatedAt={post.data.updatedAt}
 >
   <!-- Injeta o primeiro CTA após o início do conteúdo -->
   <CTABanner variant="inline" context={categoryContext[post.data.category]} />
