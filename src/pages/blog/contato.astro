@@ -1,0 +1,245 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro'
+
+const contactSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contato — Zen Caps Blog',
+  url: 'https://zencaps.com.br/blog/contato',
+  description: 'Entre em contato com a equipe editorial do Zen Caps Blog. Dúvidas sobre conteúdo, suplementação ou o produto Zen Caps.',
+  publisher: {
+    '@type': 'Organization',
+    name: 'Zen Caps',
+    url: 'https://zencaps.com.br',
+    email: 'contato@zencaps.com.br',
+    telephone: '+55-11-98820-4942',
+  },
+})
+---
+
+<BlogLayout
+  title="Contato — Zen Caps Blog"
+  description="Entre em contato com a equipe editorial do Zen Caps Blog. Respondemos dúvidas sobre sono, ansiedade, suplementação e o produto Zen Caps."
+  canonical="https://zencaps.com.br/blog/contato"
+>
+
+  <script type="application/ld+json" set:html={contactSchema} />
+
+  <div style="background: #F4F8FC; min-height: 80vh;">
+
+    <!-- Hero -->
+    <section style="background: linear-gradient(135deg, #0D1B3E 0%, #172851 100%); padding: 5rem 1.5rem 4rem;">
+      <div style="max-width: 640px; margin: 0 auto; text-align: center;">
+        <p style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #1DB8E8; margin-bottom: 1rem;">
+          Fale com a gente
+        </p>
+        <h1 style="font-family: 'Sora', system-ui, sans-serif; font-size: clamp(2rem, 5vw, 2.6rem); font-weight: 900; color: #ffffff; line-height: 1.15; margin-bottom: 1.25rem;">
+          Como podemos ajudar?
+        </h1>
+        <p style="font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 480px; margin: 0 auto;">
+          Dúvidas sobre conteúdo, suplementação ou o produto Zen Caps? Nossa equipe responde em até 24 horas.
+        </p>
+      </div>
+    </section>
+
+    <section style="padding: 4rem 1.5rem 5rem;">
+      <div style="max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem;">
+
+        <!-- Cards de contato rápido -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem;">
+
+          <!-- WhatsApp -->
+          <a
+            href="https://wa.me/5511988204942?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20Zen%20Caps"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="background:#FFFFFF;border:1px solid #e8eef6;border-radius:16px;padding:1.5rem;text-decoration:none;display:flex;flex-direction:column;gap:0.75rem;transition:box-shadow 0.2s,border-color 0.2s;"
+            onmouseover="this.style.boxShadow='0 4px 20px rgba(37,211,102,0.15)';this.style.borderColor='rgba(37,211,102,0.4)'"
+            onmouseout="this.style.boxShadow='none';this.style.borderColor='#e8eef6'"
+          >
+            <div style="width:44px;height:44px;border-radius:12px;background:#25D366;display:flex;align-items:center;justify-content:center;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </div>
+            <div>
+              <p style="font-weight:700;color:#0D1B3E;margin:0 0 4px;font-size:0.95rem;">WhatsApp</p>
+              <p style="font-size:0.82rem;color:#6B7A9A;margin:0;line-height:1.5;">Resposta mais rápida. Atendimento de seg a sex, 9h–18h.</p>
+            </div>
+            <span style="font-size:0.8rem;font-weight:700;color:#25D366;">Enviar mensagem &rarr;</span>
+          </a>
+
+          <!-- E-mail -->
+          <a
+            href="mailto:contato@zencaps.com.br"
+            style="background:#FFFFFF;border:1px solid #e8eef6;border-radius:16px;padding:1.5rem;text-decoration:none;display:flex;flex-direction:column;gap:0.75rem;transition:box-shadow 0.2s,border-color 0.2s;"
+            onmouseover="this.style.boxShadow='0 4px 20px rgba(29,184,232,0.12)';this.style.borderColor='rgba(29,184,232,0.35)'"
+            onmouseout="this.style.boxShadow='none';this.style.borderColor='#e8eef6'"
+          >
+            <div style="width:44px;height:44px;border-radius:12px;background:rgba(29,184,232,0.12);display:flex;align-items:center;justify-content:center;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="#1DB8E8" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <div>
+              <p style="font-weight:700;color:#0D1B3E;margin:0 0 4px;font-size:0.95rem;">E-mail</p>
+              <p style="font-size:0.82rem;color:#6B7A9A;margin:0;line-height:1.5;">contato@zencaps.com.br — respondemos em até 24h úteis.</p>
+            </div>
+            <span style="font-size:0.8rem;font-weight:700;color:#1DB8E8;">Enviar e-mail &rarr;</span>
+          </a>
+
+        </div>
+
+        <!-- Formulário de contato -->
+        <div style="background:#FFFFFF;border:1px solid #e8eef6;border-radius:18px;padding:2rem 2rem 1.75rem;">
+          <h2 style="font-family:'Sora',system-ui,sans-serif;font-size:1.2rem;font-weight:800;color:#0D1B3E;margin:0 0 0.3rem;">
+            Deixe sua mensagem
+          </h2>
+          <p style="font-size:0.85rem;color:#6B7A9A;margin:0 0 1.5rem;line-height:1.5;">
+            Preencha o formulário e enviaremos sua mensagem pelo WhatsApp automaticamente.
+          </p>
+
+          <form id="contact-form" style="display:flex;flex-direction:column;gap:1rem;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+              <div>
+                <label for="nome" style="display:block;font-size:0.8rem;font-weight:600;color:#3A4A6B;margin-bottom:6px;">Nome *</label>
+                <input
+                  id="nome"
+                  name="nome"
+                  type="text"
+                  required
+                  placeholder="Seu nome"
+                  style="width:100%;padding:0.65rem 0.9rem;border:1px solid #e8eef6;border-radius:10px;font-size:0.9rem;color:#0D1B3E;outline:none;font-family:'DM Sans',system-ui,sans-serif;box-sizing:border-box;transition:border-color 0.2s;"
+                  onfocus="this.style.borderColor='#1DB8E8'"
+                  onblur="this.style.borderColor='#e8eef6'"
+                />
+              </div>
+              <div>
+                <label for="email" style="display:block;font-size:0.8rem;font-weight:600;color:#3A4A6B;margin-bottom:6px;">E-mail</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="seu@email.com"
+                  style="width:100%;padding:0.65rem 0.9rem;border:1px solid #e8eef6;border-radius:10px;font-size:0.9rem;color:#0D1B3E;outline:none;font-family:'DM Sans',system-ui,sans-serif;box-sizing:border-box;transition:border-color 0.2s;"
+                  onfocus="this.style.borderColor='#1DB8E8'"
+                  onblur="this.style.borderColor='#e8eef6'"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label for="assunto" style="display:block;font-size:0.8rem;font-weight:600;color:#3A4A6B;margin-bottom:6px;">Assunto *</label>
+              <select
+                id="assunto"
+                name="assunto"
+                required
+                style="width:100%;padding:0.65rem 0.9rem;border:1px solid #e8eef6;border-radius:10px;font-size:0.9rem;color:#0D1B3E;outline:none;font-family:'DM Sans',system-ui,sans-serif;background:#fff;transition:border-color 0.2s;"
+                onfocus="this.style.borderColor='#1DB8E8'"
+                onblur="this.style.borderColor='#e8eef6'"
+              >
+                <option value="">Selecione um assunto</option>
+                <option value="Dúvida sobre o produto Zen Caps">Dúvida sobre o produto Zen Caps</option>
+                <option value="Dúvida sobre suplementação">Dúvida sobre suplementação</option>
+                <option value="Dúvida sobre sono ou ansiedade">Dúvida sobre sono ou ansiedade</option>
+                <option value="Sugestão de conteúdo para o blog">Sugestão de conteúdo para o blog</option>
+                <option value="Parceria ou imprensa">Parceria ou imprensa</option>
+                <option value="Exercício de direito LGPD">Exercício de direito LGPD</option>
+                <option value="Outro assunto">Outro assunto</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="mensagem" style="display:block;font-size:0.8rem;font-weight:600;color:#3A4A6B;margin-bottom:6px;">Mensagem *</label>
+              <textarea
+                id="mensagem"
+                name="mensagem"
+                required
+                rows="4"
+                placeholder="Escreva sua mensagem aqui..."
+                style="width:100%;padding:0.65rem 0.9rem;border:1px solid #e8eef6;border-radius:10px;font-size:0.9rem;color:#0D1B3E;outline:none;font-family:'DM Sans',system-ui,sans-serif;resize:vertical;box-sizing:border-box;transition:border-color 0.2s;"
+                onfocus="this.style.borderColor='#1DB8E8'"
+                onblur="this.style.borderColor='#e8eef6'"
+              ></textarea>
+            </div>
+
+            <!-- LGPD consent -->
+            <label style="display:flex;align-items:flex-start;gap:0.6rem;cursor:pointer;">
+              <input type="checkbox" id="lgpd" required style="margin-top:3px;flex-shrink:0;accent-color:#1DB8E8;" />
+              <span style="font-size:0.78rem;color:#6B7A9A;line-height:1.55;">
+                Concordo com o tratamento dos meus dados para fins de atendimento, conforme a
+                <a href="https://zencaps.com.br/politica-de-privacidade" target="_blank" rel="noopener noreferrer" style="color:#1DB8E8;text-decoration:none;">Política de Privacidade</a>
+                da Zen Caps (LGPD — Lei 13.709/2018).
+              </span>
+            </label>
+
+            <button
+              type="submit"
+              style="background:linear-gradient(135deg,#25D366,#20b858);color:#fff;border:none;border-radius:12px;padding:0.85rem 1.5rem;font-size:0.95rem;font-weight:700;cursor:pointer;font-family:'DM Sans',system-ui,sans-serif;display:flex;align-items:center;justify-content:center;gap:0.5rem;transition:opacity 0.2s;"
+              onmouseover="this.style.opacity='0.9'"
+              onmouseout="this.style.opacity='1'"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Enviar pelo WhatsApp
+            </button>
+          </form>
+        </div>
+
+        <!-- LGPD info box -->
+        <div style="background:#FFFFFF;border:1px solid #e8eef6;border-radius:14px;padding:1.25rem 1.5rem;display:flex;gap:0.75rem;align-items:flex-start;">
+          <span style="font-size:1.1rem;flex-shrink:0;">🔒</span>
+          <div>
+            <p style="font-weight:700;font-size:0.85rem;color:#0D1B3E;margin:0 0 0.3rem;">Seus dados estão protegidos — LGPD</p>
+            <p style="font-size:0.8rem;color:#6B7A9A;line-height:1.6;margin:0;">
+              Utilizamos seus dados exclusivamente para responder ao seu contato. Não compartilhamos com terceiros e você pode solicitar exclusão a qualquer momento pelo e-mail
+              <a href="mailto:contato@zencaps.com.br" style="color:#1DB8E8;text-decoration:none;">contato@zencaps.com.br</a>.
+              Saiba mais na nossa
+              <a href="https://zencaps.com.br/politica-de-privacidade" target="_blank" rel="noopener noreferrer" style="color:#1DB8E8;text-decoration:none;">Política de Privacidade</a>.
+            </p>
+          </div>
+        </div>
+
+        <!-- Link voltar -->
+        <div style="text-align:center;">
+          <a
+            href="/blog"
+            style="font-weight:700;color:#1DB8E8;text-decoration:none;font-size:0.9rem;"
+            onmouseover="this.style.color='#0D1B3E'"
+            onmouseout="this.style.color='#1DB8E8'"
+          >
+            &larr; Voltar para o blog
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+</BlogLayout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const nome     = (document.getElementById('nome')     as HTMLInputElement).value.trim()
+    const email    = (document.getElementById('email')    as HTMLInputElement).value.trim()
+    const assunto  = (document.getElementById('assunto')  as HTMLSelectElement).value
+    const mensagem = (document.getElementById('mensagem') as HTMLTextAreaElement).value.trim()
+
+    const texto = [
+      `Olá! Vim pelo blog Zen Caps e gostaria de entrar em contato.`,
+      ``,
+      `*Nome:* ${nome}`,
+      email ? `*E-mail:* ${email}` : '',
+      `*Assunto:* ${assunto}`,
+      ``,
+      `*Mensagem:*`,
+      mensagem,
+    ].filter(Boolean).join('\n')
+
+    const url = `https://wa.me/5511988204942?text=${encodeURIComponent(texto)}`
+    window.open(url, '_blank', 'noopener,noreferrer')
+  })
+</script>
