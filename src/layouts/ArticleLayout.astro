@@ -277,10 +277,14 @@ const faqSchema = faq && faq.length > 0
     <script type="application/ld+json" set:html={websiteSchema} />
     {faqSchema && <script type="application/ld+json" set:html={faqSchema} />}
 
+    <meta name="robots" content="max-image-preview:large" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
+    <!-- Fontes carregadas de forma não-bloqueante -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" /></noscript>
 
     <!-- Google Analytics 4 -->
     <Analytics />
@@ -402,9 +406,12 @@ const faqSchema = faq && faq.length > 0
           <img
             src={coverImage}
             alt={title}
+            width="768"
+            height="432"
             class="w-full mb-8"
             style="border-radius: 16px; box-shadow: 0 8px 32px rgba(13,27,62,0.12);"
-            loading="eager"
+            loading="lazy"
+            decoding="async"
           />
         )}
 

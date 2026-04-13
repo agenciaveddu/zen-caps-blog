@@ -11,6 +11,9 @@ interface Props {
 
 const { title, slug, excerpt, category, publishedAt, coverImage, featured = false } = Astro.props
 
+// Gera path do thumbnail (660px) para cards
+const thumbImage = coverImage ? coverImage.replace('/images/blog/', '/images/blog/thumbs/') : undefined
+
 const categoryMeta: Record<string, { label: string; badgeClass: string; borderClass: string; icon: string }> = {
   sono:        { label: 'Sono & Insônia',         badgeClass: '',                  borderClass: 'border-sono',        icon: '🌙' },
   ansiedade:   { label: 'Ansiedade & Estresse',   badgeClass: 'badge-ansiedade',   borderClass: 'border-ansiedade',   icon: '🧘' },
@@ -32,9 +35,15 @@ const formattedDate = publishedAt.toLocaleDateString('pt-BR', {
   <a href={`/blog/${slug}`} class="card-image-wrap block" style="display: block;">
     {coverImage ? (
       <img
-        src={coverImage}
+        src={thumbImage}
+        srcset={`${thumbImage} 660w, ${coverImage} 1280w`}
+        sizes="(max-width: 768px) 100vw, 400px"
         alt={title}
-        loading="lazy"
+        width="660"
+        height="363"
+        loading={featured ? 'eager' : 'lazy'}
+        decoding="async"
+        fetchpriority={featured ? 'high' : 'auto'}
         style={featured ? 'height: 280px; width: 100%; object-fit: cover;' : 'height: 200px; width: 100%; object-fit: cover;'}
       />
     ) : (
