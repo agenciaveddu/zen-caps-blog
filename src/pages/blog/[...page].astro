@@ -153,16 +153,11 @@ const canonicalUrl = isFirstPage
     ) : (
       <div>
         {/* Section heading */}
-        <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 32px; flex-wrap: wrap;">
-          <div style="display: flex; align-items: center; gap: 14px;">
-            <div style="height: 3px; width: 40px; background: linear-gradient(90deg, #1DB8E8, #5DD4F4); border-radius: 4px;"></div>
-            <h2 style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.3rem; font-weight: 800; color: #0D1B3E; margin: 0;">
-              {isFirstPage ? 'Artigos Recentes' : `Artigos — Página ${page.currentPage}`}
-            </h2>
-          </div>
-          <p style="font-size: 0.82rem; color: #6B7A9A; margin: 0; font-family: 'DM Sans', system-ui, sans-serif;">
-            {page.total} artigos no total
-          </p>
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 32px;">
+          <div style="height: 3px; width: 40px; background: linear-gradient(90deg, #1DB8E8, #5DD4F4); border-radius: 4px;"></div>
+          <h2 style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.3rem; font-weight: 800; color: #0D1B3E; margin: 0;">
+            {isFirstPage ? 'Artigos Recentes' : `Artigos — Página ${page.currentPage}`}
+          </h2>
         </div>
 
         {/* Grid de artigos */}
