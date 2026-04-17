@@ -600,13 +600,19 @@ const breadcrumb = {
       document.getElementById('ax-email').classList.remove('error');
       AX.hasEmail = true;
 
-      try {
-        var leads = JSON.parse(localStorage.getItem('zc_leads') || '[]');
-        leads.push({ name: name, email: email, quiz: 'ansiedade', score: axCalcScore(), ts: new Date().toISOString() });
-        localStorage.setItem('zc_leads', JSON.stringify(leads));
-      } catch(e) {}
+      // Disable button while saving
+      var btn = document.getElementById('ax-btn-email');
+      if (btn) { btn.disabled = true; btn.textContent = 'Salvando...'; }
 
-      axShowResult(true, name);
+      // Save lead to Supabase via API
+      fetch('/api/quiz-lead/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name, email: email, quiz: 'ansiedade', score: axCalcScore() })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function() { axShowResult(true, name); })
+      .catch(function() { axShowResult(true, name); }); // show result even if API fails
     }
 
     function axSkipEmail() {

@@ -604,14 +604,19 @@ const breadcrumb = {
       document.getElementById('qz-email').classList.remove('error');
       QZ.hasEmail = true;
 
-      // Save lead
-      try {
-        var leads = JSON.parse(localStorage.getItem('zc_leads') || '[]');
-        leads.push({ name: name, email: email, quiz: 'sono', score: qzCalcScore(), ts: new Date().toISOString() });
-        localStorage.setItem('zc_leads', JSON.stringify(leads));
-      } catch(e) {}
+      // Disable button while saving
+      var btn = document.getElementById('qz-btn-email');
+      if (btn) { btn.disabled = true; btn.textContent = 'Salvando...'; }
 
-      qzShowResult(true, name);
+      // Save lead to Supabase via API
+      fetch('/api/quiz-lead/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: name, email: email, quiz: 'sono', score: qzCalcScore() })
+      })
+      .then(function(r) { return r.json(); })
+      .then(function() { qzShowResult(true, name); })
+      .catch(function() { qzShowResult(true, name); }); // show result even if API fails
     }
 
     function qzSkipEmail() {
