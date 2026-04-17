@@ -83,7 +83,29 @@ Dormir mal não é "apenas cansaço". Sono cronicamente insuficiente está assoc
 | Declínio cognitivo | Equivalente a envelhecer 4-7 anos |
 | Mortalidade geral | +13% |
 
+### O custo invisível no dia a dia
+
+Os efeitos não aparecem só em exames médicos. No cotidiano, o sono ruim crônico se manifesta de formas que a maioria das pessoas normaliza:
+
+**Produtividade:** uma noite de sono ruim reduz a capacidade cognitiva em até 30%. Multiplicado por 5 dias da semana, o impacto na performance profissional é comparável ao efeito de uma taxa de álcool no sangue de 0,05%.
+
+**Relações interpessoais:** estudos mostram que pessoas privadas de sono interpretam expressões faciais neutras como negativas, geram mais conflitos e têm menor capacidade de empatia. O sono ruim literalmente muda a forma como você percebe os outros.
+
+**Tomada de decisão:** o córtex pré-frontal — responsável por decisões racionais — é a primeira região afetada pela privação de sono. Decisões impulsivas, compras desnecessárias e erros de julgamento aumentam significativamente.
+
+**Acidentes:** a sonolência ao volante causa mais acidentes fatais no Brasil do que o álcool em algumas faixas etárias. O Ministério da Saúde estima que a privação de sono esteja envolvida em 20% dos acidentes de trânsito no país.
+
 [Sintomas de falta de sono no corpo →](/blog/sintomas-de-falta-de-sono-no-corpo)
+
+---
+
+## O Perfil Regional: Onde o Brasil Dorme Pior
+
+Os dados do Vigitel também revelam diferenças regionais importantes. Capitais com maior prevalência de sono insuficiente tendem a ter maior custo de vida, tempos de deslocamento mais longos e maiores índices de estresse urbano.
+
+Fatores como **ruído urbano**, **temperatura elevada** (especialmente no Norte e Nordeste) e **longas jornadas de trabalho** contribuem para a disparidade. A temperatura ambiente é particularmente relevante: o corpo precisa resfriar para iniciar o sono profundo, e quartos acima de 24°C dificultam esse processo — algo comum em grande parte do Brasil durante a maior parte do ano.
+
+[Temperatura ideal do quarto para dormir →](/blog/temperatura-do-quarto-ideal-para-dormir)
 
 ---
 

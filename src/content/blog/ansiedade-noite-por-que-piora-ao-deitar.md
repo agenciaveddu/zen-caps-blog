@@ -83,15 +83,37 @@ Deite e concentre a atenção nos pés. Sinta o peso. Suba lentamente: panturril
 
 Se após 20 minutos deitado você não dormiu: **levante**. Vá para outro cômodo, faça algo monótono com luz baixa (ler livro físico, dobrar roupas) e só volte quando sentir sono. Isso evita a associação "cama = frustração".
 
+Essa técnica é parte da **terapia de controle de estímulos**, considerada padrão-ouro no tratamento da insônia pela Academia Americana de Medicina do Sono. O princípio é simples: o cérebro precisa associar a cama exclusivamente com sono — não com preocupação, celular ou frustração.
+
+---
+
+## Quando a Ansiedade Noturna Vira Crônica
+
+A ansiedade noturna ocasional é normal — véspera de uma prova, entrevista, viagem. O problema começa quando o padrão se repete **3 ou mais noites por semana** por pelo menos um mês.
+
+Nesse ponto, o cérebro começa a criar uma **associação condicionada**: cama = ansiedade. Você pode sentir o coração acelerar só de pensar em ir dormir. Isso é chamado de **insônia psicofisiológica** — e é o tipo mais comum de insônia crônica em adultos.
+
+### Sinais de que a ansiedade noturna precisa de atenção
+
+- Você demora mais de 30 minutos para adormecer na maioria das noites
+- Sente **medo ou apreensão** quando a hora de dormir se aproxima
+- Funciona com energia artificial (cafeína, força de vontade) durante o dia
+- Tem a sensação de que "nunca descansa de verdade"
+- Acorda de madrugada com o coração acelerado sem motivo aparente
+
+Se três ou mais desses sinais se aplicam, a combinação de mudanças comportamentais com suporte nutricional costuma ser mais eficaz do que apenas uma abordagem isolada.
+
 ---
 
 ## O Suporte Bioquímico
 
 Técnicas comportamentais são a base. Mas quando o corpo está bioquimicamente em modo alerta, o suporte nutricional faz diferença:
 
-- **Magnésio** — o mineral mais deficiente no Brasil, ativa GABA (o "desligador" do cérebro)
-- **Triptofano** — precursor da serotonina, que regula ansiedade E é convertida em melatonina
-- **Melatonina** — sinaliza ao corpo que é seguro descansar
+**Magnésio** é o mineral mais deficiente no Brasil e atua diretamente no sistema GABA — o "desligador" do cérebro. Sem magnésio suficiente, o GABA não funciona adequadamente e o cérebro não consegue frear a atividade neural excessiva que alimenta a ruminação.
+
+**Triptofano** é o precursor da serotonina, que regula tanto a ansiedade diurna quanto o sono noturno. A serotonina produzida a partir do triptofano é convertida em melatonina pela glândula pineal — conectando diretamente o controle da ansiedade com a indução do sono.
+
+**Melatonina** em dose fisiológica (0,3-1mg) sinaliza ao corpo que é seguro descansar. Diferente de soníferos, ela não força o sono — apenas restaura o sinal que o cortisol elevado estava bloqueando.
 
 Essa combinação atua onde as técnicas de relaxamento não alcançam: no substrato bioquímico que sustenta o ciclo ansiedade-insônia.
 
