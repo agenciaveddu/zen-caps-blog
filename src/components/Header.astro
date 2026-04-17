@@ -93,8 +93,9 @@ const toolLinks = [
           href="https://zencaps.com.br"
           target="_blank"
           rel="noopener noreferrer"
-          class="hidden md:inline-flex zen-btn-gold"
-          style="padding: 0.45rem 1.25rem; font-size: 0.82rem;"
+          id="header-cta"
+          class="zen-btn-gold"
+          style="display: none; padding: 0.45rem 1.25rem; font-size: 0.82rem;"
         >
           Comprar Zen Caps
         </a>
@@ -180,6 +181,12 @@ const toolLinks = [
     </div>
   </div>
 </header>
+
+<style is:inline>
+  @media (min-width: 768px) {
+    #header-cta { display: inline-flex !important; }
+  }
+</style>
 
 <script>
   const toggle = document.getElementById('menu-toggle')
