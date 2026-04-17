@@ -229,6 +229,45 @@ const canonicalUrl = isFirstPage
     )}
   </section>
 
+  {/* ===== CALCULADORA CTA ===== */}
+  {isFirstPage && (
+    <section style="padding: 0 1.5rem; margin-bottom: 3rem;">
+      <div class="max-w-6xl mx-auto">
+        <div style="background: linear-gradient(135deg, #0D1B3E 0%, #172851 100%); border-radius: 20px; padding: 3rem 2rem; display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap; justify-content: center;">
+          <div style="flex: 1; min-width: 280px; max-width: 480px;">
+            <p style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #1DB8E8; margin: 0 0 0.5rem;">Ferramenta gratuita</p>
+            <h2 style="font-family: 'Sora', system-ui, sans-serif; font-size: clamp(1.3rem, 3vw, 1.6rem); font-weight: 800; color: #fff; margin: 0 0 0.75rem; line-height: 1.3;">
+              Calculadora de Sono
+            </h2>
+            <p style="font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin: 0 0 1.25rem;">
+              Descubra o melhor horário para dormir ou acordar com base nos ciclos de 90 minutos. Acorde descansado — sem precisar dormir mais.
+            </p>
+            <a
+              href="/blog/calculadora-de-sono/"
+              style="display: inline-flex; align-items: center; gap: 8px; padding: 0.75rem 1.75rem; background: linear-gradient(135deg, #1DB8E8, #5DD4F4); color: #fff; text-decoration: none; border-radius: 12px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9rem; box-shadow: 0 4px 16px rgba(29,184,232,0.3); transition: transform 0.15s;"
+              onmouseover="this.style.transform='translateY(-2px)'"
+              onmouseout="this.style.transform='translateY(0)'"
+            >
+              Usar calculadora &rarr;
+            </a>
+          </div>
+          <div style="display: flex; gap: 0.75rem; flex-shrink: 0;">
+            <div style="background: #f0fdf4; border: 2px solid #bbf7d0; border-radius: 14px; padding: 1rem 1.25rem; text-align: center; min-width: 90px;">
+              <div style="font-family: 'Sora', sans-serif; font-size: 1.3rem; font-weight: 900; color: #0fa36b;">22:15</div>
+              <div style="font-size: 0.7rem; font-weight: 700; color: #0fa36b;">5 ciclos</div>
+              <div style="font-size: 0.65rem; color: #6B7A9A;">Ideal</div>
+            </div>
+            <div style="background: #f0f7ff; border: 2px solid #bfdbfe; border-radius: 14px; padding: 1rem 1.25rem; text-align: center; min-width: 90px;">
+              <div style="font-family: 'Sora', sans-serif; font-size: 1.3rem; font-weight: 900; color: #1DB8E8;">23:45</div>
+              <div style="font-size: 0.7rem; font-weight: 700; color: #1DB8E8;">4 ciclos</div>
+              <div style="font-size: 0.65rem; color: #6B7A9A;">Aceitável</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
   {/* ===== CTA BANNER ===== */}
   <div class="max-w-6xl mx-auto px-4 sm:px-6 pb-16">
     <CTABanner variant="full" />

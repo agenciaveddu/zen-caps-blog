@@ -90,6 +90,79 @@ const breadcrumbSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
+  <style>
+    .spinner-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .spinner-btn {
+      width: 52px;
+      height: 32px;
+      border: none;
+      border-radius: 8px;
+      background: #e8eef6;
+      color: #0D1B3E;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .spinner-btn:hover {
+      background: #1DB8E8;
+      color: #fff;
+    }
+    .spinner-btn:active {
+      transform: scale(0.95);
+    }
+    .spinner-value {
+      width: 80px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Sora', system-ui, sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #0D1B3E;
+      background: #F4F8FC;
+      border: 2px solid #e8eef6;
+      border-radius: 14px;
+      transition: border-color 0.2s;
+    }
+    .spinner-value:focus-within {
+      border-color: #1DB8E8;
+    }
+    .time-separator {
+      font-family: 'Sora', system-ui, sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #0D1B3E;
+      padding-top: 32px;
+    }
+    @media (max-width: 420px) {
+      .spinner-value {
+        width: 68px;
+        height: 64px;
+        font-size: 1.8rem;
+      }
+      .spinner-btn {
+        width: 44px;
+        height: 28px;
+        font-size: 1rem;
+      }
+      .time-separator {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+
   <div style="background: #F4F8FC; min-height: 80vh;">
 
     <!-- Hero -->
@@ -115,10 +188,10 @@ const breadcrumbSchema = {
           <!-- Modo selector -->
           <div style="display: flex; gap: 0.5rem; margin-bottom: 2rem; background: #F4F8FC; border-radius: 12px; padding: 4px;">
             <button id="mode-wake" type="button" style="flex: 1; padding: 0.75rem 1rem; border-radius: 10px; border: none; font-family: 'Sora', system-ui, sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s; background: #1DB8E8; color: #fff;">
-              Quero acordar as...
+              Quero acordar às...
             </button>
             <button id="mode-sleep" type="button" style="flex: 1; padding: 0.75rem 1rem; border-radius: 10px; border: none; font-family: 'Sora', system-ui, sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s; background: transparent; color: #6B7A9A;">
-              Vou dormir as...
+              Vou dormir às...
             </button>
           </div>
 
@@ -127,30 +200,22 @@ const breadcrumbSchema = {
             A que horas você <strong>precisa acordar</strong>?
           </p>
 
-          <!-- Time picker -->
-          <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1.5rem;">
-            <div style="position: relative;">
-              <select id="hour-select" style="appearance: none; -webkit-appearance: none; width: 90px; padding: 1rem 0.5rem; text-align: center; font-family: 'Sora', system-ui, sans-serif; font-size: 2rem; font-weight: 800; color: #0D1B3E; border: 2px solid #e8eef6; border-radius: 14px; background: #F4F8FC; cursor: pointer; transition: border-color 0.2s;">
-                <option value="0">00</option><option value="1">01</option><option value="2">02</option>
-                <option value="3">03</option><option value="4">04</option><option value="5">05</option>
-                <option value="6" selected>06</option><option value="7">07</option><option value="8">08</option>
-                <option value="9">09</option><option value="10">10</option><option value="11">11</option>
-                <option value="12">12</option><option value="13">13</option><option value="14">14</option>
-                <option value="15">15</option><option value="16">16</option><option value="17">17</option>
-                <option value="18">18</option><option value="19">19</option><option value="20">20</option>
-                <option value="21">21</option><option value="22">22</option><option value="23">23</option>
-              </select>
+          <!-- Time picker com spinner -->
+          <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+            <!-- Horas -->
+            <div class="spinner-wrap">
+              <button type="button" class="spinner-btn" data-target="hour" data-dir="up" aria-label="Aumentar hora">&#9650;</button>
+              <div class="spinner-value" id="hour-display">06</div>
+              <button type="button" class="spinner-btn" data-target="hour" data-dir="down" aria-label="Diminuir hora">&#9660;</button>
             </div>
-            <span style="font-family: 'Sora', system-ui, sans-serif; font-size: 2rem; font-weight: 800; color: #0D1B3E;">:</span>
-            <div style="position: relative;">
-              <select id="minute-select" style="appearance: none; -webkit-appearance: none; width: 90px; padding: 1rem 0.5rem; text-align: center; font-family: 'Sora', system-ui, sans-serif; font-size: 2rem; font-weight: 800; color: #0D1B3E; border: 2px solid #e8eef6; border-radius: 14px; background: #F4F8FC; cursor: pointer; transition: border-color 0.2s;">
-                <option value="0" selected>00</option><option value="5">05</option>
-                <option value="10">10</option><option value="15">15</option>
-                <option value="20">20</option><option value="25">25</option>
-                <option value="30">30</option><option value="35">35</option>
-                <option value="40">40</option><option value="45">45</option>
-                <option value="50">50</option><option value="55">55</option>
-              </select>
+
+            <span class="time-separator">:</span>
+
+            <!-- Minutos -->
+            <div class="spinner-wrap">
+              <button type="button" class="spinner-btn" data-target="minute" data-dir="up" aria-label="Aumentar minutos">&#9650;</button>
+              <div class="spinner-value" id="minute-display">00</div>
+              <button type="button" class="spinner-btn" data-target="minute" data-dir="down" aria-label="Diminuir minutos">&#9660;</button>
             </div>
           </div>
 
@@ -159,7 +224,7 @@ const breadcrumbSchema = {
             <label for="fall-asleep" style="font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.85rem; color: #6B7A9A;">
               Tempo para adormecer:
             </label>
-            <select id="fall-asleep" style="appearance: none; -webkit-appearance: none; padding: 0.5rem 1rem; font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.85rem; color: #0D1B3E; border: 2px solid #e8eef6; border-radius: 10px; background: #F4F8FC; cursor: pointer;">
+            <select id="fall-asleep" style="padding: 0.5rem 1.5rem 0.5rem 1rem; font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.85rem; color: #0D1B3E; border: 2px solid #e8eef6; border-radius: 10px; background: #F4F8FC; cursor: pointer;">
               <option value="5">5 min</option>
               <option value="10">10 min</option>
               <option value="15" selected>15 min</option>
@@ -178,10 +243,10 @@ const breadcrumbSchema = {
         <div id="results-container" style="display: none; margin-top: 1.5rem;">
           <div style="background: #FFFFFF; border-radius: 20px; box-shadow: 0 4px 24px rgba(13,27,62,0.08); padding: 2rem; border: 1px solid #e8eef6;">
             <h2 style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.2rem; font-weight: 800; color: #0D1B3E; margin: 0 0 0.5rem; text-align: center;">
-              <span id="results-title">Durma em um destes horarios:</span>
+              <span id="results-title">Durma em um destes horários:</span>
             </h2>
             <p id="results-subtitle" style="font-size: 0.85rem; color: #6B7A9A; text-align: center; margin: 0 0 1.5rem;">
-              Escolha o horario que completa mais ciclos de sono
+              Escolha o horário que completa mais ciclos de sono
             </p>
 
             <div id="results-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
@@ -190,7 +255,7 @@ const breadcrumbSchema = {
 
             <div style="margin-top: 1.5rem; padding: 1rem; background: #F0FAFF; border-radius: 12px; border: 1px solid #d0eef8;">
               <p style="font-size: 0.82rem; color: #1a6b8a; line-height: 1.6; margin: 0;">
-                <strong>Como ler:</strong> Os horarios em <span style="color: #0fa36b; font-weight: 700;">verde</span> completam 5-6 ciclos (ideal). Os em <span style="color: #1DB8E8; font-weight: 700;">azul</span> completam 4 ciclos (aceitavel). Os em <span style="color: #C9A84C; font-weight: 700;">dourado</span> completam 3 ciclos (minimo).
+                <strong>Como ler:</strong> Os horários em <span style="color: #0fa36b; font-weight: 700;">verde</span> completam 5-6 ciclos (ideal). Os em <span style="color: #1DB8E8; font-weight: 700;">azul</span> completam 4 ciclos (aceitável). Os em <span style="color: #C9A84C; font-weight: 700;">dourado</span> completam 3 ciclos (mínimo).
               </p>
             </div>
           </div>
@@ -209,25 +274,25 @@ const breadcrumbSchema = {
 
         <div style="background: #FFFFFF; border-radius: 18px; padding: 2rem; border: 1px solid #e8eef6; margin-bottom: 2rem;">
           <p style="font-size: 0.95rem; color: #3A4A6B; line-height: 1.8; margin: 0 0 1.25rem;">
-            O sono funciona em <strong>ciclos de aproximadamente 90 minutos</strong>. Cada ciclo passa por 4 fases: adormecer (N1), sono leve (N2), sono profundo (N3) e sono REM. Ao final de cada ciclo, o corpo retorna brevemente a um estado de sono leve antes de iniciar o proximo.
+            O sono funciona em <strong>ciclos de aproximadamente 90 minutos</strong>. Cada ciclo passa por 4 fases: adormecer (N1), sono leve (N2), sono profundo (N3) e sono REM. Ao final de cada ciclo, o corpo retorna brevemente a um estado de sono leve antes de iniciar o próximo.
           </p>
           <p style="font-size: 0.95rem; color: #3A4A6B; line-height: 1.8; margin: 0 0 1.25rem;">
-            Quando o despertador toca <strong>entre ciclos</strong>, voce acorda com facilidade e se sente descansado. Quando toca no <strong>meio do sono profundo</strong>, o resultado e aquela sensacao de cansaco e desorientacao, mesmo tendo dormido muitas horas.
+            Quando o despertador toca <strong>entre ciclos</strong>, você acorda com facilidade e se sente descansado. Quando toca no <strong>meio do sono profundo</strong>, o resultado é aquela sensação de cansaço e desorientação, mesmo tendo dormido muitas horas.
           </p>
           <p style="font-size: 0.95rem; color: #3A4A6B; line-height: 1.8; margin: 0;">
-            A calculadora faz a conta por voce: calcula os momentos ideais para dormir ou acordar, alinhando o despertador com o final de um ciclo completo.
+            A calculadora faz a conta por você: calcula os momentos ideais para dormir ou acordar, alinhando o despertador com o final de um ciclo completo.
           </p>
         </div>
 
         <!-- Ciclos visuais -->
         <div style="background: #FFFFFF; border-radius: 18px; padding: 2rem; border: 1px solid #e8eef6; margin-bottom: 2rem;">
           <h3 style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.1rem; font-weight: 700; color: #0D1B3E; margin: 0 0 1.25rem;">
-            Quantos ciclos voce precisa?
+            Quantos ciclos você precisa?
           </h3>
           <div style="display: flex; flex-direction: column; gap: 0.75rem;">
             <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1rem; background: #f0fdf4; border-radius: 10px; border: 1px solid #bbf7d0;">
               <span style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.1rem; color: #0fa36b; min-width: 90px;">6 ciclos</span>
-              <span style="font-size: 0.9rem; color: #3A4A6B;"><strong>9 horas</strong> — Recuperacao completa, ideal apos privacao de sono</span>
+              <span style="font-size: 0.9rem; color: #3A4A6B;"><strong>9 horas</strong> — Recuperação completa, ideal após privação de sono</span>
             </div>
             <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1rem; background: #f0fdf4; border-radius: 10px; border: 1px solid #bbf7d0;">
               <span style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.1rem; color: #0fa36b; min-width: 90px;">5 ciclos</span>
@@ -235,11 +300,11 @@ const breadcrumbSchema = {
             </div>
             <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1rem; background: #f0f7ff; border-radius: 10px; border: 1px solid #bfdbfe;">
               <span style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.1rem; color: #1DB8E8; min-width: 90px;">4 ciclos</span>
-              <span style="font-size: 0.9rem; color: #3A4A6B;"><strong>6 horas</strong> — Aceitavel eventualmente, nao como rotina</span>
+              <span style="font-size: 0.9rem; color: #3A4A6B;"><strong>6 horas</strong> — Aceitável eventualmente, não como rotina</span>
             </div>
             <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem 1rem; background: #fffbeb; border-radius: 10px; border: 1px solid #fde68a;">
               <span style="font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.1rem; color: #C9A84C; min-width: 90px;">3 ciclos</span>
-              <span style="font-size: 0.9rem; color: #3A4A6B;"><strong>4h30</strong> — Minimo absoluto, apenas emergencias</span>
+              <span style="font-size: 0.9rem; color: #3A4A6B;"><strong>4h30</strong> — Mínimo absoluto, apenas emergências</span>
             </div>
           </div>
         </div>
@@ -247,14 +312,14 @@ const breadcrumbSchema = {
         <!-- Dicas -->
         <div style="background: #FFFFFF; border-radius: 18px; padding: 2rem; border: 1px solid #e8eef6; margin-bottom: 2rem;">
           <h3 style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.1rem; font-weight: 700; color: #0D1B3E; margin: 0 0 1.25rem;">
-            Dicas para dormir nos horarios calculados
+            Dicas para dormir nos horários calculados
           </h3>
           <ul style="font-size: 0.92rem; color: #3A4A6B; line-height: 1.8; padding-left: 1.25rem; margin: 0;">
-            <li><strong>Evite telas</strong> pelo menos 30 minutos antes do horario calculado</li>
+            <li><strong>Evite telas</strong> pelo menos 30 minutos antes do horário calculado</li>
             <li><strong>Mantenha o quarto</strong> escuro, silencioso e fresco (18-21°C)</li>
-            <li><strong>Evite cafeina</strong> pelo menos 6 horas antes de dormir</li>
-            <li><strong>Crie uma rotina</strong> — deite no mesmo horario todos os dias</li>
-            <li><strong>Magnesio e triptofano</strong> ajudam o corpo a relaxar e completar os ciclos de sono com mais qualidade</li>
+            <li><strong>Evite cafeína</strong> pelo menos 6 horas antes de dormir</li>
+            <li><strong>Crie uma rotina</strong> — deite no mesmo horário todos os dias</li>
+            <li><strong>Magnésio e triptofano</strong> ajudam o corpo a relaxar e completar os ciclos de sono com mais qualidade</li>
           </ul>
         </div>
 
@@ -265,20 +330,20 @@ const breadcrumbSchema = {
           </h3>
           <div style="display: flex; flex-direction: column; gap: 1.25rem;">
             <div>
-              <h4 style="font-family: 'Sora', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0D1B3E; margin: 0 0 0.4rem;">Quantos ciclos de sono sao ideais por noite?</h4>
-              <p style="font-size: 0.88rem; color: #3A4A6B; line-height: 1.7; margin: 0;">O ideal e completar entre 5 e 6 ciclos por noite, equivalente a 7h30 ou 9h de sono. O minimo recomendado e 4 ciclos (6 horas), mas isso nao deve ser rotina.</p>
+              <h4 style="font-family: 'Sora', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0D1B3E; margin: 0 0 0.4rem;">Quantos ciclos de sono são ideais por noite?</h4>
+              <p style="font-size: 0.88rem; color: #3A4A6B; line-height: 1.7; margin: 0;">O ideal é completar entre 5 e 6 ciclos por noite, equivalente a 7h30 ou 9h de sono. O mínimo recomendado é 4 ciclos (6 horas), mas isso não deve ser rotina.</p>
             </div>
             <div style="border-top: 1px solid #f0f3f8; padding-top: 1.25rem;">
               <h4 style="font-family: 'Sora', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0D1B3E; margin: 0 0 0.4rem;">Por que acordo cansado mesmo dormindo 8 horas?</h4>
-              <p style="font-size: 0.88rem; color: #3A4A6B; line-height: 1.7; margin: 0;">Provavelmente voce esta acordando no meio de um ciclo de sono profundo. 8 horas nao e multiplo de 90 minutos (os multiplos sao 6h, 7h30 e 9h). Use a calculadora para alinhar seu despertador. <a href="/blog/por-que-voce-acorda-cansado-mesmo-dormindo-8-horas/" style="color: #1DB8E8; text-decoration: none; font-weight: 600;">Saiba mais</a></p>
+              <p style="font-size: 0.88rem; color: #3A4A6B; line-height: 1.7; margin: 0;">Provavelmente você está acordando no meio de um ciclo de sono profundo. 8 horas não é múltiplo de 90 minutos (os múltiplos são 6h, 7h30 e 9h). Use a calculadora para alinhar seu despertador. <a href="/blog/por-que-voce-acorda-cansado-mesmo-dormindo-8-horas/" style="color: #1DB8E8; text-decoration: none; font-weight: 600;">Saiba mais</a></p>
             </div>
             <div style="border-top: 1px solid #f0f3f8; padding-top: 1.25rem;">
-              <h4 style="font-family: 'Sora', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0D1B3E; margin: 0 0 0.4rem;">O tempo para adormecer afeta o calculo?</h4>
-              <p style="font-size: 0.88rem; color: #3A4A6B; line-height: 1.7; margin: 0;">Sim. A calculadora inclui o tempo estimado para adormecer (padrao: 15 minutos). Se voce demora mais, ajuste esse valor para um resultado mais preciso.</p>
+              <h4 style="font-family: 'Sora', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0D1B3E; margin: 0 0 0.4rem;">O tempo para adormecer afeta o cálculo?</h4>
+              <p style="font-size: 0.88rem; color: #3A4A6B; line-height: 1.7; margin: 0;">Sim. A calculadora inclui o tempo estimado para adormecer (padrão: 15 minutos). Se você demora mais, ajuste esse valor para um resultado mais preciso.</p>
             </div>
             <div style="border-top: 1px solid #f0f3f8; padding-top: 1.25rem;">
               <h4 style="font-family: 'Sora', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0D1B3E; margin: 0 0 0.4rem;">Suplementos ajudam a completar os ciclos de sono?</h4>
-              <p style="font-size: 0.88rem; color: #3A4A6B; line-height: 1.7; margin: 0;">Magnesio ativa o sistema GABA, que facilita a transicao entre fases do sono. Triptofano e precursor da serotonina e melatonina, regulando o ritmo circadiano. Juntos, ajudam o corpo a completar os ciclos com mais qualidade. <a href="/blog/magnesio-para-sono-e-ansiedade/" style="color: #1DB8E8; text-decoration: none; font-weight: 600;">Saiba mais</a></p>
+              <p style="font-size: 0.88rem; color: #3A4A6B; line-height: 1.7; margin: 0;">Magnésio ativa o sistema GABA, que facilita a transição entre fases do sono. Triptofano é precursor da serotonina e melatonina, regulando o ritmo circadiano. Juntos, ajudam o corpo a completar os ciclos com mais qualidade. <a href="/blog/magnesio-para-sono-e-ansiedade/" style="color: #1DB8E8; text-decoration: none; font-weight: 600;">Saiba mais</a></p>
             </div>
           </div>
         </div>
@@ -287,10 +352,10 @@ const breadcrumbSchema = {
         <div style="background: linear-gradient(135deg, #0D1B3E 0%, #172851 100%); border-radius: 18px; padding: 2.5rem 2rem; text-align: center; margin-bottom: 2rem;">
           <p style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #1DB8E8; margin: 0 0 0.75rem;">Durma melhor de verdade</p>
           <h3 style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.3rem; font-weight: 800; color: #fff; margin: 0 0 1rem; line-height: 1.3;">
-            Calcular o horario certo e o primeiro passo.<br/>Dar ao corpo o que ele precisa e o segundo.
+            Calcular o horário certo é o primeiro passo.<br/>Dar ao corpo o que ele precisa é o segundo.
           </h3>
           <p style="font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin: 0 0 1.5rem; max-width: 480px; margin-left: auto; margin-right: auto;">
-            Zen Caps combina magnesio, triptofano, melatonina e vitamina B6 para ajudar seu corpo a completar os ciclos de sono com mais qualidade.
+            Zen Caps combina magnésio, triptofano, melatonina e vitamina B6 para ajudar seu corpo a completar os ciclos de sono com mais qualidade.
           </p>
           <a href="https://zencaps.com.br" style="display: inline-block; padding: 0.85rem 2rem; background: linear-gradient(135deg, #1DB8E8, #5DD4F4); color: #fff; text-decoration: none; border-radius: 12px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.95rem; box-shadow: 0 4px 16px rgba(29,184,232,0.3); transition: transform 0.15s;">
             Conhecer Zen Caps
@@ -303,11 +368,11 @@ const breadcrumbSchema = {
             Artigos relacionados
           </h3>
           <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
-            <li><a href="/blog/por-que-voce-acorda-cansado-mesmo-dormindo-8-horas/" style="color: #1DB8E8; text-decoration: none; font-weight: 600; font-size: 0.92rem;">Por que voce acorda cansado mesmo dormindo 8 horas</a></li>
+            <li><a href="/blog/por-que-voce-acorda-cansado-mesmo-dormindo-8-horas/" style="color: #1DB8E8; text-decoration: none; font-weight: 600; font-size: 0.92rem;">Por que você acorda cansado mesmo dormindo 8 horas</a></li>
             <li><a href="/blog/como-dormir-melhor-guia-completo/" style="color: #1DB8E8; text-decoration: none; font-weight: 600; font-size: 0.92rem;">Como dormir melhor: guia completo</a></li>
             <li><a href="/blog/quanto-tempo-preciso-dormir-por-noite/" style="color: #1DB8E8; text-decoration: none; font-weight: 600; font-size: 0.92rem;">Quanto tempo preciso dormir por noite?</a></li>
             <li><a href="/blog/sono-profundo-como-conseguir-mais/" style="color: #1DB8E8; text-decoration: none; font-weight: 600; font-size: 0.92rem;">Sono profundo: como conseguir mais</a></li>
-            <li><a href="/blog/ansiedade-noite-por-que-piora-ao-deitar/" style="color: #1DB8E8; text-decoration: none; font-weight: 600; font-size: 0.92rem;">Por que a ansiedade piora a noite ao deitar</a></li>
+            <li><a href="/blog/ansiedade-noite-por-que-piora-ao-deitar/" style="color: #1DB8E8; text-decoration: none; font-weight: 600; font-size: 0.92rem;">Por que a ansiedade piora à noite ao deitar</a></li>
           </ul>
         </div>
 
@@ -327,8 +392,8 @@ const breadcrumbSchema = {
     const modeWake = document.getElementById('mode-wake');
     const modeSleep = document.getElementById('mode-sleep');
     const instruction = document.getElementById('calc-instruction');
-    const hourSelect = document.getElementById('hour-select');
-    const minuteSelect = document.getElementById('minute-select');
+    const hourDisplay = document.getElementById('hour-display');
+    const minuteDisplay = document.getElementById('minute-display');
     const fallAsleep = document.getElementById('fall-asleep');
     const btnCalc = document.getElementById('btn-calculate');
     const resultsContainer = document.getElementById('results-container');
@@ -336,34 +401,80 @@ const breadcrumbSchema = {
     const resultsTitle = document.getElementById('results-title');
     const resultsSubtitle = document.getElementById('results-subtitle');
 
-    let mode = 'wake'; // 'wake' or 'sleep'
+    let mode = 'wake';
+    let currentHour = 6;
+    let currentMinute = 0;
 
     const activeStyle = 'background: #1DB8E8; color: #fff;';
     const inactiveStyle = 'background: transparent; color: #6B7A9A;';
+    const baseBtn = "flex: 1; padding: 0.75rem 1rem; border-radius: 10px; border: none; font-family: 'Sora', system-ui, sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s; ";
+
+    function pad(n) {
+      return n.toString().padStart(2, '0');
+    }
+
+    function updateDisplay() {
+      hourDisplay.textContent = pad(currentHour);
+      minuteDisplay.textContent = pad(currentMinute);
+    }
+
+    // Spinner buttons
+    document.querySelectorAll('.spinner-btn').forEach(btn => {
+      let interval = null;
+      let timeout = null;
+
+      function step() {
+        const target = btn.dataset.target;
+        const dir = btn.dataset.dir === 'up' ? 1 : -1;
+
+        if (target === 'hour') {
+          currentHour = ((currentHour + dir) % 24 + 24) % 24;
+        } else {
+          currentMinute = ((currentMinute + dir * 5) % 60 + 60) % 60;
+        }
+        updateDisplay();
+      }
+
+      btn.addEventListener('click', step);
+
+      // Hold to repeat
+      btn.addEventListener('mousedown', () => {
+        timeout = setTimeout(() => {
+          interval = setInterval(step, 120);
+        }, 400);
+      });
+
+      btn.addEventListener('mouseup', () => { clearTimeout(timeout); clearInterval(interval); });
+      btn.addEventListener('mouseleave', () => { clearTimeout(timeout); clearInterval(interval); });
+      btn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        step();
+        timeout = setTimeout(() => {
+          interval = setInterval(step, 120);
+        }, 400);
+      }, { passive: false });
+      btn.addEventListener('touchend', () => { clearTimeout(timeout); clearInterval(interval); });
+    });
 
     modeWake.addEventListener('click', () => {
       mode = 'wake';
-      modeWake.style.cssText = `flex: 1; padding: 0.75rem 1rem; border-radius: 10px; border: none; font-family: 'Sora', system-ui, sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s; ${activeStyle}`;
-      modeSleep.style.cssText = `flex: 1; padding: 0.75rem 1rem; border-radius: 10px; border: none; font-family: 'Sora', system-ui, sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s; ${inactiveStyle}`;
-      instruction.innerHTML = 'A que horas voce <strong>precisa acordar</strong>?';
-      hourSelect.value = '6';
-      minuteSelect.value = '0';
+      modeWake.style.cssText = baseBtn + activeStyle;
+      modeSleep.style.cssText = baseBtn + inactiveStyle;
+      instruction.innerHTML = 'A que horas você <strong>precisa acordar</strong>?';
+      currentHour = 6; currentMinute = 0;
+      updateDisplay();
       resultsContainer.style.display = 'none';
     });
 
     modeSleep.addEventListener('click', () => {
       mode = 'sleep';
-      modeSleep.style.cssText = `flex: 1; padding: 0.75rem 1rem; border-radius: 10px; border: none; font-family: 'Sora', system-ui, sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s; ${activeStyle}`;
-      modeWake.style.cssText = `flex: 1; padding: 0.75rem 1rem; border-radius: 10px; border: none; font-family: 'Sora', system-ui, sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s; ${inactiveStyle}`;
-      instruction.innerHTML = 'A que horas voce <strong>vai dormir</strong>?';
-      hourSelect.value = '23';
-      minuteSelect.value = '0';
+      modeSleep.style.cssText = baseBtn + activeStyle;
+      modeWake.style.cssText = baseBtn + inactiveStyle;
+      instruction.innerHTML = 'A que horas você <strong>vai dormir</strong>?';
+      currentHour = 23; currentMinute = 0;
+      updateDisplay();
       resultsContainer.style.display = 'none';
     });
-
-    function pad(n) {
-      return n.toString().padStart(2, '0');
-    }
 
     function formatTime(totalMinutes) {
       let m = ((totalMinutes % 1440) + 1440) % 1440;
@@ -371,24 +482,21 @@ const breadcrumbSchema = {
     }
 
     function getCycleInfo(cycles) {
-      if (cycles >= 5) return { color: '#0fa36b', bg: '#f0fdf4', border: '#bbf7d0', label: 'Ideal', emoji: '&#x2705;' };
-      if (cycles === 4) return { color: '#1DB8E8', bg: '#f0f7ff', border: '#bfdbfe', label: 'Aceitavel', emoji: '&#x1F7E6;' };
-      return { color: '#C9A84C', bg: '#fffbeb', border: '#fde68a', label: 'Minimo', emoji: '&#x26A0;&#xFE0F;' };
+      if (cycles >= 5) return { color: '#0fa36b', bg: '#f0fdf4', border: '#bbf7d0', label: 'Ideal' };
+      if (cycles === 4) return { color: '#1DB8E8', bg: '#f0f7ff', border: '#bfdbfe', label: 'Aceitável' };
+      return { color: '#C9A84C', bg: '#fffbeb', border: '#fde68a', label: 'Mínimo' };
     }
 
     function calculate() {
-      const hour = parseInt(hourSelect.value);
-      const minute = parseInt(minuteSelect.value);
       const fallAsleepMin = parseInt(fallAsleep.value);
       const cycleLength = 90;
-      const totalMinInput = hour * 60 + minute;
+      const totalMinInput = currentHour * 60 + currentMinute;
 
       let results = [];
 
       if (mode === 'wake') {
-        // Calculate bedtimes for 6, 5, 4, 3 cycles
-        resultsTitle.textContent = 'Durma em um destes horarios:';
-        resultsSubtitle.textContent = 'Para acordar as ' + formatTime(totalMinInput) + ' descansado';
+        resultsTitle.textContent = 'Durma em um destes horários:';
+        resultsSubtitle.textContent = 'Para acordar às ' + formatTime(totalMinInput) + ' descansado';
 
         for (let cycles = 6; cycles >= 3; cycles--) {
           const sleepDuration = cycles * cycleLength;
@@ -396,17 +504,11 @@ const breadcrumbSchema = {
           const info = getCycleInfo(cycles);
           const sleepHours = sleepDuration / 60;
           const sleepLabel = Number.isInteger(sleepHours) ? sleepHours + 'h' : Math.floor(sleepHours) + 'h' + (sleepDuration % 60) + 'min';
-          results.push({
-            time: formatTime(bedtime),
-            cycles: cycles,
-            duration: sleepLabel,
-            info: info,
-          });
+          results.push({ time: formatTime(bedtime), cycles, duration: sleepLabel, info });
         }
       } else {
-        // Calculate wake times for 3, 4, 5, 6 cycles
-        resultsTitle.textContent = 'Acorde em um destes horarios:';
-        resultsSubtitle.textContent = 'Se voce dormir as ' + formatTime(totalMinInput) + ', acorde as:';
+        resultsTitle.textContent = 'Acorde em um destes horários:';
+        resultsSubtitle.textContent = 'Se você dormir às ' + formatTime(totalMinInput) + ', acorde às:';
 
         for (let cycles = 3; cycles <= 6; cycles++) {
           const sleepDuration = cycles * cycleLength;
@@ -414,12 +516,7 @@ const breadcrumbSchema = {
           const info = getCycleInfo(cycles);
           const sleepHours = sleepDuration / 60;
           const sleepLabel = Number.isInteger(sleepHours) ? sleepHours + 'h' : Math.floor(sleepHours) + 'h' + (sleepDuration % 60) + 'min';
-          results.push({
-            time: formatTime(wakeTime),
-            cycles: cycles,
-            duration: sleepLabel,
-            info: info,
-          });
+          results.push({ time: formatTime(wakeTime), cycles, duration: sleepLabel, info });
         }
       }
 
@@ -451,11 +548,6 @@ const breadcrumbSchema = {
     btnCalc.addEventListener('mouseleave', () => {
       btnCalc.style.transform = 'translateY(0)';
       btnCalc.style.boxShadow = '0 4px 16px rgba(29,184,232,0.3)';
-    });
-
-    [hourSelect, minuteSelect, fallAsleep].forEach(el => {
-      el.addEventListener('focus', () => { el.style.borderColor = '#1DB8E8'; });
-      el.addEventListener('blur', () => { el.style.borderColor = '#e8eef6'; });
     });
   </script>
 
