@@ -229,40 +229,65 @@ const canonicalUrl = isFirstPage
     )}
   </section>
 
-  {/* ===== CALCULADORA CTA ===== */}
+  {/* ===== FERRAMENTAS GRATUITAS ===== */}
   {isFirstPage && (
     <section style="padding: 0 1.5rem; margin-bottom: 3rem;">
       <div class="max-w-6xl mx-auto">
-        <div style="background: linear-gradient(135deg, #0D1B3E 0%, #172851 100%); border-radius: 20px; padding: 3rem 2rem; display: flex; align-items: center; gap: 2.5rem; flex-wrap: wrap; justify-content: center;">
-          <div style="flex: 1; min-width: 280px; max-width: 480px;">
-            <p style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #1DB8E8; margin: 0 0 0.5rem;">Ferramenta gratuita</p>
-            <h2 style="font-family: 'Sora', system-ui, sans-serif; font-size: clamp(1.3rem, 3vw, 1.6rem); font-weight: 800; color: #fff; margin: 0 0 0.75rem; line-height: 1.3;">
-              Calculadora de Sono
-            </h2>
-            <p style="font-size: 0.92rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin: 0 0 1.25rem;">
-              Descubra o melhor horário para dormir ou acordar com base nos ciclos de 90 minutos. Acorde descansado — sem precisar dormir mais.
-            </p>
-            <a
-              href="/blog/calculadora-de-sono/"
-              style="display: inline-flex; align-items: center; gap: 8px; padding: 0.75rem 1.75rem; background: linear-gradient(135deg, #1DB8E8, #5DD4F4); color: #fff; text-decoration: none; border-radius: 12px; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.9rem; box-shadow: 0 4px 16px rgba(29,184,232,0.3); transition: transform 0.15s;"
-              onmouseover="this.style.transform='translateY(-2px)'"
-              onmouseout="this.style.transform='translateY(0)'"
-            >
-              Usar calculadora &rarr;
-            </a>
-          </div>
-          <div style="display: flex; gap: 0.75rem; flex-shrink: 0;">
-            <div style="background: #f0fdf4; border: 2px solid #bbf7d0; border-radius: 14px; padding: 1rem 1.25rem; text-align: center; min-width: 90px;">
-              <div style="font-family: 'Sora', sans-serif; font-size: 1.3rem; font-weight: 900; color: #0fa36b;">22:15</div>
-              <div style="font-size: 0.7rem; font-weight: 700; color: #0fa36b;">5 ciclos</div>
-              <div style="font-size: 0.65rem; color: #6B7A9A;">Ideal</div>
+
+        {/* Section heading */}
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 24px;">
+          <div style="height: 3px; width: 40px; background: linear-gradient(90deg, #1DB8E8, #5DD4F4); border-radius: 4px;"></div>
+          <h2 style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.3rem; font-weight: 800; color: #0D1B3E; margin: 0;">
+            Ferramentas Gratuitas
+          </h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px;">
+
+          {/* Calculadora de Sono */}
+          <a href="/blog/calculadora-de-sono/" style="background: linear-gradient(135deg, #0D1B3E 0%, #172851 100%); border-radius: 16px; padding: 1.75rem; text-decoration: none; display: flex; flex-direction: column; gap: 12px; transition: transform 0.15s, box-shadow 0.15s; border: 1px solid rgba(29,184,232,0.15);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 30px rgba(0,0,0,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🌙</span>
+              <p style="font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #1DB8E8; margin: 0;">Calculadora</p>
             </div>
-            <div style="background: #f0f7ff; border: 2px solid #bfdbfe; border-radius: 14px; padding: 1rem 1.25rem; text-align: center; min-width: 90px;">
-              <div style="font-family: 'Sora', sans-serif; font-size: 1.3rem; font-weight: 900; color: #1DB8E8;">23:45</div>
-              <div style="font-size: 0.7rem; font-weight: 700; color: #1DB8E8;">4 ciclos</div>
-              <div style="font-size: 0.65rem; color: #6B7A9A;">Aceitável</div>
+            <h3 style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0; line-height: 1.3;">Calculadora de Sono</h3>
+            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.6; margin: 0; flex: 1;">Descubra o melhor horário para dormir ou acordar com base nos ciclos de 90 minutos.</p>
+            <span style="font-size: 0.82rem; font-weight: 700; color: #1DB8E8; font-family: 'Sora', sans-serif;">Usar agora &rarr;</span>
+          </a>
+
+          {/* Quiz do Sono */}
+          <a href="/blog/quiz-do-sono/" style="background: linear-gradient(135deg, #0D1B3E 0%, #172851 100%); border-radius: 16px; padding: 1.75rem; text-decoration: none; display: flex; flex-direction: column; gap: 12px; transition: transform 0.15s, box-shadow 0.15s; border: 1px solid rgba(29,184,232,0.15);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 30px rgba(0,0,0,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">😴</span>
+              <p style="font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #1DB8E8; margin: 0;">Quiz</p>
             </div>
-          </div>
+            <h3 style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0; line-height: 1.3;">Quiz do Sono</h3>
+            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.6; margin: 0; flex: 1;">Responda 8 perguntas e descubra a qualidade real do seu sono. Receba dicas personalizadas.</p>
+            <span style="font-size: 0.82rem; font-weight: 700; color: #1DB8E8; font-family: 'Sora', sans-serif;">Fazer quiz &rarr;</span>
+          </a>
+
+          {/* Quiz Dopaminérgico */}
+          <a href="/blog/quiz-dopamina/" style="background: linear-gradient(135deg, #1a1040 0%, #2d1b69 100%); border-radius: 16px; padding: 1.75rem; text-decoration: none; display: flex; flex-direction: column; gap: 12px; transition: transform 0.15s, box-shadow 0.15s; border: 1px solid rgba(91,111,222,0.2);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 30px rgba(0,0,0,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">⚡</span>
+              <p style="font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #8B5CF6; margin: 0;">Quiz</p>
+            </div>
+            <h3 style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0; line-height: 1.3;">Quiz Dopaminérgico</h3>
+            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.6; margin: 0; flex: 1;">Descubra se seu sistema dopaminérgico está equilibrado, estimulado ou esgotado.</p>
+            <span style="font-size: 0.82rem; font-weight: 700; color: #8B5CF6; font-family: 'Sora', sans-serif;">Fazer quiz &rarr;</span>
+          </a>
+
+          {/* Teste de Ansiedade */}
+          <a href="/blog/teste-de-ansiedade/" style="background: linear-gradient(135deg, #0D1B3E 0%, #172851 100%); border-radius: 16px; padding: 1.75rem; text-decoration: none; display: flex; flex-direction: column; gap: 12px; transition: transform 0.15s, box-shadow 0.15s; border: 1px solid rgba(29,184,232,0.15);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 30px rgba(0,0,0,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-size: 1.5rem;">🧠</span>
+              <p style="font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #1DB8E8; margin: 0;">Teste Clínico</p>
+            </div>
+            <h3 style="font-family: 'Sora', system-ui, sans-serif; font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0; line-height: 1.3;">Teste de Ansiedade</h3>
+            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.6; margin: 0; flex: 1;">Baseado na escala GAD-7. Avalie seu nível de ansiedade e receba orientações.</p>
+            <span style="font-size: 0.82rem; font-weight: 700; color: #1DB8E8; font-family: 'Sora', sans-serif;">Fazer teste &rarr;</span>
+          </a>
+
         </div>
       </div>
     </section>

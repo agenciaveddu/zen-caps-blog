@@ -3,10 +3,16 @@ const year = new Date().getFullYear()
 
 const blogLinks = [
   { label: 'Todos os artigos',     href: '/blog' },
-  { label: 'Calculadora de Sono',  href: '/blog/calculadora-de-sono/' },
   { label: 'Buscar artigos',       href: '/blog/busca' },
   { label: 'Sobre a equipe',       href: '/blog/sobre' },
   { label: 'Contato',              href: '/blog/contato' },
+]
+
+const toolsLinks = [
+  { label: 'Calculadora de Sono',  href: '/blog/calculadora-de-sono/' },
+  { label: 'Quiz do Sono',         href: '/blog/quiz-do-sono/' },
+  { label: 'Quiz Dopaminérgico',   href: '/blog/quiz-dopamina/' },
+  { label: 'Teste de Ansiedade',   href: '/blog/teste-de-ansiedade/' },
 ]
 
 const categories = [
@@ -97,7 +103,26 @@ const headingStyle = "font-family: 'Sora', system-ui, sans-serif; font-weight: 7
         </ul>
       </div>
 
-      <!-- 3. Categorias -->
+      <!-- 3. Ferramentas Gratuitas -->
+      <div>
+        <h3 style={headingStyle}>Ferramentas</h3>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;">
+          {toolsLinks.map(l => (
+            <li>
+              <a
+                href={l.href}
+                style={linkStyle}
+                onmouseover="this.style.color='#1DB8E8'"
+                onmouseout="this.style.color='#6B7A9A'"
+              >
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- 4. Categorias -->
       <div>
         <h3 style={headingStyle}>Categorias</h3>
         <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px;">
@@ -116,7 +141,7 @@ const headingStyle = "font-family: 'Sora', system-ui, sans-serif; font-weight: 7
         </ul>
       </div>
 
-      <!-- 4. Produto -->
+      <!-- 5. Produto -->
       <div>
         <h3 style={headingStyle}>O Produto</h3>
         <p style="font-size:0.85rem;color:#6B7A9A;margin-bottom:18px;line-height:1.7;">

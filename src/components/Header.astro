@@ -4,7 +4,13 @@ const navLinks = [
   { label: 'Ansiedade', href: '/blog/categoria/ansiedade' },
   { label: 'Ingredientes', href: '/blog/categoria/ingredientes' },
   { label: 'Hábitos', href: '/blog/categoria/habitos' },
-  { label: 'Calculadora de Sono', href: '/blog/calculadora-de-sono/' },
+]
+
+const toolLinks = [
+  { label: 'Calculadora de Sono', href: '/blog/calculadora-de-sono/', icon: '🌙' },
+  { label: 'Quiz do Sono',        href: '/blog/quiz-do-sono/',        icon: '😴' },
+  { label: 'Quiz Dopaminérgico',  href: '/blog/quiz-dopamina/',       icon: '⚡' },
+  { label: 'Teste de Ansiedade',  href: '/blog/teste-de-ansiedade/',  icon: '🧠' },
 ]
 ---
 <header style="background: #0D1B3E; border-bottom: 1px solid rgba(29,184,232,0.15); position: sticky; top: 0; z-index: 40; box-shadow: 0 2px 20px rgba(0,0,0,0.3);">
@@ -30,6 +36,35 @@ const navLinks = [
             {link.label}
           </a>
         ))}
+
+        <!-- Ferramentas dropdown -->
+        <div id="tools-dropdown" style="position: relative;">
+          <button
+            id="tools-btn"
+            style="font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.75); background: none; border: none; cursor: pointer; font-family: 'DM Sans', system-ui, sans-serif; display: flex; align-items: center; gap: 4px; transition: color 0.15s; padding: 0;"
+            onmouseover="this.style.color='#1DB8E8'"
+            onmouseout="this.style.color='rgba(255,255,255,0.75)'"
+          >
+            Ferramentas
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div
+            id="tools-panel"
+            style="display: none; position: absolute; top: calc(100% + 12px); right: -20px; background: #0D1B3E; border: 1px solid rgba(29,184,232,0.2); border-radius: 14px; padding: 8px; min-width: 220px; box-shadow: 0 12px 40px rgba(0,0,0,0.4); z-index: 50;"
+          >
+            {toolLinks.map(tool => (
+              <a
+                href={tool.href}
+                style="display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 10px; text-decoration: none; font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.8); font-family: 'DM Sans', system-ui, sans-serif; transition: background 0.15s;"
+                onmouseover="this.style.background='rgba(29,184,232,0.1)'"
+                onmouseout="this.style.background='transparent'"
+              >
+                <span style="font-size: 1rem;">{tool.icon}</span>
+                {tool.label}
+              </a>
+            ))}
+          </div>
+        </div>
       </nav>
 
       <!-- CTA + Mobile toggle -->
@@ -90,6 +125,22 @@ const navLinks = [
           {link.label}
         </a>
       ))}
+      <!-- Ferramentas mobile -->
+      <div style="border-top: 1px solid rgba(29,184,232,0.1); margin-top: 4px; padding-top: 8px;">
+        <p style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #1DB8E8; margin: 0 0 6px; font-family: 'DM Sans', system-ui, sans-serif;">Ferramentas Gratuitas</p>
+        {toolLinks.map(tool => (
+          <a
+            href={tool.href}
+            style="display: flex; align-items: center; gap: 8px; padding: 8px 0; font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.8); text-decoration: none; font-family: 'DM Sans', system-ui, sans-serif; transition: color 0.15s;"
+            onmouseover="this.style.color='#1DB8E8'"
+            onmouseout="this.style.color='rgba(255,255,255,0.8)'"
+          >
+            <span style="font-size: 0.95rem;">{tool.icon}</span>
+            {tool.label}
+          </a>
+        ))}
+      </div>
+
       <a
         href="/blog/busca"
         style="display: flex; align-items: center; gap: 8px; padding: 10px 0; font-size: 0.9rem; font-weight: 500; color: rgba(255,255,255,0.8); text-decoration: none; font-family: 'DM Sans', system-ui, sans-serif; transition: color 0.15s; border-top: 1px solid rgba(29,184,232,0.1); margin-top: 4px;"
@@ -134,4 +185,21 @@ const navLinks = [
   const toggle = document.getElementById('menu-toggle')
   const menu = document.getElementById('mobile-menu')
   toggle?.addEventListener('click', () => menu?.classList.toggle('hidden'))
+
+  // Tools dropdown (desktop)
+  const toolsBtn = document.getElementById('tools-btn')
+  const toolsPanel = document.getElementById('tools-panel')
+  const toolsDropdown = document.getElementById('tools-dropdown')
+
+  toolsBtn?.addEventListener('click', (e) => {
+    e.stopPropagation()
+    const isOpen = toolsPanel?.style.display === 'block'
+    toolsPanel!.style.display = isOpen ? 'none' : 'block'
+  })
+
+  document.addEventListener('click', (e) => {
+    if (toolsDropdown && !toolsDropdown.contains(e.target as Node)) {
+      toolsPanel!.style.display = 'none'
+    }
+  })
 </script>

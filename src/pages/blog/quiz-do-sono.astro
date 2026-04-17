@@ -1,0 +1,531 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro'
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Quiz do Sono — Zen Caps',
+  description: 'Descubra o que está sabotando seu sono com este quiz gratuito de 8 perguntas baseado em ciência. Receba seu score e recomendações personalizadas.',
+  url: 'https://zencaps.com.br/blog/quiz-do-sono/',
+  applicationCategory: 'HealthApplication',
+  operatingSystem: 'Web',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' },
+  author: { '@type': 'Organization', name: 'Zen Caps', url: 'https://zencaps.com.br' },
+}
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Blog', item: 'https://zencaps.com.br/blog/' },
+    { '@type': 'ListItem', position: 2, name: 'Quiz do Sono', item: 'https://zencaps.com.br/blog/quiz-do-sono/' },
+  ],
+}
+---
+
+<BlogLayout
+  title="Quiz do Sono: Descubra o Que Está Sabotando Seu Descanso | Zen Caps"
+  description="Faça o quiz gratuito de 8 perguntas e descubra seu score de qualidade do sono. Baseado em ciência, com recomendações personalizadas."
+  canonical="https://zencaps.com.br/blog/quiz-do-sono/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+
+  <style>
+    .quiz-option {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 18px; border: 2px solid #e8eef6; border-radius: 12px;
+      cursor: pointer; transition: all 0.2s; background: #fff;
+      font-family: 'DM Sans', system-ui, sans-serif; font-size: 0.92rem;
+      color: #3A4A6B; width: 100%; text-align: left;
+    }
+    .quiz-option:hover { border-color: #1DB8E8; background: #f0f9ff; }
+    .quiz-option.selected { border-color: #1DB8E8; background: #e8f7fc; color: #0D1B3E; font-weight: 600; }
+    .quiz-option .opt-letter {
+      width: 32px; height: 32px; border-radius: 8px; background: #F4F8FC;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.8rem;
+      color: #6B7A9A; flex-shrink: 0; transition: all 0.2s;
+    }
+    .quiz-option.selected .opt-letter { background: #1DB8E8; color: #fff; }
+    .quiz-progress-bar { height: 6px; background: #e8eef6; border-radius: 3px; overflow: hidden; }
+    .quiz-progress-fill { height: 100%; background: linear-gradient(90deg, #1DB8E8, #5DD4F4); border-radius: 3px; transition: width 0.4s ease; }
+    .quiz-btn {
+      padding: 0.85rem 2rem; border: none; border-radius: 12px;
+      font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.95rem;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .quiz-btn-primary {
+      background: linear-gradient(135deg, #1DB8E8, #5DD4F4); color: #fff;
+      box-shadow: 0 4px 16px rgba(29,184,232,0.3);
+    }
+    .quiz-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(29,184,232,0.4); }
+    .quiz-btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+    .quiz-btn-secondary {
+      background: transparent; color: #6B7A9A; border: 1px solid #e8eef6;
+    }
+    .quiz-btn-secondary:hover { border-color: #1DB8E8; color: #1DB8E8; }
+    .score-ring { position: relative; width: 180px; height: 180px; }
+    .score-ring svg { transform: rotate(-90deg); }
+    .score-ring .score-text {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    .email-input {
+      width: 100%; padding: 14px 18px; border: 2px solid #e8eef6; border-radius: 12px;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: #0D1B3E;
+      outline: none; transition: border-color 0.2s; background: #F4F8FC;
+    }
+    .email-input:focus { border-color: #1DB8E8; }
+    .fade-in { animation: fadeIn 0.4s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 480px) {
+      .score-ring { width: 150px; height: 150px; }
+    }
+  </style>
+
+  <div style="background: #F4F8FC; min-height: 80vh;">
+
+    <!-- Hero -->
+    <section style="background: linear-gradient(135deg, #0D1B3E 0%, #172851 100%); padding: 4rem 1.5rem 3.5rem;">
+      <div style="max-width: 720px; margin: 0 auto; text-align: center;">
+        <p style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #1DB8E8; margin-bottom: 0.75rem;">Quiz gratuito — 2 minutos</p>
+        <h1 style="font-family: 'Sora', system-ui, sans-serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 900; color: #ffffff; line-height: 1.15; margin-bottom: 1rem;">
+          O Que Está Sabotando<br/>Seu Sono?
+        </h1>
+        <p style="font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 500px; margin: 0 auto;">
+          Responda 8 perguntas rápidas e descubra seu score de qualidade do sono.
+        </p>
+      </div>
+    </section>
+
+    <!-- Quiz Container -->
+    <section style="padding: 0 1.5rem; margin-top: -1.5rem;">
+      <div style="max-width: 600px; margin: 0 auto;">
+        <div id="quiz-card" style="background: #FFFFFF; border-radius: 20px; box-shadow: 0 4px 24px rgba(13,27,62,0.08); padding: 2rem; border: 1px solid #e8eef6; min-height: 400px;">
+
+          <!-- Start screen -->
+          <div id="screen-start">
+            <div style="text-align: center; padding: 1rem 0;">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">🌙</div>
+              <h2 style="font-family: 'Sora', sans-serif; font-size: 1.3rem; font-weight: 800; color: #0D1B3E; margin: 0 0 0.75rem;">Pronto para descobrir?</h2>
+              <p style="font-size: 0.92rem; color: #6B7A9A; line-height: 1.7; margin: 0 0 0.5rem;">8 perguntas simples baseadas em neurociência do sono.</p>
+              <p style="font-size: 0.82rem; color: #9ba8c4; margin: 0 0 2rem;">Tempo estimado: 2 minutos</p>
+              <ul style="text-align: left; list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 8px;">
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: #3A4A6B;">
+                  <span style="color: #1DB8E8; font-size: 1.1rem;">✓</span> Score de 0 a 100
+                </li>
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: #3A4A6B;">
+                  <span style="color: #1DB8E8; font-size: 1.1rem;">✓</span> Identifica suas 3 principais causas
+                </li>
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: #3A4A6B;">
+                  <span style="color: #1DB8E8; font-size: 1.1rem;">✓</span> Recomendações personalizadas
+                </li>
+              </ul>
+              <button type="button" class="quiz-btn quiz-btn-primary" onclick="startQuiz()" style="width: 100%;">
+                Começar o quiz
+              </button>
+            </div>
+          </div>
+
+          <!-- Question screen -->
+          <div id="screen-question" style="display: none;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <span id="q-counter" style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; color: #1DB8E8;">PERGUNTA 1 DE 8</span>
+              <span id="q-percent" style="font-size: 0.75rem; color: #9ba8c4;">0%</span>
+            </div>
+            <div class="quiz-progress-bar" style="margin-bottom: 1.5rem;">
+              <div id="progress-fill" class="quiz-progress-fill" style="width: 0%;"></div>
+            </div>
+            <h3 id="q-title" style="font-family: 'Sora', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0D1B3E; margin: 0 0 1.25rem; line-height: 1.4;"></h3>
+            <div id="q-options" style="display: flex; flex-direction: column; gap: 10px;"></div>
+            <div style="display: flex; justify-content: space-between; margin-top: 1.5rem;">
+              <button type="button" id="btn-prev" class="quiz-btn quiz-btn-secondary" onclick="prevQuestion()" style="display: none;">← Voltar</button>
+              <button type="button" id="btn-next" class="quiz-btn quiz-btn-primary" onclick="nextQuestion()" disabled style="margin-left: auto;">Próxima →</button>
+            </div>
+          </div>
+
+          <!-- Email gate screen -->
+          <div id="screen-email" style="display: none;" class="fade-in">
+            <div style="text-align: center; padding: 1rem 0;">
+              <div id="score-preview" style="margin: 0 auto 1.5rem;"></div>
+              <h2 style="font-family: 'Sora', sans-serif; font-size: 1.2rem; font-weight: 800; color: #0D1B3E; margin: 0 0 0.5rem;">Seu resultado está pronto!</h2>
+              <p style="font-size: 0.88rem; color: #6B7A9A; line-height: 1.6; margin: 0 0 1.5rem;">
+                Informe seu email para receber o <strong>relatório completo</strong> com suas 3 principais causas e um plano personalizado de 7 dias.
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 1rem;">
+                <input type="text" id="lead-name" class="email-input" placeholder="Seu nome" />
+                <input type="email" id="lead-email" class="email-input" placeholder="Seu melhor email" />
+              </div>
+              <button type="button" class="quiz-btn quiz-btn-primary" onclick="submitEmail()" style="width: 100%;" id="btn-submit-email">
+                Ver meu resultado completo
+              </button>
+              <button type="button" style="background: none; border: none; color: #9ba8c4; font-size: 0.78rem; cursor: pointer; margin-top: 12px; font-family: 'DM Sans', sans-serif;" onclick="skipEmail()">
+                Pular e ver resultado resumido
+              </button>
+              <p style="font-size: 0.7rem; color: #b8c4d9; margin: 12px 0 0; line-height: 1.5;">
+                Seus dados estão seguros. Não enviamos spam. Você pode cancelar a qualquer momento.
+              </p>
+            </div>
+          </div>
+
+          <!-- Result screen -->
+          <div id="screen-result" style="display: none;" class="fade-in">
+            <div id="result-content"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Conteúdo SEO abaixo do quiz -->
+    <section style="padding: 3rem 1.5rem 0;">
+      <div style="max-width: 680px; margin: 0 auto;">
+        <div style="background: #FFFFFF; border-radius: 18px; padding: 2rem; border: 1px solid #e8eef6; margin-bottom: 2rem;">
+          <h2 style="font-family: 'Sora', sans-serif; font-size: 1.3rem; font-weight: 800; color: #0D1B3E; margin: 0 0 1rem;">Por que fazer este quiz?</h2>
+          <p style="font-size: 0.95rem; color: #3A4A6B; line-height: 1.8; margin: 0 0 1rem;">
+            Dormir mal não é apenas "cansaço". O sono ruim crônico afeta memória, metabolismo, humor e até expectativa de vida. O problema é que a maioria das pessoas não sabe <strong>o que exatamente</strong> está prejudicando seu sono.
+          </p>
+          <p style="font-size: 0.95rem; color: #3A4A6B; line-height: 1.8; margin: 0;">
+            Este quiz foi criado com base em pesquisas de neurociência do sono para identificar os fatores mais comuns que comprometem a qualidade do descanso — desde hábitos noturnos até deficiências nutricionais que você nem sabia que tinha.
+          </p>
+        </div>
+
+        <div style="background: #FFFFFF; border-radius: 18px; padding: 2rem; border: 1px solid #e8eef6; margin-bottom: 2rem;">
+          <h3 style="font-family: 'Sora', sans-serif; font-size: 1.1rem; font-weight: 700; color: #0D1B3E; margin: 0 0 1rem;">Artigos relacionados</h3>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+            <li><a href="/blog/como-dormir-melhor-guia-completo/" style="color: #1DB8E8; text-decoration: none; font-weight: 600; font-size: 0.92rem;">Como dormir melhor: guia completo</a></li>
+            <li><a href="/blog/por-que-voce-acorda-cansado-mesmo-dormindo-8-horas/" style="color: #1DB8E8; text-decoration: none; font-weight: 600; font-size: 0.92rem;">Por que você acorda cansado mesmo dormindo 8 horas</a></li>
+            <li><a href="/blog/calculadora-de-sono/" style="color: #1DB8E8; text-decoration: none; font-weight: 600; font-size: 0.92rem;">Calculadora de Sono gratuita</a></li>
+            <li><a href="/blog/ansiedade-noite-por-que-piora-ao-deitar/" style="color: #1DB8E8; text-decoration: none; font-weight: 600; font-size: 0.92rem;">Por que a ansiedade piora à noite</a></li>
+          </ul>
+        </div>
+
+        <div style="text-align: center; padding-bottom: 4rem;">
+          <a href="/blog/" style="display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 700; color: #1DB8E8; text-decoration: none; font-size: 0.95rem;">&larr; Voltar para o blog</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        q: 'Quanto tempo você demora para adormecer depois de deitar?',
+        opts: [
+          { text: 'Menos de 15 minutos', score: 3 },
+          { text: 'Entre 15 e 30 minutos', score: 2 },
+          { text: 'Entre 30 e 60 minutos', score: 1 },
+          { text: 'Mais de 1 hora', score: 0 },
+        ],
+        cat: 'latencia',
+      },
+      {
+        q: 'Quantas vezes você acorda durante a noite?',
+        opts: [
+          { text: 'Nenhuma — durmo direto', score: 3 },
+          { text: '1 vez (geralmente para ir ao banheiro)', score: 2 },
+          { text: '2 a 3 vezes', score: 1 },
+          { text: 'Mais de 3 vezes', score: 0 },
+        ],
+        cat: 'fragmentacao',
+      },
+      {
+        q: 'Como você se sente ao acordar pela manhã?',
+        opts: [
+          { text: 'Descansado e com energia', score: 3 },
+          { text: 'Mais ou menos — preciso de um tempo para "ligar"', score: 2 },
+          { text: 'Cansado, como se não tivesse dormido o suficiente', score: 1 },
+          { text: 'Exausto, mesmo dormindo muitas horas', score: 0 },
+        ],
+        cat: 'qualidade',
+      },
+      {
+        q: 'Você usa celular, tablet ou computador nos 30 minutos antes de dormir?',
+        opts: [
+          { text: 'Nunca ou raramente', score: 3 },
+          { text: 'Às vezes (2-3x por semana)', score: 2 },
+          { text: 'Quase sempre', score: 1 },
+          { text: 'Sempre — durmo com o celular na mão', score: 0 },
+        ],
+        cat: 'telas',
+      },
+      {
+        q: 'Em que horário você consome sua última dose de cafeína (café, chá preto, energético)?',
+        opts: [
+          { text: 'Antes das 14h ou não consumo', score: 3 },
+          { text: 'Entre 14h e 17h', score: 2 },
+          { text: 'Entre 17h e 20h', score: 1 },
+          { text: 'Depois das 20h', score: 0 },
+        ],
+        cat: 'cafeina',
+      },
+      {
+        q: 'Você sente ansiedade, preocupação ou pensamentos acelerados ao deitar?',
+        opts: [
+          { text: 'Nunca ou raramente', score: 3 },
+          { text: 'Às vezes (1-2x por semana)', score: 2 },
+          { text: 'Frequentemente (3-5x por semana)', score: 1 },
+          { text: 'Todas as noites', score: 0 },
+        ],
+        cat: 'ansiedade',
+      },
+      {
+        q: 'Seu quarto na hora de dormir é:',
+        opts: [
+          { text: 'Escuro, silencioso e fresco', score: 3 },
+          { text: 'Razoável, mas poderia melhorar', score: 2 },
+          { text: 'Com alguma luz e/ou barulho', score: 1 },
+          { text: 'Claro, barulhento ou quente', score: 0 },
+        ],
+        cat: 'ambiente',
+      },
+      {
+        q: 'Você pratica atividade física regularmente?',
+        opts: [
+          { text: 'Sim, 4+ vezes por semana', score: 3 },
+          { text: 'Sim, 2-3 vezes por semana', score: 2 },
+          { text: 'Raramente (1x ou menos)', score: 1 },
+          { text: 'Não pratico', score: 0 },
+        ],
+        cat: 'exercicio',
+      },
+    ];
+
+    let currentQ = 0;
+    let answers = new Array(questions.length).fill(-1);
+    let hasEmail = false;
+
+    const letters = ['A', 'B', 'C', 'D'];
+
+    function showScreen(id) {
+      ['screen-start', 'screen-question', 'screen-email', 'screen-result'].forEach(s => {
+        document.getElementById(s).style.display = s === id ? 'block' : 'none';
+      });
+    }
+
+    function startQuiz() {
+      showScreen('screen-question');
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const q = questions[currentQ];
+      document.getElementById('q-counter').textContent = `PERGUNTA ${currentQ + 1} DE ${questions.length}`;
+      const pct = Math.round(((currentQ) / questions.length) * 100);
+      document.getElementById('q-percent').textContent = pct + '%';
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('q-title').textContent = q.q;
+
+      const optsEl = document.getElementById('q-options');
+      optsEl.innerHTML = '';
+      q.opts.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'quiz-option' + (answers[currentQ] === i ? ' selected' : '');
+        btn.innerHTML = `<span class="opt-letter">${letters[i]}</span><span>${opt.text}</span>`;
+        btn.addEventListener('click', () => selectOption(i));
+        optsEl.appendChild(btn);
+      });
+
+      document.getElementById('btn-prev').style.display = currentQ > 0 ? 'inline-flex' : 'none';
+      document.getElementById('btn-next').disabled = answers[currentQ] === -1;
+      document.getElementById('btn-next').textContent = currentQ === questions.length - 1 ? 'Ver resultado' : 'Próxima →';
+    }
+
+    function selectOption(i) {
+      answers[currentQ] = i;
+      document.querySelectorAll('.quiz-option').forEach((el, idx) => {
+        el.classList.toggle('selected', idx === i);
+      });
+      document.getElementById('btn-next').disabled = false;
+    }
+
+    function nextQuestion() {
+      if (currentQ < questions.length - 1) {
+        currentQ++;
+        renderQuestion();
+        document.getElementById('q-options').classList.add('fade-in');
+      } else {
+        showEmailGate();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQ > 0) {
+        currentQ--;
+        renderQuestion();
+      }
+    }
+
+    function calcScore() {
+      const total = answers.reduce((sum, a, i) => sum + questions[i].opts[a].score, 0);
+      const max = questions.length * 3;
+      return Math.round((total / max) * 100);
+    }
+
+    function getLevel(score) {
+      if (score >= 80) return { label: 'Sono Saudável', color: '#0fa36b', bg: '#f0fdf4', border: '#bbf7d0', emoji: '🟢', desc: 'Seu sono está em boa forma! Pequenos ajustes podem torná-lo ainda melhor.' };
+      if (score >= 55) return { label: 'Sono Comprometido', color: '#C9A84C', bg: '#fffbeb', border: '#fde68a', emoji: '🟡', desc: 'Alguns fatores estão prejudicando a qualidade do seu sono. A boa notícia: são corrigíveis.' };
+      if (score >= 30) return { label: 'Sono Ruim', color: '#e67e22', bg: '#fff7ed', border: '#fed7aa', emoji: '🟠', desc: 'Seu sono está significativamente comprometido. Múltiplos fatores estão atuando contra você.' };
+      return { label: 'Sono Crítico', color: '#e74c3c', bg: '#fef2f2', border: '#fecaca', emoji: '🔴', desc: 'Seu sono precisa de atenção urgente. Os padrões identificados afetam diretamente sua saúde.' };
+    }
+
+    function buildScoreRing(score, color, size) {
+      const r = (size / 2) - 12;
+      const circ = 2 * Math.PI * r;
+      const offset = circ - (score / 100) * circ;
+      return `<div class="score-ring" style="width:${size}px;height:${size}px;">
+        <svg width="${size}" height="${size}">
+          <circle cx="${size/2}" cy="${size/2}" r="${r}" stroke="#e8eef6" stroke-width="8" fill="none"/>
+          <circle cx="${size/2}" cy="${size/2}" r="${r}" stroke="${color}" stroke-width="8" fill="none"
+            stroke-dasharray="${circ}" stroke-dashoffset="${offset}" stroke-linecap="round"
+            style="transition: stroke-dashoffset 1s ease;"/>
+        </svg>
+        <div class="score-text">
+          <div style="font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:900;color:${color};">${score}</div>
+          <div style="font-size:0.75rem;color:#6B7A9A;">de 100</div>
+        </div>
+      </div>`;
+    }
+
+    function showEmailGate() {
+      const score = calcScore();
+      const level = getLevel(score);
+      document.getElementById('score-preview').innerHTML = buildScoreRing(score, level.color, 150);
+      showScreen('screen-email');
+    }
+
+    function submitEmail() {
+      const name = document.getElementById('lead-name').value.trim();
+      const email = document.getElementById('lead-email').value.trim();
+      if (!email || !email.includes('@')) {
+        document.getElementById('lead-email').style.borderColor = '#e74c3c';
+        return;
+      }
+      hasEmail = true;
+
+      // Salvar lead (integração futura com Supabase + SES)
+      saveLead({ name, email, quiz: 'sono', score: calcScore(), answers: answers.map((a,i) => ({ q: questions[i].cat, a })) });
+
+      showResult(true);
+    }
+
+    function skipEmail() {
+      showResult(false);
+    }
+
+    function saveLead(data) {
+      // Placeholder: será conectado ao Supabase
+      try {
+        const leads = JSON.parse(localStorage.getItem('zc_leads') || '[]');
+        leads.push({ ...data, ts: new Date().toISOString() });
+        localStorage.setItem('zc_leads', JSON.stringify(leads));
+      } catch(e) {}
+
+      // Futuro: fetch('/api/lead', { method: 'POST', body: JSON.stringify(data) })
+    }
+
+    function getCauses() {
+      const catScores = {};
+      answers.forEach((a, i) => {
+        catScores[questions[i].cat] = questions[i].opts[a].score;
+      });
+      const sorted = Object.entries(catScores).sort((a, b) => a[1] - b[1]);
+      const worst = sorted.filter(s => s[1] <= 1).slice(0, 3);
+      if (worst.length === 0) return sorted.slice(0, 2);
+      return worst;
+    }
+
+    const causeNames = {
+      latencia: { name: 'Dificuldade para adormecer', tip: 'Técnicas de respiração 4-7-8 e redução de estímulos 1h antes de deitar podem reduzir a latência do sono.', link: '/blog/nao-consigo-dormir-o-que-fazer/' },
+      fragmentacao: { name: 'Sono fragmentado', tip: 'Despertares frequentes impedem os ciclos de sono profundo. Magnésio e ambiente adequado ajudam.', link: '/blog/despertar-de-madrugada-causas-e-solucoes/' },
+      qualidade: { name: 'Baixa qualidade restauradora', tip: 'Você dorme mas não descansa. O problema está na arquitetura dos ciclos de sono.', link: '/blog/por-que-voce-acorda-cansado-mesmo-dormindo-8-horas/' },
+      telas: { name: 'Excesso de telas antes de dormir', tip: 'A luz azul suprime melatonina em até 50%. Celular antes de dormir é um dos maiores sabotadores.', link: '/blog/celular-antes-de-dormir-prejudica-sono/' },
+      cafeina: { name: 'Cafeína tardia', tip: 'A cafeína tem meia-vida de 6 horas. Um café às 16h ainda tem 50% de efeito às 22h.', link: '/blog/cafeina-e-sono-quanto-afeta/' },
+      ansiedade: { name: 'Ansiedade noturna', tip: 'Pensamentos acelerados ao deitar indicam hiperativação do sistema nervoso. Triptofano e magnésio ajudam.', link: '/blog/ansiedade-noite-por-que-piora-ao-deitar/' },
+      ambiente: { name: 'Ambiente inadequado', tip: 'Temperatura, luz e ruído afetam diretamente o sono profundo. O quarto ideal é escuro, silencioso e a 18-21°C.', link: '/blog/temperatura-do-quarto-ideal-para-dormir/' },
+      exercicio: { name: 'Sedentarismo', tip: 'Exercício regular melhora o sono profundo em até 65%. Mesmo caminhadas de 30 minutos fazem diferença.', link: '/blog/exercicio-fisico-melhora-sono/' },
+    };
+
+    function showResult(full) {
+      const score = calcScore();
+      const level = getLevel(score);
+      const causes = getCauses();
+
+      let html = `
+        <div style="text-align:center; margin-bottom:1.5rem;">
+          ${buildScoreRing(score, level.color, 180)}
+        </div>
+        <div style="text-align:center; margin-bottom:1.5rem;">
+          <span style="display:inline-block; padding:6px 16px; border-radius:20px; background:${level.bg}; border:1px solid ${level.border}; font-family:'Sora',sans-serif; font-weight:700; font-size:0.9rem; color:${level.color};">
+            ${level.emoji} ${level.label}
+          </span>
+        </div>
+        <p style="text-align:center; font-size:0.92rem; color:#3A4A6B; line-height:1.7; margin:0 0 2rem;">${level.desc}</p>
+      `;
+
+      if (full || causes.length > 0) {
+        html += `<h3 style="font-family:'Sora',sans-serif; font-size:1rem; font-weight:700; color:#0D1B3E; margin:0 0 1rem;">
+          ${full ? 'Suas principais causas identificadas:' : 'Principais pontos de atenção:'}
+        </h3>`;
+        causes.forEach(([cat, s]) => {
+          const c = causeNames[cat];
+          html += `<div style="padding:14px; background:#F4F8FC; border-radius:12px; margin-bottom:10px; border-left:4px solid ${level.color};">
+            <div style="font-family:'Sora',sans-serif; font-weight:700; font-size:0.9rem; color:#0D1B3E; margin-bottom:4px;">${c.name}</div>
+            ${full ? `<p style="font-size:0.85rem; color:#3A4A6B; line-height:1.6; margin:0 0 6px;">${c.tip}</p>
+            <a href="${c.link}" style="font-size:0.82rem; color:#1DB8E8; text-decoration:none; font-weight:600;">Saiba mais →</a>` : ''}
+          </div>`;
+        });
+      }
+
+      if (full) {
+        html += `
+          <div style="margin-top:2rem; padding:1.5rem; background:linear-gradient(135deg,#0D1B3E,#172851); border-radius:14px; text-align:center;">
+            <p style="font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:#1DB8E8; margin:0 0 0.5rem;">Recomendação baseada no seu perfil</p>
+            <h4 style="font-family:'Sora',sans-serif; font-size:1.05rem; font-weight:800; color:#fff; margin:0 0 0.75rem; line-height:1.3;">
+              ${score < 55 ? 'Seu sono precisa de suporte bioquímico' : 'Potencialize seus resultados'}
+            </h4>
+            <p style="font-size:0.85rem; color:rgba(255,255,255,0.6); line-height:1.6; margin:0 0 1rem;">
+              ${score < 55
+                ? 'Com ansiedade noturna e sono fragmentado, técnicas comportamentais sozinhas podem não ser suficientes. Magnésio + triptofano + melatonina atuam nas causas bioquímicas identificadas.'
+                : 'Seu sono tem boa base. Magnésio e triptofano podem ajudar a otimizar a qualidade dos ciclos de sono profundo.'}
+            </p>
+            <a href="https://zencaps.com.br" target="_blank" rel="noopener" style="display:inline-block; padding:0.75rem 1.75rem; background:linear-gradient(135deg,#1DB8E8,#5DD4F4); color:#fff; text-decoration:none; border-radius:10px; font-family:'Sora',sans-serif; font-weight:700; font-size:0.88rem;">
+              Conhecer Zen Caps →
+            </a>
+          </div>
+        `;
+      } else {
+        html += `
+          <div style="margin-top:1.5rem; padding:1rem; background:#F0FAFF; border-radius:12px; border:1px solid #d0eef8; text-align:center;">
+            <p style="font-size:0.85rem; color:#1a6b8a; margin:0 0 8px;">Quer o relatório completo com recomendações personalizadas?</p>
+            <button type="button" class="quiz-btn quiz-btn-primary" onclick="showScreen('screen-email')" style="font-size:0.85rem; padding:0.65rem 1.5rem;">
+              Receber por email
+            </button>
+          </div>
+        `;
+      }
+
+      html += `
+        <div style="margin-top:1.5rem; text-align:center;">
+          <button type="button" style="background:none; border:none; color:#1DB8E8; font-size:0.85rem; cursor:pointer; font-weight:600; font-family:'DM Sans',sans-serif;" onclick="resetQuiz()">
+            Refazer o quiz
+          </button>
+        </div>
+      `;
+
+      document.getElementById('result-content').innerHTML = html;
+      showScreen('screen-result');
+      window.scrollTo({ top: document.getElementById('quiz-card').offsetTop - 80, behavior: 'smooth' });
+    }
+
+    function resetQuiz() {
+      currentQ = 0;
+      answers = new Array(questions.length).fill(-1);
+      hasEmail = false;
+      showScreen('screen-start');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</BlogLayout>

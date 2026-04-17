@@ -1,0 +1,364 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro'
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Quiz Dopaminérgico — Zen Caps',
+  description: 'Seu cérebro está viciado em dopamina rápida? Faça o quiz gratuito e descubra seu perfil dopaminérgico com base em neurociência.',
+  url: 'https://zencaps.com.br/blog/quiz-dopamina/',
+  applicationCategory: 'HealthApplication',
+  operatingSystem: 'Web',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'BRL' },
+  author: { '@type': 'Organization', name: 'Zen Caps', url: 'https://zencaps.com.br' },
+}
+const breadcrumb = {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Blog', item: 'https://zencaps.com.br/blog/' },
+    { '@type': 'ListItem', position: 2, name: 'Quiz Dopamina', item: 'https://zencaps.com.br/blog/quiz-dopamina/' },
+  ],
+}
+---
+
+<BlogLayout
+  title="Quiz Dopaminérgico: Seu Cérebro Está Esgotado? | Zen Caps"
+  description="Descubra se seus hábitos modernos estão esgotando sua dopamina. Quiz gratuito de 10 perguntas baseado em neurociência com perfil personalizado."
+  canonical="https://zencaps.com.br/blog/quiz-dopamina/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumb)} />
+
+  <style>
+    .quiz-option{display:flex;align-items:center;gap:12px;padding:14px 18px;border:2px solid #e8eef6;border-radius:12px;cursor:pointer;transition:all .2s;background:#fff;font-family:'DM Sans',system-ui,sans-serif;font-size:.92rem;color:#3A4A6B;width:100%;text-align:left}
+    .quiz-option:hover{border-color:#5B6FDE;background:#f5f3ff}
+    .quiz-option.selected{border-color:#5B6FDE;background:#ede9fe;color:#0D1B3E;font-weight:600}
+    .quiz-option .opt-letter{width:32px;height:32px;border-radius:8px;background:#F4F8FC;display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;font-size:.8rem;color:#6B7A9A;flex-shrink:0;transition:all .2s}
+    .quiz-option.selected .opt-letter{background:#5B6FDE;color:#fff}
+    .quiz-progress-bar{height:6px;background:#e8eef6;border-radius:3px;overflow:hidden}
+    .quiz-progress-fill{height:100%;background:linear-gradient(90deg,#5B6FDE,#8B5CF6);border-radius:3px;transition:width .4s ease}
+    .quiz-btn{padding:.85rem 2rem;border:none;border-radius:12px;font-family:'Sora',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s}
+    .quiz-btn-primary{background:linear-gradient(135deg,#5B6FDE,#8B5CF6);color:#fff;box-shadow:0 4px 16px rgba(91,111,222,.3)}
+    .quiz-btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(91,111,222,.4)}
+    .quiz-btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+    .quiz-btn-secondary{background:transparent;color:#6B7A9A;border:1px solid #e8eef6}
+    .quiz-btn-secondary:hover{border-color:#5B6FDE;color:#5B6FDE}
+    .score-ring{position:relative;width:180px;height:180px}
+    .score-ring svg{transform:rotate(-90deg)}
+    .score-ring .score-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+    .email-input{width:100%;padding:14px 18px;border:2px solid #e8eef6;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:.95rem;color:#0D1B3E;outline:none;transition:border-color .2s;background:#F4F8FC}
+    .email-input:focus{border-color:#5B6FDE}
+    .fade-in{animation:fadeIn .4s ease}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    @media(max-width:480px){.score-ring{width:150px;height:150px}}
+  </style>
+
+  <div style="background: #F4F8FC; min-height: 80vh;">
+
+    <section style="background: linear-gradient(135deg, #1a1040 0%, #2d1b69 100%); padding: 4rem 1.5rem 3.5rem;">
+      <div style="max-width: 720px; margin: 0 auto; text-align: center;">
+        <p style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #8B5CF6; margin-bottom: 0.75rem;">Quiz gratuito — 2 minutos</p>
+        <h1 style="font-family: 'Sora', system-ui, sans-serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 900; color: #ffffff; line-height: 1.15; margin-bottom: 1rem;">
+          Seu Cérebro Está Viciado<br/>em Dopamina Rápida?
+        </h1>
+        <p style="font-size: 1.05rem; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 500px; margin: 0 auto;">
+          10 perguntas para descobrir se seus hábitos modernos estão esgotando seu sistema de recompensa.
+        </p>
+      </div>
+    </section>
+
+    <section style="padding: 0 1.5rem; margin-top: -1.5rem;">
+      <div style="max-width: 600px; margin: 0 auto;">
+        <div id="quiz-card" style="background: #FFFFFF; border-radius: 20px; box-shadow: 0 4px 24px rgba(13,27,62,0.08); padding: 2rem; border: 1px solid #e8eef6; min-height: 400px;">
+
+          <div id="screen-start">
+            <div style="text-align: center; padding: 1rem 0;">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">🧠</div>
+              <h2 style="font-family: 'Sora', sans-serif; font-size: 1.3rem; font-weight: 800; color: #0D1B3E; margin: 0 0 0.75rem;">Teste seu perfil dopaminérgico</h2>
+              <p style="font-size: 0.92rem; color: #6B7A9A; line-height: 1.7; margin: 0 0 0.5rem;">Dopamina é o neurotransmissor da motivação e do prazer. Hábitos modernos podem esgotar seu sistema.</p>
+              <p style="font-size: 0.82rem; color: #9ba8c4; margin: 0 0 2rem;">10 perguntas — 2 minutos</p>
+              <ul style="text-align: left; list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 8px;">
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: #3A4A6B;"><span style="color: #5B6FDE; font-size: 1.1rem;">✓</span> Perfil: Equilibrado, Estimulado ou Esgotado</li>
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: #3A4A6B;"><span style="color: #5B6FDE; font-size: 1.1rem;">✓</span> Conexão entre dopamina, sono e ansiedade</li>
+                <li style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem; color: #3A4A6B;"><span style="color: #5B6FDE; font-size: 1.1rem;">✓</span> Protocolo de reset dopaminérgico</li>
+              </ul>
+              <button type="button" class="quiz-btn quiz-btn-primary" onclick="startQuiz()" style="width: 100%;">Começar o quiz</button>
+            </div>
+          </div>
+
+          <div id="screen-question" style="display: none;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+              <span id="q-counter" style="font-family: 'Sora', sans-serif; font-size: 0.75rem; font-weight: 700; color: #5B6FDE;"></span>
+              <span id="q-percent" style="font-size: 0.75rem; color: #9ba8c4;"></span>
+            </div>
+            <div class="quiz-progress-bar" style="margin-bottom: 1.5rem;"><div id="progress-fill" class="quiz-progress-fill" style="width: 0%;"></div></div>
+            <h3 id="q-title" style="font-family: 'Sora', sans-serif; font-size: 1.05rem; font-weight: 700; color: #0D1B3E; margin: 0 0 1.25rem; line-height: 1.4;"></h3>
+            <div id="q-options" style="display: flex; flex-direction: column; gap: 10px;"></div>
+            <div style="display: flex; justify-content: space-between; margin-top: 1.5rem;">
+              <button type="button" id="btn-prev" class="quiz-btn quiz-btn-secondary" onclick="prevQuestion()" style="display: none;">← Voltar</button>
+              <button type="button" id="btn-next" class="quiz-btn quiz-btn-primary" onclick="nextQuestion()" disabled style="margin-left: auto;">Próxima →</button>
+            </div>
+          </div>
+
+          <div id="screen-email" style="display: none;" class="fade-in">
+            <div style="text-align: center; padding: 1rem 0;">
+              <div id="score-preview" style="margin: 0 auto 1.5rem;"></div>
+              <h2 style="font-family: 'Sora', sans-serif; font-size: 1.2rem; font-weight: 800; color: #0D1B3E; margin: 0 0 0.5rem;">Seu perfil dopaminérgico está pronto!</h2>
+              <p style="font-size: 0.88rem; color: #6B7A9A; line-height: 1.6; margin: 0 0 1.5rem;">
+                Informe seu email para receber o <strong>protocolo de reset dopaminérgico de 5 dias</strong> personalizado para seu perfil.
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 1rem;">
+                <input type="text" id="lead-name" class="email-input" placeholder="Seu nome" />
+                <input type="email" id="lead-email" class="email-input" placeholder="Seu melhor email" />
+              </div>
+              <button type="button" class="quiz-btn quiz-btn-primary" onclick="submitEmail()" style="width: 100%;">Ver meu perfil completo</button>
+              <button type="button" style="background:none;border:none;color:#9ba8c4;font-size:.78rem;cursor:pointer;margin-top:12px;font-family:'DM Sans',sans-serif;" onclick="skipEmail()">Pular e ver resultado resumido</button>
+              <p style="font-size: 0.7rem; color: #b8c4d9; margin: 12px 0 0; line-height: 1.5;">Seus dados estão seguros. Sem spam. Cancele quando quiser.</p>
+            </div>
+          </div>
+
+          <div id="screen-result" style="display: none;" class="fade-in">
+            <div id="result-content"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 3rem 1.5rem 0;">
+      <div style="max-width: 680px; margin: 0 auto;">
+        <div style="background: #FFFFFF; border-radius: 18px; padding: 2rem; border: 1px solid #e8eef6; margin-bottom: 2rem;">
+          <h2 style="font-family: 'Sora', sans-serif; font-size: 1.3rem; font-weight: 800; color: #0D1B3E; margin: 0 0 1rem;">O que é o esgotamento dopaminérgico?</h2>
+          <p style="font-size: 0.95rem; color: #3A4A6B; line-height: 1.8; margin: 0 0 1rem;">
+            A dopamina é o neurotransmissor da <strong>motivação, foco e prazer</strong>. Quando você consome estímulos rápidos em excesso — redes sociais, açúcar, notificações — o cérebro reduz os receptores de dopamina para se proteger. Resultado: você precisa de cada vez mais estímulo para sentir a mesma satisfação.
+          </p>
+          <p style="font-size: 0.95rem; color: #3A4A6B; line-height: 1.8; margin: 0;">
+            Isso afeta diretamente o sono (a dopamina regula o ritmo circadiano), a ansiedade (menos dopamina = mais cortisol) e a produtividade. O quiz identifica em que estágio você está e o que fazer.
+          </p>
+        </div>
+        <div style="background: #FFFFFF; border-radius: 18px; padding: 2rem; border: 1px solid #e8eef6; margin-bottom: 2rem;">
+          <h3 style="font-family: 'Sora', sans-serif; font-size: 1.1rem; font-weight: 700; color: #0D1B3E; margin: 0 0 1rem;">Artigos relacionados</h3>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+            <li><a href="/blog/celular-antes-de-dormir-prejudica-sono/" style="color: #5B6FDE; text-decoration: none; font-weight: 600; font-size: 0.92rem;">Como o celular prejudica seu sono</a></li>
+            <li><a href="/blog/como-controlar-ansiedade-naturalmente/" style="color: #5B6FDE; text-decoration: none; font-weight: 600; font-size: 0.92rem;">Como controlar ansiedade naturalmente</a></li>
+            <li><a href="/blog/triptofano-para-que-serve-beneficios/" style="color: #5B6FDE; text-decoration: none; font-weight: 600; font-size: 0.92rem;">Triptofano: para que serve e benefícios</a></li>
+            <li><a href="/blog/burnout-como-identificar-e-recuperar/" style="color: #5B6FDE; text-decoration: none; font-weight: 600; font-size: 0.92rem;">Burnout: como identificar e recuperar</a></li>
+          </ul>
+        </div>
+        <div style="text-align: center; padding-bottom: 4rem;">
+          <a href="/blog/" style="display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 700; color: #5B6FDE; text-decoration: none; font-size: 0.95rem;">&larr; Voltar para o blog</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const questions = [
+      { q: 'Qual é a primeira coisa que você faz ao acordar?', opts: [
+        { text: 'Alongar, tomar água ou meditar', score: 3 },
+        { text: 'Tomar café e me preparar', score: 2 },
+        { text: 'Checar celular rapidamente', score: 1 },
+        { text: 'Ficar scrollando redes sociais na cama', score: 0 },
+      ], cat: 'rotina' },
+      { q: 'Quanto tempo por dia você passa em redes sociais?', opts: [
+        { text: 'Menos de 30 minutos', score: 3 },
+        { text: '30 minutos a 1 hora', score: 2 },
+        { text: '1 a 3 horas', score: 1 },
+        { text: 'Mais de 3 horas', score: 0 },
+      ], cat: 'telas' },
+      { q: 'Você consegue se concentrar em uma tarefa por mais de 25 minutos sem distração?', opts: [
+        { text: 'Sim, com facilidade', score: 3 },
+        { text: 'Na maioria das vezes', score: 2 },
+        { text: 'Tenho dificuldade frequente', score: 1 },
+        { text: 'Quase nunca — preciso de estímulo constante', score: 0 },
+      ], cat: 'foco' },
+      { q: 'Como você se sente quando não tem nada para fazer?', opts: [
+        { text: 'Tranquilo — aproveito o momento', score: 3 },
+        { text: 'Consigo relaxar, mas prefiro estar ocupado', score: 2 },
+        { text: 'Fico inquieto e procuro algo para fazer', score: 1 },
+        { text: 'Sinto ansiedade ou tédio insuportável', score: 0 },
+      ], cat: 'tedio' },
+      { q: 'Quando está estressado, o que você faz?', opts: [
+        { text: 'Exercício, meditação ou conversa', score: 3 },
+        { text: 'Assisto algo ou ouço música', score: 2 },
+        { text: 'Como doces/junk food ou bebo', score: 1 },
+        { text: 'Scrollo redes sociais ou compro coisas online', score: 0 },
+      ], cat: 'coping' },
+      { q: 'Você procrastina tarefas importantes?', opts: [
+        { text: 'Raramente — faço o que precisa ser feito', score: 3 },
+        { text: 'Às vezes, mas consigo me organizar', score: 2 },
+        { text: 'Frequentemente — deixo para o último minuto', score: 1 },
+        { text: 'Sempre — só faço sob pressão extrema', score: 0 },
+      ], cat: 'procrastinacao' },
+      { q: 'Sua motivação no dia a dia está:', opts: [
+        { text: 'Alta — tenho energia e propósito', score: 3 },
+        { text: 'Normal — alguns dias melhores que outros', score: 2 },
+        { text: 'Baixa — preciso me forçar para as coisas', score: 1 },
+        { text: 'Muito baixa — nada parece valer o esforço', score: 0 },
+      ], cat: 'motivacao' },
+      { q: 'Você sente sono durante o dia mas dificuldade para dormir à noite?', opts: [
+        { text: 'Não — durmo bem à noite e fico alerta de dia', score: 3 },
+        { text: 'Às vezes sinto um pouco de sono à tarde', score: 2 },
+        { text: 'Frequentemente — cochilo de dia e não durmo à noite', score: 1 },
+        { text: 'Sim, padrão invertido — muito comum', score: 0 },
+      ], cat: 'circadiano' },
+      { q: 'Você precisa de cafeína para funcionar?', opts: [
+        { text: 'Não — tomo por prazer, não necessidade', score: 3 },
+        { text: '1 café pela manhã resolve', score: 2 },
+        { text: '2-3 cafés por dia, senão não rendo', score: 1 },
+        { text: '4+ cafés ou energéticos — não funciono sem', score: 0 },
+      ], cat: 'cafeina' },
+      { q: 'Coisas que antes te davam prazer (hobbies, exercício, leitura) ainda funcionam?', opts: [
+        { text: 'Sim — continuo sentindo prazer nas mesmas coisas', score: 3 },
+        { text: 'A maioria sim, algumas perdi interesse', score: 2 },
+        { text: 'Poucas coisas ainda me dão prazer', score: 1 },
+        { text: 'Quase nada me anima mais — tudo parece sem graça', score: 0 },
+      ], cat: 'anedonia' },
+    ];
+
+    let currentQ = 0;
+    let answers = new Array(questions.length).fill(-1);
+    const letters = ['A','B','C','D'];
+
+    function showScreen(id) {
+      ['screen-start','screen-question','screen-email','screen-result'].forEach(s => {
+        document.getElementById(s).style.display = s === id ? 'block' : 'none';
+      });
+    }
+    function startQuiz() { showScreen('screen-question'); renderQuestion(); }
+
+    function renderQuestion() {
+      const q = questions[currentQ];
+      document.getElementById('q-counter').textContent = `PERGUNTA ${currentQ+1} DE ${questions.length}`;
+      const pct = Math.round((currentQ / questions.length) * 100);
+      document.getElementById('q-percent').textContent = pct + '%';
+      document.getElementById('progress-fill').style.width = pct + '%';
+      document.getElementById('q-title').textContent = q.q;
+      const optsEl = document.getElementById('q-options');
+      optsEl.innerHTML = '';
+      q.opts.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'quiz-option' + (answers[currentQ] === i ? ' selected' : '');
+        btn.innerHTML = `<span class="opt-letter">${letters[i]}</span><span>${opt.text}</span>`;
+        btn.addEventListener('click', () => selectOption(i));
+        optsEl.appendChild(btn);
+      });
+      document.getElementById('btn-prev').style.display = currentQ > 0 ? 'inline-flex' : 'none';
+      document.getElementById('btn-next').disabled = answers[currentQ] === -1;
+      document.getElementById('btn-next').textContent = currentQ === questions.length - 1 ? 'Ver resultado' : 'Próxima →';
+    }
+
+    function selectOption(i) {
+      answers[currentQ] = i;
+      document.querySelectorAll('.quiz-option').forEach((el, idx) => el.classList.toggle('selected', idx === i));
+      document.getElementById('btn-next').disabled = false;
+    }
+    function nextQuestion() { if (currentQ < questions.length - 1) { currentQ++; renderQuestion(); } else { showEmailGate(); } }
+    function prevQuestion() { if (currentQ > 0) { currentQ--; renderQuestion(); } }
+
+    function calcScore() {
+      const total = answers.reduce((sum, a, i) => sum + questions[i].opts[a].score, 0);
+      return Math.round((total / (questions.length * 3)) * 100);
+    }
+
+    function getLevel(score) {
+      if (score >= 75) return { label: 'Equilibrado', color: '#0fa36b', bg: '#f0fdf4', border: '#bbf7d0', emoji: '🟢', desc: 'Seu sistema dopaminérgico está saudável. Você tem bom controle sobre estímulos e mantém fontes naturais de prazer.' };
+      if (score >= 45) return { label: 'Estimulado', color: '#C9A84C', bg: '#fffbeb', border: '#fde68a', emoji: '🟡', desc: 'Seus receptores de dopamina estão parcialmente dessensibilizados. Alguns hábitos estão puxando seu cérebro para o ciclo de recompensa rápida.' };
+      return { label: 'Esgotado', color: '#e74c3c', bg: '#fef2f2', border: '#fecaca', emoji: '🔴', desc: 'Seu sistema de recompensa está significativamente comprometido. A busca por estímulos rápidos está afetando seu foco, sono e motivação.' };
+    }
+
+    function buildScoreRing(score, color, size) {
+      const r = (size/2)-12, circ = 2*Math.PI*r, offset = circ - (score/100)*circ;
+      return `<div class="score-ring" style="width:${size}px;height:${size}px;margin:0 auto;">
+        <svg width="${size}" height="${size}"><circle cx="${size/2}" cy="${size/2}" r="${r}" stroke="#e8eef6" stroke-width="8" fill="none"/>
+        <circle cx="${size/2}" cy="${size/2}" r="${r}" stroke="${color}" stroke-width="8" fill="none" stroke-dasharray="${circ}" stroke-dashoffset="${offset}" stroke-linecap="round" style="transition:stroke-dashoffset 1s ease;"/></svg>
+        <div class="score-text"><div style="font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:900;color:${color};">${score}</div><div style="font-size:.75rem;color:#6B7A9A;">de 100</div></div></div>`;
+    }
+
+    function showEmailGate() {
+      const score = calcScore(), level = getLevel(score);
+      document.getElementById('score-preview').innerHTML = buildScoreRing(score, level.color, 150);
+      showScreen('screen-email');
+    }
+
+    function submitEmail() {
+      const name = document.getElementById('lead-name').value.trim();
+      const email = document.getElementById('lead-email').value.trim();
+      if (!email || !email.includes('@')) { document.getElementById('lead-email').style.borderColor = '#e74c3c'; return; }
+      saveLead({ name, email, quiz: 'dopamina', score: calcScore(), answers: answers.map((a,i) => ({q:questions[i].cat,a})) });
+      showResult(true);
+    }
+    function skipEmail() { showResult(false); }
+
+    function saveLead(data) {
+      try { const leads = JSON.parse(localStorage.getItem('zc_leads')||'[]'); leads.push({...data,ts:new Date().toISOString()}); localStorage.setItem('zc_leads',JSON.stringify(leads)); } catch(e){}
+    }
+
+    const catNames = {
+      rotina: { name: 'Rotina matinal reativa', tip: 'Começar o dia com celular inunda o cérebro de dopamina antes de você produzir naturalmente. Isso define o tom do dia inteiro.' },
+      telas: { name: 'Excesso de tempo de tela', tip: 'Redes sociais são projetadas para liberar micro-doses de dopamina a cada scroll. Seu cérebro se adapta e precisa de cada vez mais.' },
+      foco: { name: 'Dificuldade de concentração', tip: 'Quando o cérebro está acostumado com estímulos rápidos, tarefas que exigem atenção sustentada parecem insuportáveis.' },
+      tedio: { name: 'Intolerância ao tédio', tip: 'A incapacidade de ficar sem estímulo é um dos sinais mais claros de dessensibilização dopaminérgica.' },
+      coping: { name: 'Mecanismos de escape', tip: 'Usar comida, compras ou redes sociais como válvula de escape mantém o ciclo de dopamina rápida.' },
+      procrastinacao: { name: 'Procrastinação crônica', tip: 'A dopamina deveria motivar ação. Quando está esgotada, o cérebro busca recompensas imediatas em vez de projetos de longo prazo.' },
+      motivacao: { name: 'Motivação em queda', tip: 'Dopamina baixa = tudo parece difícil demais. Não é preguiça — é neurociência.' },
+      circadiano: { name: 'Ritmo circadiano invertido', tip: 'A dopamina regula o ciclo sono-vigília. Desequilíbrio causa sono de dia e agitação à noite.' },
+      cafeina: { name: 'Dependência de cafeína', tip: 'Cafeína funciona bloqueando adenosina, mas em excesso mascara a fadiga real e mantém o ciclo de esgotamento.' },
+      anedonia: { name: 'Anedonia (perda de prazer)', tip: 'Quando atividades normais não dão mais prazer, é sinal de que os receptores D2 de dopamina estão dessensibilizados.' },
+    };
+
+    function getCauses() {
+      const cs = {}; answers.forEach((a,i) => { cs[questions[i].cat] = questions[i].opts[a].score; });
+      const sorted = Object.entries(cs).sort((a,b) => a[1]-b[1]);
+      return sorted.filter(s => s[1] <= 1).slice(0,3).length > 0 ? sorted.filter(s => s[1] <= 1).slice(0,3) : sorted.slice(0,3);
+    }
+
+    function showResult(full) {
+      const score = calcScore(), level = getLevel(score), causes = getCauses();
+      let html = `
+        <div style="text-align:center;margin-bottom:1.5rem;">${buildScoreRing(score, level.color, 180)}</div>
+        <div style="text-align:center;margin-bottom:1.5rem;">
+          <span style="display:inline-block;padding:6px 16px;border-radius:20px;background:${level.bg};border:1px solid ${level.border};font-family:'Sora',sans-serif;font-weight:700;font-size:.9rem;color:${level.color};">${level.emoji} ${level.label}</span>
+        </div>
+        <p style="text-align:center;font-size:.92rem;color:#3A4A6B;line-height:1.7;margin:0 0 2rem;">${level.desc}</p>
+      `;
+      html += `<h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#0D1B3E;margin:0 0 1rem;">${full ? 'Padrões identificados no seu perfil:' : 'Pontos de atenção:'}</h3>`;
+      causes.forEach(([cat]) => {
+        const c = catNames[cat];
+        html += `<div style="padding:14px;background:#F4F8FC;border-radius:12px;margin-bottom:10px;border-left:4px solid ${level.color};">
+          <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:.9rem;color:#0D1B3E;margin-bottom:4px;">${c.name}</div>
+          ${full ? `<p style="font-size:.85rem;color:#3A4A6B;line-height:1.6;margin:0;">${c.tip}</p>` : ''}
+        </div>`;
+      });
+
+      if (full) {
+        html += `
+          <div style="margin-top:1.5rem;padding:1.25rem;background:#f5f3ff;border-radius:12px;border:1px solid #ddd6fe;">
+            <h4 style="font-family:'Sora',sans-serif;font-size:.95rem;font-weight:700;color:#5B6FDE;margin:0 0 .5rem;">🔄 A conexão dopamina → sono → ansiedade</h4>
+            <p style="font-size:.85rem;color:#3A4A6B;line-height:1.6;margin:0;">Dopamina esgotada → serotonina cai → melatonina reduz → sono piora → cortisol sobe → ansiedade aumenta → você busca mais dopamina rápida. O triptofano quebra esse ciclo: é precursor da serotonina, que regula tanto a dopamina quanto o sono.</p>
+          </div>
+          <div style="margin-top:1.5rem;padding:1.5rem;background:linear-gradient(135deg,#1a1040,#2d1b69);border-radius:14px;text-align:center;">
+            <p style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#8B5CF6;margin:0 0 .5rem;">Recomendação para seu perfil</p>
+            <h4 style="font-family:'Sora',sans-serif;font-size:1.05rem;font-weight:800;color:#fff;margin:0 0 .75rem;line-height:1.3;">Resete seu sistema de recompensa</h4>
+            <p style="font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.6;margin:0 0 1rem;">Zen Caps combina triptofano (restaura serotonina), magnésio (protege receptores neurais) e vitamina B6 (cofator na produção de dopamina saudável).</p>
+            <a href="https://zencaps.com.br" target="_blank" rel="noopener" style="display:inline-block;padding:.75rem 1.75rem;background:linear-gradient(135deg,#5B6FDE,#8B5CF6);color:#fff;text-decoration:none;border-radius:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:.88rem;">Conhecer Zen Caps →</a>
+          </div>`;
+      } else {
+        html += `<div style="margin-top:1.5rem;padding:1rem;background:#f5f3ff;border-radius:12px;border:1px solid #ddd6fe;text-align:center;">
+          <p style="font-size:.85rem;color:#5B6FDE;margin:0 0 8px;">Quer o protocolo de reset dopaminérgico de 5 dias?</p>
+          <button type="button" class="quiz-btn quiz-btn-primary" onclick="showScreen('screen-email')" style="font-size:.85rem;padding:.65rem 1.5rem;">Receber por email</button>
+        </div>`;
+      }
+      html += `<div style="margin-top:1.5rem;text-align:center;"><button type="button" style="background:none;border:none;color:#5B6FDE;font-size:.85rem;cursor:pointer;font-weight:600;font-family:'DM Sans',sans-serif;" onclick="resetQuiz()">Refazer o quiz</button></div>`;
+
+      document.getElementById('result-content').innerHTML = html;
+      showScreen('screen-result');
+      window.scrollTo({ top: document.getElementById('quiz-card').offsetTop - 80, behavior: 'smooth' });
+    }
+
+    function resetQuiz() {
+      currentQ = 0; answers = new Array(questions.length).fill(-1);
+      showScreen('screen-start'); window.scrollTo({top:0,behavior:'smooth'});
+    }
+  </script>
+</BlogLayout>
