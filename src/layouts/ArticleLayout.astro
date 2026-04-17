@@ -45,7 +45,7 @@ const {
 const displayReadingTime = readingTime ?? null
 const metaTitle       = (seoTitle || title) + ' | Zen Caps Blog'
 const metaDescription = seoDescription || excerpt
-const canonicalUrl    = `https://zencaps.com.br/blog/${slug}`
+const canonicalUrl    = `https://zencaps.com.br/blog/${slug}/`
 const ogImage         = coverImage
   ? (coverImage.startsWith('http') ? coverImage : `https://zencaps.com.br${coverImage}`)
   : 'https://zencaps.com.br/og-image.jpg'

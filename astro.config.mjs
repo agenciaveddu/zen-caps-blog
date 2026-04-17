@@ -8,16 +8,18 @@ export default defineConfig({
   site: 'https://zencaps.com.br',
   output: 'static',
   compressHTML: true,
+  trailingSlash: 'always',
   build: {
     // Inlineia CSS no HTML — elimina requisição extra (render-blocking)
     inlineStylesheets: 'always',
   },
   integrations: [
     sitemap({
-      // Exclude root redirect page and keystatic admin from sitemap
       filter: (page) =>
         !page.endsWith('https://zencaps.com.br/') &&
-        !page.includes('/keystatic'),
+        !page.includes('/keystatic') &&
+        // Exclui páginas de paginação do sitemap (listagens, não conteúdo único)
+        !/\/blog\/\d+\/$/.test(page),
     }),
   ],
   image: {
