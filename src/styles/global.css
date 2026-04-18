@@ -317,6 +317,19 @@ body {
   color: #0D1B3E;
 }
 
+/* Botões CTA dentro de artigos não herdam estilo de link */
+.article-body .zen-btn-gold,
+.article-body .zen-btn-gold:hover {
+  color: #0D1B3E;
+  text-decoration: none;
+}
+
+.article-body .zen-btn-blue,
+.article-body .zen-btn-blue:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
 .article-body blockquote {
   border-left: 4px solid #1DB8E8;
   padding: 1rem 1.25rem;
@@ -406,24 +419,27 @@ body {
 .zen-btn-gold {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 0.75rem 2rem;
-  background: #C9A84C;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.9rem 2.2rem;
+  background: linear-gradient(135deg, #C9A84C, #d4b65e);
   color: #0D1B3E;
   font-weight: 800;
-  font-size: 0.92rem;
+  font-size: 1.05rem;
   font-family: 'Sora', system-ui, sans-serif;
-  border-radius: 999px;
+  border-radius: 12px;
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 12px rgba(201,168,76,0.4);
+  box-shadow: 0 4px 16px rgba(201,168,76,0.35);
   text-decoration: none;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  text-align: center;
 }
 
 .zen-btn-gold:hover {
-  background: #B8940E;
+  background: linear-gradient(135deg, #b8940e, #C9A84C);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(201,168,76,0.45);
+  box-shadow: 0 8px 28px rgba(201,168,76,0.5);
   color: #0D1B3E;
 }
 
@@ -431,19 +447,22 @@ body {
 .zen-btn-blue {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 0.75rem 2rem;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.9rem 2.2rem;
   background: #0D1B3E;
   color: #ffffff;
   font-weight: 700;
-  font-size: 0.92rem;
+  font-size: 1.05rem;
   font-family: 'Sora', system-ui, sans-serif;
-  border-radius: 999px;
+  border-radius: 12px;
   border: 2px solid rgba(29,184,232,0.5);
   transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 12px rgba(13,27,62,0.3);
+  box-shadow: 0 4px 16px rgba(13,27,62,0.3);
   text-decoration: none;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
+  line-height: 1.3;
+  text-align: center;
 }
 
 .zen-btn-blue:hover {
