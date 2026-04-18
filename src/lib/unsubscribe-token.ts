@@ -26,5 +26,7 @@ export function verifyToken(email: string, token: string): boolean {
 export function unsubscribeUrl(email: string, baseUrl = 'https://zencaps.com.br/blog'): string {
   const token = generateToken(email)
   const e = encodeURIComponent(email)
-  return `${baseUrl}/descadastrar/?e=${e}&t=${token}`
+  // Aponta para o endpoint API que processa o opt-out e redireciona para a landing page.
+  // Está em /blog/api/ por causa do proxy Cloudflare (zencaps.com.br/blog/* → Vercel).
+  return `${baseUrl}/api/unsubscribe/?e=${e}&t=${token}`
 }

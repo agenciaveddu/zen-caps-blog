@@ -1,8 +1,8 @@
 export const prerender = false
 
 import type { APIRoute } from 'astro'
-import { supabaseAdmin } from '../../lib/supabase-admin'
-import { verifyToken } from '../../lib/unsubscribe-token'
+import { supabaseAdmin } from '../../../lib/supabase-admin'
+import { verifyToken } from '../../../lib/unsubscribe-token'
 
 async function optOut(email: string): Promise<{ contacts: boolean; leads: boolean }> {
   const emailLower = email.toLowerCase().trim()

@@ -34,15 +34,13 @@ export function injectComplianceFooter(html: string, recipientEmail: string): st
 
 /**
  * Gera headers RFC 8058 para one-click unsubscribe (Gmail/Apple Mail).
+ * A URL retornada por unsubscribeUrl() já aponta para o endpoint API,
+ * que aceita POST (one-click) e GET (browser).
  */
 export function unsubscribeHeaders(recipientEmail: string): Record<string, string> {
-  const url = unsubscribeUrl(recipientEmail).replace('/blog/descadastrar/', '/api/unsubscribe')
-    + '' // URL absoluta para POST
-  const fullUrl = unsubscribeUrl(recipientEmail)
-  // Parser precisa de URL HTTPS válida — convertemos a landing em POST endpoint
-  const apiUrl = fullUrl.replace('/blog/descadastrar/', '/api/unsubscribe/')
+  const apiUrl = unsubscribeUrl(recipientEmail)
   return {
-    'List-Unsubscribe': `<mailto:unsub@zencaps.com.br?subject=unsubscribe&body=${encodeURIComponent(recipientEmail)}>, <${apiUrl}>`,
+    'List-Unsubscribe': `<mailto:marketing@zencaps.com.br?subject=unsubscribe&body=${encodeURIComponent(recipientEmail)}>, <${apiUrl}>`,
     'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
   }
 }
