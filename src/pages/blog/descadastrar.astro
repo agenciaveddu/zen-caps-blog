@@ -1,0 +1,70 @@
+---
+export const prerender = false
+
+const status = Astro.url.searchParams.get('status') || 'unknown'
+const email = Astro.url.searchParams.get('e') || ''
+
+const messages: Record<string, { title: string; desc: string; icon: string; color: string }> = {
+  ok: {
+    title: 'Você foi descadastrado',
+    desc: 'Não enviaremos mais emails para este endereço. Pode levar até 24h para processar. Se mudou de ideia, você pode voltar a se inscrever a qualquer momento.',
+    icon: '✓',
+    color: '#1DB8E8',
+  },
+  invalid: {
+    title: 'Link inválido ou expirado',
+    desc: 'O link que você clicou parece estar corrompido. Entre em contato pelo email marketing@zencaps.com.br para cancelar manualmente.',
+    icon: '⚠',
+    color: '#C9A84C',
+  },
+  error: {
+    title: 'Erro ao processar',
+    desc: 'Algo deu errado. Tente novamente ou entre em contato pelo email marketing@zencaps.com.br.',
+    icon: '⚠',
+    color: '#dc3545',
+  },
+  unknown: {
+    title: 'Descadastro não processado',
+    desc: 'Verifique se o link veio completo no seu email.',
+    icon: '?',
+    color: '#6B7A9A',
+  },
+}
+
+const msg = messages[status] || messages.unknown
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Descadastro — Zen Caps</title>
+  <style>
+    body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:#f4f8fc;color:#0D1B3E;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+    .card{background:#fff;border-radius:16px;padding:40px 32px;max-width:520px;width:100%;box-shadow:0 4px 20px rgba(13,27,62,0.08);text-align:center}
+    .logo{font-weight:900;font-size:1.5rem;color:#1DB8E8;letter-spacing:-0.02em;margin-bottom:8px}
+    .logo span{font-style:italic;font-weight:600;color:#0D1B3E;font-size:1.1rem}
+    .icon{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:24px auto 16px;font-size:1.8rem;font-weight:700;color:#fff}
+    h1{margin:0 0 12px;font-size:1.4rem;font-weight:800}
+    p{margin:0 0 16px;color:#3a4a6b;line-height:1.65;font-size:0.95rem}
+    .email{display:inline-block;padding:4px 12px;background:#f4f8fc;border-radius:8px;font-family:monospace;font-size:0.85rem;color:#6B7A9A;margin-top:8px}
+    a.btn{display:inline-block;margin-top:20px;padding:12px 24px;background:linear-gradient(135deg,#C9A84C,#e8c96a);color:#0D1B3E;font-weight:700;text-decoration:none;border-radius:10px;font-size:0.9rem}
+    .fineprint{margin-top:24px;font-size:0.75rem;color:#6B7A9A;line-height:1.5}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">ZEN<span>caps</span></div>
+    <div class="icon" style={`background:${msg.color}`}>{msg.icon}</div>
+    <h1>{msg.title}</h1>
+    <p>{msg.desc}</p>
+    {email && <div class="email">{email}</div>}
+    <a href="https://zencaps.com.br" class="btn">Voltar para o site</a>
+    <div class="fineprint">
+      <p>Zen Caps · Suplemento natural para sono e ansiedade · Aprovado ANVISA</p>
+      <p>Se este descadastro foi feito por engano, envie um email para marketing@zencaps.com.br solicitando reinscrição.</p>
+    </div>
+  </div>
+</body>
+</html>

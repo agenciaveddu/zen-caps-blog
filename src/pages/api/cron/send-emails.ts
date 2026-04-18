@@ -3,6 +3,7 @@ export const prerender = false
 import type { APIRoute } from 'astro'
 import nodemailer from 'nodemailer'
 import { supabase } from '../../../lib/supabase'
+import { injectComplianceFooter, unsubscribeHeaders } from '../../../lib/email-compliance'
 
 // ── Config ──
 const BATCH_SIZE = 20            // Emails por execução (evita timeout 10s do Vercel)
@@ -104,9 +105,10 @@ async function processQueue(request: Request): Promise<Response> {
 
     // Personaliza HTML com nome (se existir)
     const nome = (lead.nome || '').trim().split(' ')[0] || ''
-    const html = nome
+    let html = nome
       ? seq.corpo_html.replace(/Olá!/g, `Olá, ${nome}!`).replace(/Você não está sozinho/g, `${nome}, você não está sozinho`)
       : seq.corpo_html
+    html = injectComplianceFooter(html, lead.email)
 
     try {
       await transporter.sendMail({
@@ -114,6 +116,7 @@ async function processQueue(request: Request): Promise<Response> {
         to: lead.email,
         subject: seq.assunto,
         html,
+        headers: unsubscribeHeaders(lead.email),
       })
 
       // Sucesso: marca como enviado + log

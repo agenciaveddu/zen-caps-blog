@@ -3,6 +3,7 @@ export const prerender = false
 import type { APIRoute } from 'astro'
 import nodemailer from 'nodemailer'
 import { supabaseAdmin as supabase } from '../../../lib/supabase-admin'
+import { injectComplianceFooter, unsubscribeHeaders } from '../../../lib/email-compliance'
 
 // ── Config ──
 const BATCH_SIZE = 20            // Emails por execução (limite 10s Vercel)
@@ -126,7 +127,8 @@ async function processQueue(request: Request): Promise<Response> {
       }
 
       const subject = personalize(camp.email_subject, contact)
-      const html = personalize(camp.email_body, contact)
+      let html = personalize(camp.email_body, contact)
+      html = injectComplianceFooter(html, contact.email)
 
       try {
         await transporter.sendMail({
@@ -134,6 +136,7 @@ async function processQueue(request: Request): Promise<Response> {
           to: contact.email,
           subject,
           html,
+          headers: unsubscribeHeaders(contact.email),
         })
 
         await Promise.all([

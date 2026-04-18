@@ -3,6 +3,7 @@ export const prerender = false
 import type { APIRoute } from 'astro'
 import nodemailer from 'nodemailer'
 import { supabaseAdmin as supabase } from '../../../lib/supabase-admin'
+import { injectComplianceFooter, unsubscribeHeaders } from '../../../lib/email-compliance'
 
 // Email de teste padrão (fallback se não passar no body)
 const DEFAULT_TEST_EMAIL = 'agenciaveddu@gmail.com'
@@ -108,8 +109,17 @@ export const POST: APIRoute = async ({ request }) => {
     auth: { user: SMTP_USER, pass: SMTP_PASS },
   })
 
+  // Injeta compliance footer (unsub link + endereço)
+  html = injectComplianceFooter(html, email)
+
   try {
-    await transporter.sendMail({ from: MAIL_FROM, to: email, subject, html })
+    await transporter.sendMail({
+      from: MAIL_FROM,
+      to: email,
+      subject,
+      html,
+      headers: unsubscribeHeaders(email),
+    })
 
     await supabase.from('email_logs').insert({
       email,
