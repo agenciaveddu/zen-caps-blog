@@ -8,11 +8,13 @@ import { supabase } from '../../../lib/supabase'
 const BATCH_SIZE = 20            // Emails por execução (evita timeout 10s do Vercel)
 const MAX_TENTATIVAS = 3         // Tentativas antes de marcar como falha permanente
 
-const SMTP_HOST = import.meta.env.SMTP_HOST || 'email-smtp.sa-east-1.amazonaws.com'
-const SMTP_PORT = Number(import.meta.env.SMTP_PORT || 587)
-const SMTP_USER = import.meta.env.SMTP_USER
-const SMTP_PASS = import.meta.env.SMTP_PASS
-const MAIL_FROM = import.meta.env.MAIL_FROM || 'Zen Caps <contato@zencaps.com.br>'
+const SMTP_HOST = import.meta.env.SES_SMTP_HOST || 'email-smtp.sa-east-1.amazonaws.com'
+const SMTP_PORT = Number(import.meta.env.SES_SMTP_PORT || 587)
+const SMTP_USER = import.meta.env.SES_SMTP_USER
+const SMTP_PASS = import.meta.env.SES_SMTP_PASS
+const FROM_EMAIL = import.meta.env.SES_FROM_EMAIL || 'contato@zencaps.com.br'
+const FROM_NAME = import.meta.env.SES_FROM_NAME || 'Zen Caps'
+const MAIL_FROM = `${FROM_NAME} <${FROM_EMAIL}>`
 
 // ── Auth: Vercel Cron envia header com CRON_SECRET ──
 function isAuthorized(request: Request): boolean {
