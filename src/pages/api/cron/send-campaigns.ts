@@ -2,7 +2,7 @@ export const prerender = false
 
 import type { APIRoute } from 'astro'
 import nodemailer from 'nodemailer'
-import { supabase } from '../../../lib/supabase'
+import { supabaseAdmin as supabase } from '../../../lib/supabase-admin'
 
 // ── Config ──
 const BATCH_SIZE = 20            // Emails por execução (limite 10s Vercel)
