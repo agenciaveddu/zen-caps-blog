@@ -609,7 +609,7 @@ const breadcrumb = {
       if (btn) { btn.disabled = true; btn.textContent = 'Salvando...'; }
 
       // Save lead to Supabase via API
-      fetch('/api/quiz-lead/', {
+      fetch('/blog/api/quiz-lead/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: name, email: email, quiz: 'sono', score: qzCalcScore() })

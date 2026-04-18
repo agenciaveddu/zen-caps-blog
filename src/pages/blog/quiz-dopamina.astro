@@ -327,7 +327,7 @@ const breadcrumb = {
       document.getElementById('qz-email').classList.remove('error'); QZ.hasEmail=true;
       var btn=document.getElementById('qz-btn-email');
       if(btn){btn.disabled=true;btn.textContent='Salvando...';}
-      fetch('/api/quiz-lead/',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,email:e,quiz:'dopamina',score:qzCalcScore()})})
+      fetch('/blog/api/quiz-lead/',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,email:e,quiz:'dopamina',score:qzCalcScore()})})
       .then(function(r){return r.json();})
       .then(function(){qzShowResult(true,n);})
       .catch(function(){qzShowResult(true,n);});

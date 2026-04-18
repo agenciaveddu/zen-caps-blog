@@ -1,7 +1,7 @@
 export const prerender = false
 
 import type { APIRoute } from 'astro'
-import { supabase } from '../../lib/supabase'
+import { supabase } from '../../../lib/supabase'
 
 const QUIZ_TAGS: Record<string, string[]> = {
   sono:      ['quiz-sono', 'interesse-sono'],
