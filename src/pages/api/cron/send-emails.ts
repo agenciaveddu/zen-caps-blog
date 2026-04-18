@@ -132,9 +132,13 @@ async function processQueue(request: Request): Promise<Response> {
       ])
       results.sent++
     } catch (err: any) {
-      console.error(`[cron/send-emails] Send failed for ${lead.email}:`, err.message)
+      const errMsg = (err?.message || 'unknown').toString().slice(0, 200)
+      console.error(`[cron/send-emails] Send failed for ${lead.email}:`, errMsg, err?.code, err?.responseCode)
       const newTentativas = (item.tentativas || 0) + 1
       const isPermanent = newTentativas >= MAX_TENTATIVAS
+      const statusLabel = isPermanent
+        ? `falha-permanente: ${errMsg}`
+        : `falha-tentativa-${newTentativas}: ${errMsg}`
 
       await Promise.all([
         supabase
@@ -152,7 +156,7 @@ async function processQueue(request: Request): Promise<Response> {
           queue_id: queueId,
           email: lead.email,
           assunto: seq.assunto,
-          status: isPermanent ? 'falha-permanente' : `falha-tentativa-${newTentativas}`,
+          status: statusLabel.slice(0, 250),
         }),
       ])
       results.failed++
