@@ -4,19 +4,20 @@ import type { APIRoute } from 'astro'
 import { supabaseAdmin } from '../../../../lib/supabase-admin'
 
 /**
- * GET /blog/api/track/click/?id={cc_id}&u={destination_url}
+ * GET /blog/api/r/?id={cc_id}&t={destination_url}
  * Redireciona 302 pra URL destino. Marca clicked_at.
  *
  * URL destino vem em base64url para evitar problemas com encoding.
+ * Path /r/ (em vez de /track/click/) evita falsos positivos de WAF.
  */
 export const GET: APIRoute = async ({ url, redirect }) => {
   const id = url.searchParams.get('id') || ''
-  const u = url.searchParams.get('u') || ''
+  const t = url.searchParams.get('t') || url.searchParams.get('u') || ''
 
   // Decode destination URL (base64url)
   let destUrl = ''
   try {
-    destUrl = Buffer.from(u, 'base64url').toString('utf-8')
+    destUrl = Buffer.from(t, 'base64url').toString('utf-8')
   } catch {
     return new Response('Invalid URL', { status: 400 })
   }
