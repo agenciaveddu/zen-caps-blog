@@ -55,7 +55,7 @@ async function processQueue(request: Request): Promise<Response> {
     .select(`
       id, lead_id, sequence_id, tentativas,
       lead:leads ( id, email, nome, ativo ),
-      sequence:email_sequences ( id, nome, assunto, corpo_html, ativo )
+      sequence:email_sequences ( id, nome, ordem, assunto, corpo_html, ativo )
     `)
     .eq('status', 'pendente')
     .lte('agendado_para', new Date().toISOString())
@@ -139,6 +139,45 @@ async function processQueue(request: Request): Promise<Response> {
         }),
       ])
       results.sent++
+
+      // ── Auto-enfileira próxima sequência (follow-up automation) ──
+      // Busca próxima sequência com mesmo nome e ordem maior
+      try {
+        const { data: nextSeq } = await supabase
+          .from('email_sequences')
+          .select('id, delay_horas')
+          .eq('nome', seq.nome)
+          .gt('ordem', seq.ordem || 0)
+          .eq('ativo', true)
+          .order('ordem', { ascending: true })
+          .limit(1)
+          .maybeSingle()
+
+        if (nextSeq) {
+          const delayMs = (nextSeq.delay_horas || 0) * 3600 * 1000
+          const scheduledFor = new Date(Date.now() + delayMs).toISOString()
+
+          // Verifica se essa sequência já não foi enfileirada pra esse lead
+          const { data: alreadyQueued } = await supabase
+            .from('email_queue')
+            .select('id')
+            .eq('lead_id', lead.id)
+            .eq('sequence_id', nextSeq.id)
+            .maybeSingle()
+
+          if (!alreadyQueued) {
+            await supabase.from('email_queue').insert({
+              lead_id: lead.id,
+              sequence_id: nextSeq.id,
+              status: 'pendente',
+              agendado_para: scheduledFor,
+            })
+          }
+        }
+      } catch (followupErr) {
+        // Não bloqueia o fluxo se falhar — só loga
+        console.error('[cron/send-emails] Follow-up enqueue error:', followupErr)
+      }
     } catch (err: any) {
       const errMsg = (err?.message || 'unknown').toString().slice(0, 200)
       console.error(`[cron/send-emails] Send failed for ${lead.email}:`, errMsg, err?.code, err?.responseCode)
