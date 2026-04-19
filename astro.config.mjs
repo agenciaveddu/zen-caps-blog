@@ -11,6 +11,12 @@ export default defineConfig({
   adapter: vercel(),
   compressHTML: true,
   trailingSlash: 'always',
+  security: {
+    // Desabilita checkOrigin (CSRF) — necessário para webhooks server-to-server
+    // (SNS, quiz API, cron). Nossas APIs têm autenticação própria (Bearer token,
+    // HMAC signature, ou são acessadas via fetch same-origin no quiz).
+    checkOrigin: false,
+  },
   build: {
     // Inlineia CSS no HTML — elimina requisição extra (render-blocking)
     inlineStylesheets: 'always',
