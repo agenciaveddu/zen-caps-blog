@@ -1,7 +1,7 @@
 import { unsubscribeUrl } from './unsubscribe-token'
 
 const TRACK_BASE = 'https://zencaps.com.br/blog/api/track'
-const REDIRECT_BASE = 'https://zencaps.com.br/blog/api/r'
+const REDIRECT_BASE = 'https://zencaps.com.br/blog/api/track/go'
 
 /**
  * Injeta footer de compliance (unsubscribe + endereço) no HTML do email.
@@ -64,7 +64,6 @@ export function rewriteLinksForTracking(html: string, trackingId: string): strin
       url.startsWith('tel:') ||
       url.includes('/api/unsubscribe') ||
       url.includes('/api/track/') ||
-      url.includes('/api/r/') ||
       url.includes('/blog/descadastrar')
     ) {
       return match

@@ -4,11 +4,12 @@ import type { APIRoute } from 'astro'
 import { supabaseAdmin } from '../../../../lib/supabase-admin'
 
 /**
- * GET /blog/api/r/?id={cc_id}&t={destination_url}
+ * GET /blog/api/track/go/?id={cc_id}&t={destination_url}
  * Redireciona 302 pra URL destino. Marca clicked_at.
  *
  * URL destino vem em base64url para evitar problemas com encoding.
- * Path /r/ (em vez de /track/click/) evita falsos positivos de WAF.
+ * Path em /track/go/ — segue padrão de /track/open/ (Vercel routing).
+ * Evita /r/ que era capturado por rewrite do WordPress.
  */
 export const GET: APIRoute = async ({ url, redirect }) => {
   const id = url.searchParams.get('id') || ''
