@@ -49,6 +49,9 @@ git push origin master                     # 1 build em produção
 
 ### Pendentes do CRM
 - [ ] Push da branch `feat/email-insights` no repo CRM (criar Preview Deploy → testar → merge)
+- [ ] Atualizar Settings → Email Marketing: substituir "Resend" (legado, não usado) por status da integração AWS SES (region, configuration_set, identities verificadas, quota disponível)
+- [ ] Em Settings → WhatsApp: validar se a integração já está funcional ou também é legado
+- [ ] Avaliar se o "Agente IA" (Anthropic Claude) está sendo usado ou também é template inicial
 
 ### Pode esperar
 - [ ] Importar 9k leads restantes do Braip (Bruno baixa CSV → eu importo)
