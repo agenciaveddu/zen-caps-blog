@@ -29,18 +29,35 @@ async function getOrCreateTestContact(email: string, name: string): Promise<stri
   }
   if (!contactId) return null
 
-  // 2. Cria nova entry em campaign_contacts (cada teste = nova entry)
-  const { data: cc } = await supabase
+  // 2. UPSERT em campaign_contacts (reusa o row existente, reseta tracking)
+  const now = new Date().toISOString()
+  const { data: existing } = await supabase
     .from('campaign_contacts')
-    .insert({
-      campaign_id: TEST_CAMPAIGN_ID,
-      contact_id: contactId,
-      status: 'sent',
-      sent_at: new Date().toISOString(),
-    })
     .select('id')
-    .single()
-  return cc?.id || null
+    .eq('campaign_id', TEST_CAMPAIGN_ID)
+    .eq('contact_id', contactId)
+    .maybeSingle()
+
+  if (existing) {
+    // Reseta read_at/clicked_at pra cada teste rastrear nova abertura/clique
+    await supabase
+      .from('campaign_contacts')
+      .update({ status: 'sent', sent_at: now, read_at: null, clicked_at: null })
+      .eq('id', existing.id)
+    return existing.id
+  } else {
+    const { data: cc } = await supabase
+      .from('campaign_contacts')
+      .insert({
+        campaign_id: TEST_CAMPAIGN_ID,
+        contact_id: contactId,
+        status: 'sent',
+        sent_at: now,
+      })
+      .select('id')
+      .single()
+    return cc?.id || null
+  }
 }
 
 // Email de teste padrão (fallback se não passar no body)
