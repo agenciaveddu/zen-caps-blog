@@ -1,5 +1,7 @@
 import { unsubscribeUrl } from './unsubscribe-token'
 
+const TRACK_BASE = 'https://zencaps.com.br/blog/api/track'
+
 /**
  * Injeta footer de compliance (unsubscribe + endereço) no HTML do email.
  * Substitui o placeholder {{compliance_footer}} ou adiciona antes de </body>.
@@ -24,18 +26,58 @@ export function injectComplianceFooter(html: string, recipientEmail: string): st
   if (html.includes('{{compliance_footer}}')) {
     return html.replace('{{compliance_footer}}', footer)
   }
-  // Fallback: insere antes de </body>
   if (html.includes('</body>')) {
     return html.replace('</body>', `${footer}</body>`)
   }
-  // Último fallback: append
   return html + footer
 }
 
 /**
+ * Injeta pixel de tracking de abertura (1x1 transparente).
+ * Posição: antes do </body> pra ser carregado por último (não bloqueia render).
+ */
+export function injectOpenPixel(html: string, trackingId: string): string {
+  if (!trackingId) return html
+  const pixel = `<img src="${TRACK_BASE}/open/?id=${encodeURIComponent(trackingId)}" width="1" height="1" border="0" alt="" style="display:none;width:1px;height:1px;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;">`
+  if (html.includes('</body>')) {
+    return html.replace('</body>', `${pixel}</body>`)
+  }
+  return html + pixel
+}
+
+/**
+ * Substitui links externos por URL de tracking (302 redirect).
+ * NÃO substitui:
+ *  - Links de unsubscribe (regex matches /api/unsubscribe)
+ *  - Links mailto:, tel:, anchors (#)
+ *  - Links já trackeados (/api/track/click)
+ */
+export function rewriteLinksForTracking(html: string, trackingId: string): string {
+  if (!trackingId) return html
+  const tid = encodeURIComponent(trackingId)
+  return html.replace(/href=(["'])([^"']+)\1/gi, (match, quote, url) => {
+    // Skip URLs we shouldn't track
+    if (
+      url.startsWith('#') ||
+      url.startsWith('mailto:') ||
+      url.startsWith('tel:') ||
+      url.includes('/api/unsubscribe') ||
+      url.includes('/api/track/') ||
+      url.includes('/blog/descadastrar')
+    ) {
+      return match
+    }
+    // Only track http/https
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      return match
+    }
+    const encoded = Buffer.from(url, 'utf-8').toString('base64url')
+    return `href=${quote}${TRACK_BASE}/click/?id=${tid}&u=${encoded}${quote}`
+  })
+}
+
+/**
  * Gera headers RFC 8058 para one-click unsubscribe (Gmail/Apple Mail).
- * A URL retornada por unsubscribeUrl() já aponta para o endpoint API,
- * que aceita POST (one-click) e GET (browser).
  */
 export function unsubscribeHeaders(recipientEmail: string): Record<string, string> {
   const apiUrl = unsubscribeUrl(recipientEmail)

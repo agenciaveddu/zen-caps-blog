@@ -3,7 +3,7 @@ export const prerender = false
 import type { APIRoute } from 'astro'
 import nodemailer from 'nodemailer'
 import { supabaseAdmin as supabase } from '../../../lib/supabase-admin'
-import { injectComplianceFooter, unsubscribeHeaders } from '../../../lib/email-compliance'
+import { injectComplianceFooter, injectOpenPixel, rewriteLinksForTracking, unsubscribeHeaders } from '../../../lib/email-compliance'
 
 // ── Config ──
 const BATCH_SIZE = 20            // Emails por execução (limite 10s Vercel)
@@ -129,7 +129,10 @@ async function processQueue(request: Request): Promise<Response> {
 
       const subject = personalize(camp.email_subject, contact)
       let html = personalize(camp.email_body, contact)
+      // Tracking: usa o ID do campaign_contacts (ccId) pra correlacionar
+      html = rewriteLinksForTracking(html, ccId)
       html = injectComplianceFooter(html, contact.email)
+      html = injectOpenPixel(html, ccId)
 
       try {
         await transporter.sendMail({
