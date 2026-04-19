@@ -31,20 +31,20 @@ async function getOrCreateTestContact(email: string, name: string): Promise<stri
 
   // 2. UPSERT em campaign_contacts (reusa o row existente, reseta tracking)
   const now = new Date().toISOString()
-  const { data: existing } = await supabase
+  const { data: existingCC } = await supabase
     .from('campaign_contacts')
     .select('id')
     .eq('campaign_id', TEST_CAMPAIGN_ID)
     .eq('contact_id', contactId)
     .maybeSingle()
 
-  if (existing) {
+  if (existingCC) {
     // Reseta read_at/clicked_at pra cada teste rastrear nova abertura/clique
     await supabase
       .from('campaign_contacts')
       .update({ status: 'sent', sent_at: now, read_at: null, clicked_at: null })
-      .eq('id', existing.id)
-    return existing.id
+      .eq('id', existingCC.id)
+    return existingCC.id
   } else {
     const { data: cc } = await supabase
       .from('campaign_contacts')
