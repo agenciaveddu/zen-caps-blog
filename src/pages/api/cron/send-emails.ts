@@ -16,6 +16,7 @@ const SMTP_PASS = import.meta.env.SES_SMTP_PASS
 const FROM_EMAIL = import.meta.env.SES_FROM_EMAIL || 'contato@zencaps.com.br'
 const FROM_NAME = import.meta.env.SES_FROM_NAME || 'Zen Caps'
 const MAIL_FROM = `${FROM_NAME} <${FROM_EMAIL}>`
+const SES_CONFIG_SET = import.meta.env.SES_CONFIGURATION_SET || 'zencaps-tracking'
 
 // ── Auth: Vercel Cron envia header com CRON_SECRET ──
 function isAuthorized(request: Request): boolean {
@@ -116,7 +117,11 @@ async function processQueue(request: Request): Promise<Response> {
         to: lead.email,
         subject: seq.assunto,
         html,
-        headers: unsubscribeHeaders(lead.email),
+        headers: {
+          ...unsubscribeHeaders(lead.email),
+          'X-SES-CONFIGURATION-SET': SES_CONFIG_SET,
+          'X-SES-MESSAGE-TAGS': `campaign=quiz-welcome,quiz=${(seq.nome || '').replace('boas-vindas-', '')}`,
+        },
       })
 
       // Sucesso: marca como enviado + log

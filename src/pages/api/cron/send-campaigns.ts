@@ -16,6 +16,7 @@ const SMTP_PASS = import.meta.env.SES_SMTP_PASS
 const FROM_EMAIL = import.meta.env.SES_FROM_EMAIL || 'marketing@zencaps.com.br'
 const FROM_NAME = import.meta.env.SES_FROM_NAME || 'Zen Caps'
 const MAIL_FROM = `${FROM_NAME} <${FROM_EMAIL}>`
+const SES_CONFIG_SET = import.meta.env.SES_CONFIGURATION_SET || 'zencaps-tracking'
 
 function isAuthorized(request: Request): boolean {
   const auth = request.headers.get('authorization') || ''
@@ -136,7 +137,11 @@ async function processQueue(request: Request): Promise<Response> {
           to: contact.email,
           subject,
           html,
-          headers: unsubscribeHeaders(contact.email),
+          headers: {
+            ...unsubscribeHeaders(contact.email),
+            'X-SES-CONFIGURATION-SET': SES_CONFIG_SET,
+            'X-SES-MESSAGE-TAGS': `campaign=${camp.id.slice(0, 8)},type=campaign`,
+          },
         })
 
         await Promise.all([

@@ -16,6 +16,7 @@ const SMTP_PASS = import.meta.env.SES_SMTP_PASS
 const FROM_EMAIL = import.meta.env.SES_FROM_EMAIL || 'marketing@zencaps.com.br'
 const FROM_NAME = import.meta.env.SES_FROM_NAME || 'Zen Caps'
 const MAIL_FROM = `${FROM_NAME} <${FROM_EMAIL}>`
+const SES_CONFIG_SET = import.meta.env.SES_CONFIGURATION_SET || 'zencaps-tracking'
 
 function personalize(template: string, name: string, email: string): string {
   const firstName = (name || '').trim().split(' ')[0] || ''
@@ -118,7 +119,11 @@ export const POST: APIRoute = async ({ request }) => {
       to: email,
       subject,
       html,
-      headers: unsubscribeHeaders(email),
+      headers: {
+        ...unsubscribeHeaders(email),
+        'X-SES-CONFIGURATION-SET': SES_CONFIG_SET,
+        'X-SES-MESSAGE-TAGS': 'campaign=test,type=preview',
+      },
     })
 
     await supabase.from('email_logs').insert({
