@@ -3,7 +3,45 @@ export const prerender = false
 import type { APIRoute } from 'astro'
 import nodemailer from 'nodemailer'
 import { supabaseAdmin as supabase } from '../../../lib/supabase-admin'
-import { injectComplianceFooter, unsubscribeHeaders } from '../../../lib/email-compliance'
+import { injectComplianceFooter, injectOpenPixel, rewriteLinksForTracking, unsubscribeHeaders } from '../../../lib/email-compliance'
+
+// Campaign id reservado para emails de teste (criado manualmente)
+const TEST_CAMPAIGN_ID = 'fe71a2cf-fd0f-4264-a376-717d90518d13'
+
+async function getOrCreateTestContact(email: string, name: string): Promise<string | null> {
+  // 1. Garante contact (não bloqueia se falhar)
+  const emailLower = email.toLowerCase().trim()
+  let contactId: string | null = null
+  const { data: existing } = await supabase
+    .from('contacts')
+    .select('id')
+    .eq('email', emailLower)
+    .maybeSingle()
+  if (existing) {
+    contactId = existing.id
+  } else {
+    const { data: created } = await supabase
+      .from('contacts')
+      .insert({ name, email: emailLower, segment: 'test', email_opted_in: true })
+      .select('id')
+      .single()
+    contactId = created?.id || null
+  }
+  if (!contactId) return null
+
+  // 2. Cria nova entry em campaign_contacts (cada teste = nova entry)
+  const { data: cc } = await supabase
+    .from('campaign_contacts')
+    .insert({
+      campaign_id: TEST_CAMPAIGN_ID,
+      contact_id: contactId,
+      status: 'sent',
+      sent_at: new Date().toISOString(),
+    })
+    .select('id')
+    .single()
+  return cc?.id || null
+}
 
 // Email de teste padrão (fallback se não passar no body)
 const DEFAULT_TEST_EMAIL = 'agenciaveddu@gmail.com'
@@ -110,8 +148,17 @@ export const POST: APIRoute = async ({ request }) => {
     auth: { user: SMTP_USER, pass: SMTP_PASS },
   })
 
-  // Injeta compliance footer (unsub link + endereço)
+  // Cria tracking row (campaign_contacts) pra o teste
+  const trackingId = await getOrCreateTestContact(email, name)
+
+  // Injeta tracking + compliance no HTML
+  if (trackingId) {
+    html = rewriteLinksForTracking(html, trackingId)
+  }
   html = injectComplianceFooter(html, email)
+  if (trackingId) {
+    html = injectOpenPixel(html, trackingId)
+  }
 
   try {
     await transporter.sendMail({
@@ -132,7 +179,7 @@ export const POST: APIRoute = async ({ request }) => {
       status: `teste-enviado: ${sourceName}`,
     })
 
-    return new Response(JSON.stringify({ ok: true, sent_to: email, source: sourceName, subject }), {
+    return new Response(JSON.stringify({ ok: true, sent_to: email, source: sourceName, subject, trackingId }), {
       status: 200, headers: { 'Content-Type': 'application/json' },
     })
   } catch (err: any) {
