@@ -8,9 +8,11 @@ const ANTHROPIC_API_KEY = import.meta.env.ANTHROPIC_API_KEY
 const RUNWARE_API_KEY = 'akonTJA3Btwjw7zNAYyy1lJ0jyovzniM'
 const RUNWARE_API_URL = 'https://api.runware.ai/v1'
 
-// Preços por token (Claude modelos atuais)
+// Preços por token (Claude modelos atuais) — USD por milhão
 const PRICING = {
-  'claude-haiku-4-5': { input: 1.0, output: 5.0 }, // por milhão
+  'claude-haiku-4-5': { input: 1.0, output: 5.0 },
+  'claude-haiku-4-5-20251001': { input: 1.0, output: 5.0 },
+  'claude-sonnet-4-5': { input: 3.0, output: 15.0 },
   'claude-sonnet-4-5-20250929': { input: 3.0, output: 15.0 },
 }
 
@@ -116,7 +118,13 @@ REGRAS:
 
 SLUG DO ARQUIVO: ${job.slug}.md
 
-Responda APENAS com o arquivo .md completo (frontmatter + corpo + referências). Sem introdução, sem "aqui está o artigo", nada além do conteúdo do arquivo.`
+REGRA ABSOLUTA DE FORMATO DE RESPOSTA:
+- Sua resposta deve começar LITERALMENTE com "---" (três traços)
+- NÃO use code fences (\`\`\`markdown ou \`\`\`)
+- NÃO adicione frases como "Aqui está o artigo", "Segue o conteúdo", etc.
+- NÃO adicione nada ANTES do primeiro "---"
+- A PRIMEIRA linha da sua resposta DEVE ser exatamente: ---
+- Responda EXCLUSIVAMENTE com o conteúdo do arquivo .md (frontmatter + corpo + referências).`
 }
 
 async function generateImage(slug: string, category: string): Promise<string | null> {
@@ -226,11 +234,31 @@ async function processRequest(request: Request): Promise<Response> {
     if (!textContent || textContent.type !== 'text') {
       throw new Error('No text content in response')
     }
-    const generated = textContent.text
+    let generated = textContent.text.trim()
 
-    // Validar estrutura mínima
+    // Limpar preambulos comuns
+    // Remove code fences (```markdown ... ```)
+    if (generated.startsWith('```')) {
+      generated = generated.replace(/^```(?:markdown|md)?\s*\n?/, '').replace(/\n?```\s*$/, '').trim()
+    }
+
+    // Se não começar com ---, tenta achar o frontmatter no texto
+    if (!generated.startsWith('---')) {
+      const fmStart = generated.indexOf('---')
+      if (fmStart > 0 && fmStart < 500) {
+        generated = generated.slice(fmStart)
+      }
+    }
+
+    // Salva o conteúdo SEMPRE (pra debug) antes de validar
+    await supabaseAdmin
+      .from('article_queue')
+      .update({ generated_content: generated })
+      .eq('id', job.id)
+
+    // Validação (agora com conteúdo salvo)
     if (!generated.startsWith('---') || !generated.includes('publishedAt:')) {
-      throw new Error('Generated content does not have valid frontmatter')
+      throw new Error(`Generated content does not start with valid frontmatter. Preview: ${generated.slice(0, 200)}`)
     }
 
     // Calcular custo
