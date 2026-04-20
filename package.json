@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.90.0",
     "@astrojs/sitemap": "^3.7.1",
     "@astrojs/vercel": "^10.0.4",
     "@supabase/supabase-js": "^2.103.3",
