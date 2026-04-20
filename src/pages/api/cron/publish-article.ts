@@ -1,6 +1,7 @@
 export const prerender = false
 
 import type { APIRoute } from 'astro'
+import sharp from 'sharp'
 import { supabaseAdmin } from '../../../lib/supabase-admin'
 
 const GITHUB_TOKEN = import.meta.env.GITHUB_TOKEN
@@ -110,18 +111,36 @@ async function processRequest(request: Request): Promise<Response> {
 
   for (const job of jobs) {
     try {
-      // 2. Commita a imagem (se tiver)
+      // 2. Commita a imagem original + thumbnail
       if (job.image_url) {
         const imgBuffer = await downloadImage(job.image_url)
         if (imgBuffer) {
+          // Original (1216x640)
           await commitFile(
             `public/images/blog/${job.slug}.webp`,
             imgBuffer.toString('base64'),
             `feat(blog): add cover image for ${job.slug}`,
             'base64'
           )
-          // Esperar um pouco pra evitar conflito de refs
           await new Promise(r => setTimeout(r, 1200))
+
+          // Thumbnail 660px (pra cards do blog)
+          try {
+            const thumbBuffer = await sharp(imgBuffer)
+              .resize({ width: 660, withoutEnlargement: true })
+              .webp({ quality: 78 })
+              .toBuffer()
+            await commitFile(
+              `public/images/blog/thumbs/${job.slug}.webp`,
+              thumbBuffer.toString('base64'),
+              `feat(blog): add thumbnail for ${job.slug}`,
+              'base64'
+            )
+            await new Promise(r => setTimeout(r, 1200))
+          } catch (thumbErr) {
+            console.error('[publish-article] Thumbnail error:', thumbErr)
+            // Não bloqueia — só loga
+          }
         }
       }
 
